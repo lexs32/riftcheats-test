@@ -2,11 +2,12 @@
 User-agent: *
 Allow: /
 Allow: /store.html
+Allow: /product.html
 Allow: /status.html
 Allow: /assets/
 Disallow: /client-area.html
 Disallow: /api/
 
 # Host & Sitemap Directives
-Host: https://riftcheats.com
-Sitemap: https://riftcheats.com/sitemap.xml
+Host: https://www.riftcheats.com
+Sitemap: https://www.riftcheats.com/sitemap.xml

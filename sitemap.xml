@@ -2,45 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://riftcheats.com/</loc>
+    <loc>https://www.riftcheats.com/</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://riftcheats.com/assets/real/Rust.png</image:loc>
-      <image:title>Rift Cheats Rust Private Cheat ESP and Aimbot</image:title>
+      <image:loc>https://www.riftcheats.com/assets/og-banner.png</image:loc>
+      <image:title>Rift Cheats Private Undetected Software</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://riftcheats.com/assets/real/rift_arc-31eUfYH7.png</image:loc>
-      <image:title>Rift Cheats ARC Raiders Private Software</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://riftcheats.com/assets/real/rainbow6.png</image:loc>
-      <image:title>Rift Cheats Rainbow Six Siege Private Internal</image:title>
+      <image:loc>https://www.riftcheats.com/assets/rc_logo.png</image:loc>
+      <image:title>Rift Cheats Logo</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://riftcheats.com/store.html</loc>
+    <loc>https://www.riftcheats.com/store.html</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://riftcheats.com/assets/real/Rust.png</image:loc>
-      <image:title>Buy Rust Private Cheats</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://riftcheats.com/assets/real/Fortnite.png</image:loc>
-      <image:title>Buy Fortnite Private Softaim and ESP</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://riftcheats.com/assets/real/Apex.png</image:loc>
-      <image:title>Buy Apex Legends Private Cheat</image:title>
+      <image:loc>https://www.riftcheats.com/assets/og-banner.png</image:loc>
+      <image:title>Buy Undetected Cheats - Rift Cheats Catalog</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://riftcheats.com/status.html</loc>
+    <loc>https://www.riftcheats.com/product.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.riftcheats.com/assets/og-banner.png</image:loc>
+      <image:title>Product Details - Rift Cheats</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.riftcheats.com/status.html</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.riftcheats.com/assets/og-banner.png</image:loc>
+      <image:title>Rift Cheats Live Anti-Cheat Telemetry</image:title>
+    </image:image>
   </url>
 </urlset>
