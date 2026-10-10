@@ -2488,9 +2488,12 @@
       100% { transform: translateX(0%); }
     }
     .bg-gradient-text-title {
-      background: linear-gradient(135deg, #ffffff 40%, #ff2a85 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      background: linear-gradient(135deg, #ff2a85 0%, #ec4899 40%, #c084fc 80%, #a855f7 100%) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      display: inline-block;
     }
 
     /* Tomware 385px Dual-Artwork Cards */
@@ -3838,8 +3841,8 @@
   <section id="reviews" class="py-24 w-full relative overflow-hidden">
         
         <div class="text-center mb-12 px-4">
-            <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight leading-tight mb-3 pb-1 text-white">
-                Customer <span style="color: #fddceb;">Reviews</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-3 pb-1">
+                <span class="text-accent-gradient">Customer Reviews</span>
             </h2>
             <p class="text-slate-400 text-sm max-w-xl mx-auto font-normal">
                 Read real feedback from our active gaming community.

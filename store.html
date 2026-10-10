@@ -409,6 +409,7 @@
       cursor: pointer;
       transition: all 0.2s ease;
       white-space: nowrap;
+      flex-shrink: 0;
     }
     .store-filter-btn:hover {
       background: rgba(255, 255, 255, 0.09);
@@ -1951,21 +1952,9 @@
     </div>
 
     <!-- Search & Filter Bar -->
-    <div class="mt-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
-      <!-- Search Input -->
-      <div class="relative w-full md:w-80">
-        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-muted text-xs"></i>
-        <input 
-          type="text" 
-          id="storeSearchInput" 
-          placeholder="Filter by game, weapon aimbot, or ESP..." 
-          oninput="renderStoreCatalog(activeGameFilter, this.value)"
-          class="w-full bg-white/5 border border-white/10 rounded-xl pl-9 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500/50 transition-colors"
-        >
-      </div>
-
-      <!-- Filter Buttons -->
-      <div class="flex flex-wrap items-center gap-2">
+    <div class="mt-8 flex flex-col gap-4">
+      <!-- Filter Buttons (On top with all games on one line) -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar flex-nowrap">
         <button class="store-filter-btn active" data-filter="all" onclick="filterStore('all', this)">All (11)</button>
         <button class="store-filter-btn" data-filter="arc" onclick="filterStore('arc', this)">ARC Raiders</button>
         <button class="store-filter-btn" data-filter="rust" onclick="filterStore('rust', this)">Rust</button>
@@ -1974,6 +1963,18 @@
         <button class="store-filter-btn" data-filter="delta" onclick="filterStore('delta', this)">Delta Force</button>
         <button class="store-filter-btn" data-filter="apex" onclick="filterStore('apex', this)">Apex Legends</button>
         <button class="store-filter-btn" data-filter="wardogs" onclick="filterStore('wardogs', this)">Wardogs</button>
+      </div>
+
+      <!-- Search Input -->
+      <div class="relative w-full sm:max-w-md">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-muted text-xs"></i>
+        <input 
+          type="text" 
+          id="storeSearchInput" 
+          placeholder="Filter by game, weapon aimbot, or ESP..." 
+          oninput="renderStoreCatalog(activeGameFilter, this.value)"
+          class="w-full bg-white/5 border border-white/10 rounded-xl pl-9 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500/50 transition-colors"
+        >
       </div>
     </div>
   </section>
