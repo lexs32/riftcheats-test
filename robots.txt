@@ -1,0 +1,12 @@
+# Rift Cheats - Official Web Crawler Configuration
+User-agent: *
+Allow: /
+Allow: /store.html
+Allow: /status.html
+Allow: /assets/
+Disallow: /client-area.html
+Disallow: /api/
+
+# Host & Sitemap Directives
+Host: https://riftcheats.com
+Sitemap: https://riftcheats.com/sitemap.xml

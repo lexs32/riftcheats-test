@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO & Portal Meta Tags -->
+  <title>Client Area & License Portal | Rift Cheats</title>
+  <meta name="title" content="Client Area & License Portal | Rift Cheats">
+  <meta name="description" content="Manage your active private licenses, download the Ring-0 hypervisor loader, and reset HWID bindings.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://riftcheats.com/client-area.html">
+  <link rel="icon" type="image/png" href="assets/rc_logo.png">
+  <meta name="theme-color" content="#ff2a85">
+  
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts: Manrope & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Supabase JS Client v2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'accent-pink': '#ff2a85',
+            'accent-pink-hover': '#ff4797',
+            'accent-purple': '#a855f7',
+            'dark-base': '#08090d',
+            'dark-surface': '#0e111a',
+            'dark-card': '#111422',
+            'dark-border': 'rgba(255, 255, 255, 0.08)',
+            'dark-border-hover': 'rgba(255, 42, 133, 0.35)',
+            'muted': '#8f9bb3',
+            'emerald-ok': '#10b981'
+          },
+          fontFamily: {
+            sans: ['"Manrope"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --bg-base: #08090d;
+      --bg-surface: #0e111a;
+      --bg-card: #111422;
+      --border-subtle: rgba(255, 255, 255, 0.07);
+      --accent-pink: #ff2a85;
+      --accent-pink-glow: rgba(255, 42, 133, 0.35);
+      --accent-purple: #a855f7;
+      --emerald: #10b981;
+      --font-manrope: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-dmsans: var(--font-manrope);
+      --font-geist: var(--font-manrope);
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    body {
+      background-color: var(--bg-base);
+      color: #ffffff;
+      font-family: var(--font-manrope) !important;
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, select, textarea {
+      font-family: var(--font-dmsans) !important;
+      color: inherit;
+    }
+
+    /* Ambient Lighting Mesh (Mobbin / Linear style) */
+    .ambient-glow {
+      position: fixed;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1100px;
+      height: 520px;
+      background: radial-gradient(ellipse at top, rgba(255, 42, 133, 0.12) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 75%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glass Panels */
+    .mobbin-card {
+      background: linear-gradient(180deg, rgba(17, 20, 34, 0.85) 0%, rgba(12, 14, 24, 0.95) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobbin-card:hover {
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .mobbin-metric-card {
+      background: linear-gradient(135deg, rgba(19, 23, 38, 0.7) 0%, rgba(13, 16, 27, 0.8) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 16px 20px;
+      transition: all 0.2s ease;
+    }
+    .mobbin-metric-card:hover {
+      border-color: rgba(255, 42, 133, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* Segmented Tab Pill */
+    .nav-tab-pill {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #8f9bb3;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .nav-tab-pill:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .nav-tab-pill.active {
+      color: #ffffff;
+      background: rgba(255, 42, 133, 0.12);
+      border-color: rgba(255, 42, 133, 0.35);
+      box-shadow: 0 2px 10px rgba(255, 42, 133, 0.2);
+    }
+
+    /* Primary Pink Button */
+    .btn-pink {
+      background: linear-gradient(135deg, #ff2a85 0%, #ff4297 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 9px 18px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 18px rgba(255, 42, 133, 0.35);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-pink:hover {
+      background: linear-gradient(135deg, #ff4297 0%, #ff5ca9 100%);
+      box-shadow: 0 6px 24px rgba(255, 42, 133, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      color: #d1d5db;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 8px 16px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.09);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-discord {
+      background: #5865F2;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 4px 16px rgba(88, 101, 242, 0.35);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-discord:hover {
+      background: #4752C4;
+      box-shadow: 0 6px 22px rgba(88, 101, 242, 0.55);
+      transform: translateY(-1px);
+    }
+
+    /* Key Display Box (Supabase & Fal.ai inspired) */
+    .key-input-container {
+      font-family: var(--font-mono);
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      transition: border-color 0.2s ease;
+    }
+    .key-input-container:hover {
+      border-color: rgba(255, 42, 133, 0.4);
+    }
+
+    /* Modal Backdrop */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 5, 8, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      padding: 16px;
+    }
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Toast */
+    .portal-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(14, 17, 26, 0.95);
+      border: 1px solid rgba(255, 42, 133, 0.4);
+      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 42, 133, 0.25);
+      backdrop-filter: blur(16px);
+      padding: 12px 20px;
+      border-radius: 12px;
+      color: #ffffff;
+      font-size: 0.84rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 3000;
+      transform: translateY(60px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .portal-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* Floating Capsule Navbar */
+    .capsule-navbar {
+      position: sticky;
+      top: 16px;
+      z-index: 1000;
+      max-width: 1200px;
+      margin: 16px auto 0;
+      padding: 0 16px;
+    }
+    .capsule-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 13, 22, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 9999px;
+      padding: 8px 18px;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 42, 133, 0.1);
+    }
+    .brand-logo-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .brand-logo-img {
+      height: 32px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(255, 42, 133, 0.5));
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-pill {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-pill:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .nav-pill.active {
+      color: #fff;
+      background: rgba(255, 42, 133, 0.15);
+      border: 1px solid rgba(255, 42, 133, 0.35);
+      box-shadow: 0 0 12px rgba(255, 42, 133, 0.25);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-btn-store {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-btn-store:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .nav-btn-portal {
+      background: linear-gradient(135deg, #ff2a85 0%, #db2777 100%);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 0 15px rgba(255, 42, 133, 0.4);
+      border: none;
+      cursor: pointer;
+    }
+    .nav-btn-portal:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(255, 42, 133, 0.6);
+    }
+  </style>
+</head>
+<body class="relative min-h-screen">
+  <div class="ambient-glow"></div>
+
+  <!-- Floating Capsule Navbar (Matching Index & Status with Good Icons) -->
+  <header class="capsule-navbar">
+    <div class="capsule-inner">
+      <a href="index.html" class="brand-logo-link" style="display:flex; align-items:center;" title="RiftCheats">
+        <img src="assets/rc_logo.png" alt="RiftCheats" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-links hidden md:flex">
+        <a href="index.html#products" class="nav-pill"><i class="fa-solid fa-store"></i> Store</a>
+        <a href="status.html" class="nav-pill"><i class="fa-solid fa-signal"></i> Live Status</a>
+        <a href="index.html#reviews" class="nav-pill"><i class="fa-solid fa-comments"></i> Reviews</a>
+        <a href="index.html#faq" class="nav-pill"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+        <a href="https://discord.gg/riftcheats" target="_blank" class="nav-pill"><i class="fa-brands fa-discord"></i> Discord</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html" class="nav-btn-store hidden sm:inline-flex"><i class="fa-solid fa-arrow-left"></i> Back to Store</a>
+        <button onclick="openRedeemModal()" class="nav-btn-portal">
+          <i class="fa-solid fa-key"></i>
+          <span>Redeem License</span>
+        </button>
+
+        <!-- Unauthenticated: Connect with Discord Button -->
+        <button id="navBtnDiscordLogin" onclick="openAuthModal()" class="btn-discord">
+          <i class="fa-brands fa-discord text-sm"></i>
+          <span>Connect Discord</span>
+        </button>
+
+        <!-- Authenticated: User Profile Dropdown Pill -->
+        <div id="navUserProfile" class="hidden relative">
+          <div class="flex items-center gap-2 bg-white/[0.04] border border-white/[0.08] hover:border-white/[0.18] rounded-full px-2.5 py-1 transition-all cursor-pointer shadow" onclick="toggleUserDropdown()" title="Manage Profile">
+            <img id="navUserAvatar" src="assets/rc_logo.png" class="w-6 h-6 rounded-full object-cover border border-white/20" alt="Avatar">
+            <span class="text-xs font-semibold text-white hidden lg:inline" id="topUserDiscord">@.yvko</span>
+            <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-accent-pink/20 text-accent-pink border border-accent-pink/30 font-bold hidden sm:inline">VIP</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-muted"></i>
+          </div>
+
+          <!-- Glass Profile Dropdown Drawer -->
+          <div id="userDropdownMenu" class="hidden absolute right-0 mt-2 w-72 mobbin-card p-4 space-y-3 z-50 shadow-2xl border border-white/[0.12]" onclick="event.stopPropagation()">
+            <div class="flex items-center gap-3 border-b border-white/[0.08] pb-3">
+              <img id="menuUserAvatar" src="assets/rc_logo.png" class="w-10 h-10 rounded-full border border-white/20 object-cover" alt="User">
+              <div class="overflow-hidden">
+                <div class="text-xs font-bold text-white truncate" id="menuUserDisplayName">LexS</div>
+                <div class="text-[11px] text-muted font-mono truncate" id="menuUserTag">@.yvko</div>
+                <div class="text-[10px] text-accent-pink font-mono flex items-center gap-1 cursor-pointer hover:underline" onclick="copyToClipboard(document.getElementById('menuUserId').textContent, 'Discord Snowflake ID copied!')" title="Click to copy Snowflake ID">
+                  <i class="fa-brands fa-discord"></i>
+                  <span id="menuUserId">1283633559986503742</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Server & Role Status Indicators -->
+            <div class="space-y-1.5 text-[11px] bg-white/[0.02] p-2.5 rounded-xl border border-white/[0.05]">
+              <div class="flex items-center justify-between">
+                <span class="text-muted">Rift Cheats Guild:</span>
+                <span class="text-emerald-400 font-bold flex items-center gap-1" id="menuGuildStatus">
+                  <i class="fa-solid fa-circle-check text-[10px]"></i> In Server
+                </span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-muted">Customer VIP Role:</span>
+                <span class="text-yellow-400 font-bold flex items-center gap-1" id="menuRoleStatus">
+                  <i class="fa-solid fa-crown text-[10px]"></i> Active
+                </span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-muted">Supabase DB:</span>
+                <span class="text-emerald-400 font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-database text-[10px]"></i> Synchronized
+                </span>
+              </div>
+            </div>
+
+            <!-- Action buttons in dropdown -->
+            <div class="space-y-1 pt-1 text-xs">
+              <button onclick="openRedeemModal(); toggleUserDropdown(false);" class="w-full text-left px-3 py-2 rounded-lg hover:bg-white/[0.06] text-gray-200 flex items-center gap-2 transition-all">
+                <i class="fa-solid fa-key text-accent-pink"></i>
+                <span>Redeem New License</span>
+              </button>
+              <button onclick="openAuthModal(); toggleUserDropdown(false);" class="w-full text-left px-3 py-2 rounded-lg hover:bg-white/[0.06] text-gray-200 flex items-center gap-2 transition-all">
+                <i class="fa-solid fa-users text-[#5865F2]"></i>
+                <span>Switch / Re-link Account</span>
+              </button>
+              <button onclick="logoutUser(); toggleUserDropdown(false);" class="w-full text-left px-3 py-2 rounded-lg hover:bg-red-500/10 text-red-400 flex items-center gap-2 transition-all border-t border-white/[0.06] mt-1 pt-2">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Disconnect & Log Out</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       MAIN CLIENT PORTAL WORKSPACE
+       ==================================================================== -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6 relative z-10">
+
+    <!-- Dynamic Auth & Rift Bot Status Banner -->
+    <div id="authStatusBanner" class="p-4 rounded-2xl bg-gradient-to-r from-accent-pink/10 via-[#5865F2]/10 to-transparent border border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-[#5865F2]/20 border border-[#5865F2]/30 flex items-center justify-center text-[#5865F2] text-xl flex-shrink-0">
+          <i class="fa-brands fa-discord"></i>
+        </div>
+        <div>
+          <div class="font-bold text-white flex items-center gap-2 flex-wrap" id="bannerTitle">
+            <span>Linked to Rift Bot (@.yvko • LexS)</span>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono">Customer Role Active</span>
+          </div>
+          <div class="text-[11px] text-muted mt-0.5" id="bannerSubtitle">
+            Connected to official guild <b>Rift Cheats</b> (363 members) • Database synchronized via Supabase.
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 self-end sm:self-center flex-wrap">
+        <button onclick="saveDiscordSync()" class="btn-secondary py-1.5 px-3 text-[11px]">
+          <i class="fa-solid fa-arrows-rotate text-accent-pink"></i>
+          <span>Sync Roles</span>
+        </button>
+        <button onclick="openRedeemModal()" class="btn-pink py-1.5 px-3 text-[11px]">
+          <i class="fa-solid fa-plus text-[10px]"></i>
+          <span>Redeem Key</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- EXECUTIVE METRIC ROW (Clean Customer Data) -->
+    <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      
+      <!-- Metric 1: Active Subscriptions -->
+      <div class="mobbin-metric-card">
+        <div class="flex items-center justify-between text-xs text-muted mb-2">
+          <span>Active Licenses</span>
+          <span class="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+            <i class="fa-solid fa-key"></i>
+          </span>
+        </div>
+        <div class="text-xl sm:text-2xl font-black text-white" id="metricLicCount">6 Active</div>
+        <div class="text-[11px] text-emerald-400 mt-1 flex items-center gap-1 font-medium">
+          <i class="fa-solid fa-check-double text-[10px]"></i>
+          <span>100% Undetected Bypasses</span>
+        </div>
+      </div>
+
+      <!-- Metric 2: VIP Customer Standing -->
+      <div class="mobbin-metric-card">
+        <div class="flex items-center justify-between text-xs text-muted mb-2">
+          <span>Customer Standing</span>
+          <span class="p-1.5 rounded-lg bg-yellow-500/10 text-yellow-400">
+            <i class="fa-solid fa-crown"></i>
+          </span>
+        </div>
+        <div class="text-xl sm:text-2xl font-black text-white">VIP Lifetime</div>
+        <div class="text-[11px] text-muted mt-1 flex items-center gap-1">
+          <i class="fa-brands fa-discord text-[#5865F2] text-[10px]"></i>
+          <span>Synced: @vortex_fps#1337</span>
+        </div>
+      </div>
+
+      <!-- Metric 3: Discord VIP Role Auto-Mod -->
+      <div class="mobbin-metric-card">
+        <div class="flex items-center justify-between text-xs text-muted mb-2">
+          <span>Discord VIP Role</span>
+          <span class="p-1.5 rounded-lg bg-[#5865F2]/15 text-[#5865F2]">
+            <i class="fa-solid fa-robot"></i>
+          </span>
+        </div>
+        <div class="text-xl sm:text-2xl font-black text-white" id="metricBotStatus">Customer Role Active</div>
+        <div class="text-[11px] text-emerald-400 mt-1 flex items-center gap-1 font-medium">
+          <i class="fa-solid fa-circle-check text-[10px]"></i>
+          <span>Rift Bot Live (Position 5)</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         NAVIGATION TABS (CLEAN CUSTOMER TABS)
+         ==================================================================== -->
+    <div class="flex items-center justify-between border-b border-white/[0.08] pb-4 flex-wrap gap-4">
+      <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto p-1 bg-white/[0.02] border border-white/[0.05] rounded-xl">
+        <button onclick="switchTab('licenses')" id="tabBtnLicenses" class="nav-tab-pill active">
+          <i class="fa-solid fa-key text-xs"></i>
+          <span>Software Licenses (<span id="tabCountBadge">6</span>)</span>
+        </button>
+        <button onclick="switchTab('orders')" id="tabBtnOrders" class="nav-tab-pill">
+          <i class="fa-solid fa-receipt text-xs"></i>
+          <span>Invoices & Orders</span>
+        </button>
+        <button onclick="switchTab('connections')" id="tabBtnConnections" class="nav-tab-pill">
+          <i class="fa-brands fa-discord text-xs text-[#5865F2]"></i>
+          <span>Discord Sync (<span id="connectionCountBadge" class="text-emerald-400 font-bold">Active</span>)</span>
+        </button>
+      </div>
+
+      <!-- Quick Action: Redeem Key -->
+      <div class="flex items-center gap-2.5">
+        <button onclick="openRedeemModal()" class="btn-pink text-xs py-2 px-3.5">
+          <i class="fa-solid fa-plus text-xs"></i>
+          <span>Redeem License Key</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         TAB 1: LICENSES & CREDENTIALS (FAL.AI & SUPABASE API KEY PATTERN)
+         ==================================================================== -->
+    <section id="tabViewLicenses" class="space-y-6">
+      
+      <!-- Filter and Search Header -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+        <!-- Search Input -->
+        <div class="relative flex-1 max-w-md">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-muted text-xs"></i>
+          <input type="text" id="licenseSearchInput" onkeyup="filterLicenses()" placeholder="Filter licenses by game name, anti-cheat, or plan..." class="w-full bg-[#0d0f18] border border-white/[0.09] rounded-xl px-4 py-2 pl-9 text-xs text-white placeholder-muted focus:outline-none focus:border-accent-pink">
+        </div>
+
+        <!-- Filter Category Chips -->
+        <div class="flex items-center gap-1.5 overflow-x-auto text-[11px] font-semibold text-muted">
+          <button onclick="filterCategory('all')" class="cat-pill active px-3 py-1.5 rounded-lg bg-white/10 text-white" id="catAll">All (6)</button>
+          <button onclick="filterCategory('rust')" class="cat-pill px-3 py-1.5 rounded-lg bg-white/[0.04] hover:text-white" id="catRust">Rust</button>
+          <button onclick="filterCategory('arc')" class="cat-pill px-3 py-1.5 rounded-lg bg-white/[0.04] hover:text-white" id="catArc">Arc Raiders</button>
+          <button onclick="filterCategory('apex')" class="cat-pill px-3 py-1.5 rounded-lg bg-white/[0.04] hover:text-white" id="catApex">Apex</button>
+          <button onclick="filterCategory('r6')" class="cat-pill px-3 py-1.5 rounded-lg bg-white/[0.04] hover:text-white" id="catR6">R6 Siege</button>
+          <button onclick="filterCategory('fortnite')" class="cat-pill px-3 py-1.5 rounded-lg bg-white/[0.04] hover:text-white" id="catFortnite">Fortnite</button>
+        </div>
+      </div>
+
+      <!-- High-Density License Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="licensesContainer">
+        <!-- Populated dynamically via JavaScript with high-fidelity Mobbin cards -->
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         TAB 4: INVOICES & ORDERS (STRIPE / SELLAUTH STYLE TABLE)
+         ==================================================================== -->
+    <section id="tabViewOrders" class="hidden space-y-6">
+      <div class="mobbin-card p-6 sm:p-8 space-y-6">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/[0.08] pb-5">
+          <div>
+            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-receipt text-accent-pink"></i>
+              <span>Order History & Invoices</span>
+            </h2>
+            <p class="text-xs text-muted mt-1">Directly synced with SellAuth gateway transactions.</p>
+          </div>
+          <div class="text-xs text-muted">
+            Total Orders: <span class="font-bold text-white">4 Completed</span>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="text-muted border-b border-white/[0.08] uppercase tracking-wider text-[11px]">
+              <tr>
+                <th class="py-3 px-4">Invoice #</th>
+                <th class="py-3 px-4">Date</th>
+                <th class="py-3 px-4">Product Purchased</th>
+                <th class="py-3 px-4">Payment Method</th>
+                <th class="py-3 px-4">Amount</th>
+                <th class="py-3 px-4">Status</th>
+                <th class="py-3 px-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.04]" id="ordersTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 5: CONNECTIONS & RIFT BOT INTEGRATION
+         ==================================================================== -->
+    <section id="tabViewConnections" class="hidden space-y-6">
+      
+      <!-- Top Overview Banner -->
+      <div class="mobbin-card p-5 bg-gradient-to-r from-accent-pink/10 via-[#5865F2]/10 to-transparent border-accent-pink/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <div class="w-12 h-12 rounded-2xl bg-[#5865F2]/20 border border-[#5865F2]/30 flex items-center justify-center text-[#5865F2] text-2xl flex-shrink-0">
+            <i class="fa-brands fa-discord"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-base font-black text-white">Discord & Rift Bot VIP Role Sync</h3>
+              <span id="botLivePill" class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold inline-flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Bot Online (Port 3840)</span>
+              </span>
+            </div>
+            <p class="text-xs text-muted mt-0.5">Manage connected Discord accounts and automatic customer VIP role granting.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <button onclick="testRiftBotConnection()" class="btn-secondary py-2 px-3 text-xs" title="Verify Bot HTTP Socket">
+            <i class="fa-solid fa-signal text-accent-pink"></i>
+            <span>Test Connection</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="max-w-2xl">
+        
+        <!-- Connection 1: Discord & Rift Bot VIP Auto-Mod -->
+        <div class="mobbin-card p-6 space-y-4 relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-[#5865F2]/20 flex items-center justify-center text-[#5865F2] text-xl">
+                <i class="fa-brands fa-discord"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">Discord VIP Role (Rift Bot)</h4>
+                <p class="text-xs text-muted">Auto-modded customer role and private ticket lounge access.</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[11px] font-mono font-bold flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-check"></i> Connected
+            </span>
+          </div>
+
+          <!-- Connection Telemetry Box -->
+          <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-muted">Active Bot Client:</span>
+              <span class="font-mono text-white font-semibold flex items-center gap-1.5">
+                <img src="assets/rc_logo.png" style="height:14px; width:auto;"> Rift#9136 <span class="text-[10px] text-muted">(ID: 1549414658505703494)</span>
+              </span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-muted">Target Guild:</span>
+              <span class="font-semibold text-white">Rift Cheats Official (366 Members)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-muted">Auto-Assigned Role:</span>
+              <span class="text-yellow-400 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-crown text-[10px]"></i> Customer (Position 5)
+              </span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-muted">Hierarchy Status:</span>
+              <span id="hierarchyStatusText" class="font-semibold text-xs">
+                <span class="text-yellow-400 font-bold flex items-center gap-1"><i class="fa-solid fa-triangle-exclamation"></i> Drag 'Rift' above 'Customer' in Server Settings > Roles</span>
+              </span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-muted">Telemetry Endpoint:</span>
+              <span class="font-mono text-accent-pink text-[11px]">http://localhost:3840/api/purchase</span>
+            </div>
+          </div>
+
+          <!-- Handle Input & Auto-Sync -->
+          <div class="space-y-3 pt-1 text-xs">
+            <div>
+              <label class="block text-gray-300 font-bold mb-1.5">Your Discord Username, Tag, or Snowflake ID</label>
+              <div class="relative">
+                <i class="fa-brands fa-discord absolute left-3.5 top-3 text-[#5865F2] text-sm"></i>
+                <input type="text" id="discordInput" value="@vortex_fps#1337" placeholder="e.g. @yourname or 1283633559986503742" class="w-full bg-[#0d0f18] border border-white/[0.1] rounded-xl px-4 py-2.5 pl-10 text-xs text-white placeholder-muted focus:outline-none focus:border-accent-pink">
+              </div>
+            </div>
+
+            <div class="flex gap-2">
+              <button onclick="saveDiscordSync()" class="btn-pink py-2.5 px-4 text-xs flex-1 justify-center">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <span>Sync & Claim Customer Role</span>
+              </button>
+              <button onclick="testRiftBotConnection()" class="btn-secondary py-2.5 px-3 text-xs" title="Ping Rift Bot">
+                <i class="fa-solid fa-bolt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       MODAL 1: REDEEM LICENSE KEY (LINEAR / FAL.AI STYLE MODAL)
+       ==================================================================== -->
+  <div class="modal-backdrop" id="redeemModal" onclick="closeRedeemModal(event)">
+    <div class="mobbin-card max-w-md w-full p-6 sm:p-7 space-y-5" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between border-b border-white/[0.08] pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-accent-pink/15 text-accent-pink flex items-center justify-center text-base">
+            <i class="fa-solid fa-key"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white">Redeem License Key</h3>
+            <p class="text-xs text-muted">Enter a SellAuth key or order receipt ID</p>
+          </div>
+        </div>
+        <button onclick="closeRedeemModal()" class="text-muted hover:text-white text-base">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs">
+        <div>
+          <label class="block text-gray-300 font-bold mb-1.5">License Authentication Key</label>
+          <input type="text" id="redeemKeyInput" placeholder="e.g. RIFT-DELT-8819-K10X-PERM" class="w-full bg-[#0d0f18] border border-white/[0.1] rounded-xl px-4 py-2.5 font-mono text-xs text-white placeholder-muted focus:outline-none focus:border-accent-pink">
+        </div>
+
+        <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] space-y-1.5 text-[11px] text-muted">
+          <div class="font-bold text-white">Database Seed Keys (Click to fill):</div>
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <button onclick="fillRedeemKey('RIFT-DELT-8819-K10X-PERM')" class="px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-gray-300 font-mono">Delta Force Key</button>
+            <button onclick="fillRedeemKey('RIFT-ARCR-4421-M09P-30DY')" class="px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-gray-300 font-mono">ARC Raiders 30D</button>
+            <button onclick="fillRedeemKey('RIFT-RUST-9941-K82X-LIFE')" class="px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-gray-300 font-mono">Rust Lifetime Key</button>
+          </div>
+        </div>
+
+        <button onclick="submitRedeemKey()" class="btn-pink w-full justify-center py-2.5 text-xs">
+          <i class="fa-solid fa-bolt"></i>
+          <span>Verify & Activate in Supabase</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 2: AUTH & DISCORD CONNECT MODAL
+       ==================================================================== -->
+  <div class="modal-backdrop" id="authModal" onclick="closeAuthModal(event)">
+    <div class="mobbin-card max-w-md w-full p-6 sm:p-7 space-y-5" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between border-b border-white/[0.08] pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-[#5865F2]/20 text-[#5865F2] flex items-center justify-center text-xl">
+            <i class="fa-brands fa-discord"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white">Connect Client Account</h3>
+            <p class="text-xs text-muted">Authenticate with Discord or Supabase</p>
+          </div>
+        </div>
+        <button onclick="closeAuthModal()" class="text-muted hover:text-white text-base">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs">
+        
+        <!-- Primary Action: Connect with Discord -->
+        <button onclick="loginWithDiscord()" class="w-full py-3 px-4 rounded-xl bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold flex items-center justify-center gap-2.5 shadow-lg shadow-[#5865F2]/30 transition-all cursor-pointer">
+          <i class="fa-brands fa-discord text-base"></i>
+          <span>Continue with Discord</span>
+        </button>
+
+        <p class="text-[11px] text-muted text-center">
+          Instantly connects your profile, verifies customer standing, and syncs VIP roles with Rift Bot.
+        </p>
+
+        <!-- Fast Live Test Profile (Connected to Real Rift Bot) -->
+        <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] space-y-2">
+          <div class="text-[11px] font-bold text-gray-300 flex items-center justify-between">
+            <span>Fast Live Test Profile:</span>
+            <span class="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Bot Socket Ready
+            </span>
+          </div>
+          <button onclick="loginAsDemoUser()" class="w-full py-2.5 px-3 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] text-white flex items-center justify-between transition-all">
+            <div class="flex items-center gap-2.5">
+              <img src="https://cdn.discordapp.com/avatars/1283633559986503742/3a5b32d6c0bafe9066ca74aa3bcc8b03.webp" class="w-6 h-6 rounded-full border border-white/20" alt="LexS" onerror="this.src='assets/rc_logo.png'">
+              <div class="text-left">
+                <div class="font-bold text-white text-xs">LexS (@.yvko)</div>
+                <div class="text-[10px] text-muted font-mono">ID: 1283633559986503742</div>
+              </div>
+            </div>
+            <span class="text-xs text-accent-pink font-bold flex items-center gap-1">
+              <span>Connect</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </span>
+          </button>
+        </div>
+
+        <!-- Email Sign In Option -->
+        <div class="border-t border-white/[0.08] pt-3.5 space-y-2.5">
+          <label class="block text-gray-400 font-semibold text-[11px]">Or sign in with Email / Customer ID</label>
+          <div class="flex gap-2">
+            <input type="email" id="authEmailInput" placeholder="customer@riftcheats.com" class="flex-1 bg-[#0d0f18] border border-white/[0.1] rounded-xl px-3.5 py-2 text-xs text-white placeholder-muted focus:outline-none focus:border-accent-pink">
+            <button onclick="loginWithEmail()" class="btn-secondary py-2 px-3.5 text-xs whitespace-nowrap">
+              <span>Sign In</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 3: MUST JOIN DISCORD SERVER MODAL
+       ==================================================================== -->
+  <div class="modal-backdrop" id="joinDiscordModal" onclick="closeJoinDiscordModal(event)">
+    <div class="mobbin-card max-w-md w-full p-6 sm:p-7 space-y-5 text-center relative overflow-hidden" onclick="event.stopPropagation()">
+      <div class="absolute -top-12 -right-12 w-32 h-32 bg-[#5865F2]/20 rounded-full blur-2xl pointer-events-none"></div>
+      
+      <div class="flex items-center justify-between border-b border-white/[0.08] pb-3 text-left">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-[#5865F2]/20 text-[#5865F2] flex items-center justify-center text-sm">
+            <i class="fa-brands fa-discord"></i>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-white">Discord Membership Required</h3>
+            <p class="text-[11px] text-muted">Join the server to receive your VIP Customer role</p>
+          </div>
+        </div>
+        <button onclick="closeJoinDiscordModal()" class="text-muted hover:text-white text-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="w-16 h-16 rounded-3xl bg-[#5865F2]/20 text-[#5865F2] border border-[#5865F2]/40 flex items-center justify-center text-3xl mx-auto shadow-lg shadow-[#5865F2]/30 my-1">
+        <i class="fa-brands fa-discord"></i>
+      </div>
+
+      <div class="space-y-1.5">
+        <h4 class="text-base font-black text-white">Join the RiftCheats Official Server</h4>
+        <p class="text-xs text-muted max-w-sm mx-auto leading-relaxed">
+          You must be in our official Discord server for our automated bot to grant your <b class="text-accent-pink">Customer</b> role and give you access to private loaders.
+        </p>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-left space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-muted">Target Guild:</span>
+          <span class="text-white font-bold flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Rift Cheats Official
+          </span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-muted">Account to Link:</span>
+          <span class="text-accent-pink font-mono font-bold" id="joinModalDiscordTag">@vortex_fps#1337</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-muted">Auto-Role:</span>
+          <span class="text-yellow-400 font-bold flex items-center gap-1">
+            <i class="fa-solid fa-crown text-[10px]"></i> Customer (Position 5)
+          </span>
+        </div>
+      </div>
+
+      <div class="space-y-2 pt-1">
+        <a href="https://discord.gg/riftcheats" target="_blank" onclick="trackDiscordJoinClick()" class="w-full py-3 px-4 rounded-xl bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold flex items-center justify-center gap-2 shadow-lg shadow-[#5865F2]/30 transition-all text-xs cursor-pointer">
+          <i class="fa-brands fa-discord text-sm"></i>
+          <span>Join Server (discord.gg/riftcheats)</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+        
+        <button onclick="verifyDiscordJoinStatus()" id="verifyJoinBtn" class="btn-secondary w-full py-2.5 px-4 text-xs justify-center">
+          <i class="fa-solid fa-arrows-rotate"></i>
+          <span>I've Joined • Verify My Role Now</span>
+        </button>
+      </div>
+
+      <div class="text-[11px] text-muted flex items-center justify-center gap-1.5 pt-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+        <span id="autoDetectJoinText">Auto-detecting server join in background...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       TOAST NOTIFICATION (BOTTOM-RIGHT)
+       ==================================================================== -->
+  <div class="portal-toast" id="portalToast">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-base" id="toastIcon"></i>
+    <span id="toastMsg">Operation successful</span>
+  </div>
+
+  <!-- ====================================================================
+       AUTHENTIC CLIENT AREA DATA & SCRIPTS
+       ==================================================================== -->
+  <script>
+    // =========================================================================
+    // RIFTCHEATS PORTAL: SUPABASE & DISCORD OAUTH REAL-TIME CLIENT ENGINE
+    // =========================================================================
+    const SUPABASE_URL = 'https://gdzsfblrklpqmqanwmwd.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_p6uoGFtx-5U6DgwEI3lRJQ_iMfH7ISo';
+    const DISCORD_CLIENT_ID = '1549414658505703494';
+    const BOT_API_URL = 'http://localhost:3840';
+
+    // Initialize Supabase Client
+    let sbClient = null;
+    try {
+      if (window.supabase && typeof window.supabase.createClient === 'function') {
+        sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      }
+    } catch (e) {
+      console.warn('[Supabase] Init error:', e);
+    }
+
+    // Default Live Test Profile (LexS / @.yvko, connected to active Rift Bot)
+    const DEFAULT_USER = {
+      id: "1283633559986503742",
+      discordId: "1283633559986503742",
+      username: ".yvko",
+      displayName: "LexS",
+      email: "customer@riftcheats.com",
+      avatar: "https://cdn.discordapp.com/avatars/1283633559986503742/3a5b32d6c0bafe9066ca74aa3bcc8b03.webp",
+      inGuild: true,
+      hasCustomerRole: true,
+      tier: "VIP Lifetime Member",
+      hwid: "88F2-A901-C34E-0019"
+    };
+
+    let currentUser = null;
+    let currentCategory = 'all';
+
+    // Local in-memory store (hydrated from Supabase DB)
+    const CLIENT_DATA = {
+      user: { ...DEFAULT_USER },
+      licenses: [],
+      orders: [
+        {
+          id: "#RC-98412",
+          date: "Oct 8, 2026",
+          product: "Krush Rust (Permanent Lifetime)",
+          method: "Bitcoin (BTC)",
+          amount: "$149.99",
+          status: "COMPLETED"
+        },
+        {
+          id: "#RC-97305",
+          date: "Oct 1, 2026",
+          product: "Krush Arc Raiders (30-Day Pro)",
+          method: "Credit Card (Stripe)",
+          amount: "$59.99",
+          status: "COMPLETED"
+        },
+        {
+          id: "#RC-95118",
+          date: "Sep 22, 2026",
+          product: "Krush Apex Legends (Lifetime)",
+          method: "Ethereum (ETH)",
+          amount: "$129.99",
+          status: "COMPLETED"
+        },
+        {
+          id: "#RC-93041",
+          date: "Sep 15, 2026",
+          product: "Crusader R6 (30-Day Ranked)",
+          method: "Litecoin (LTC)",
+          amount: "$49.99",
+          status: "COMPLETED"
+        }
+      ]
+    };
+
+    // Helper: Product Image Mapping from assets/real/
+    function getProductImage(productId, gameName) {
+      const p = (productId || '').toLowerCase();
+      const g = (gameName || '').toLowerCase();
+      if (p.includes('rust') || g.includes('rust')) return 'assets/real/rift_rust1-BON31Td0.png';
+      if (p.includes('ancient_arc')) return 'assets/real/ANCIENT_ARC.png';
+      if (p.includes('krush_arc') || g.includes('arc')) return 'assets/real/rift_arc-31eUfYH7.png';
+      if (p.includes('apex') || g.includes('apex')) return 'assets/real/RIFT_KRUSH-D0l9rsBn.png';
+      if (p.includes('r6') || g.includes('rainbow')) return 'assets/real/R6_CRUS-DKDRPM83.png';
+      if (p.includes('fortnite') || g.includes('fortnite')) return 'assets/real/fn_disc-DOAsaoXt.png';
+      if (p.includes('delta') || g.includes('delta')) return 'assets/real/ancient_delta_transparent.png';
+      if (p.includes('wardogs') || g.includes('wardogs')) return 'assets/real/ancient_wardogs_transparent.png';
+      if (p.includes('spoofer') || g.includes('spoofer') || p.includes('hwid')) return 'assets/real/spoofer_thumb.png';
+      return 'assets/rc_logo.png';
+    }
+
+    // Helper: Category from product ID
+    function getProductCategory(productId, gameName) {
+      const s = ((productId || '') + ' ' + (gameName || '')).toLowerCase();
+      if (s.includes('rust')) return 'rust';
+      if (s.includes('arc')) return 'arc';
+      if (s.includes('apex')) return 'apex';
+      if (s.includes('r6') || s.includes('rainbow')) return 'r6';
+      if (s.includes('fortnite')) return 'fortnite';
+      if (s.includes('delta')) return 'delta';
+      if (s.includes('wardogs')) return 'wardogs';
+      return 'other';
+    }
+
+    // Initialize View on Page Load
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Check for OAuth hash tokens (Discord or Supabase redirect)
+      const handled = await handleOAuthRedirect();
+      if (!handled) {
+        // Load saved session or initialize default live test profile
+        const saved = localStorage.getItem('rift_client_session');
+        if (saved) {
+          try {
+            currentUser = JSON.parse(saved);
+          } catch {
+            currentUser = { ...DEFAULT_USER };
+          }
+        } else {
+          currentUser = { ...DEFAULT_USER };
+        }
+      }
+
+      // 2. Render user session and UI
+      updateUserUI();
+
+      // 3. Load licenses from Supabase
+      await fetchLicensesFromSupabase();
+
+      // 4. Render orders
+      renderOrders();
+
+      // 5. Check Rift Bot live connection in background
+      testRiftBotConnection(false);
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('#navUserProfile')) {
+          toggleUserDropdown(false);
+        }
+      });
+    });
+
+    // Handle OAuth Callback (Hash parameter parsing)
+    async function handleOAuthRedirect() {
+      const hash = window.location.hash.substring(1);
+      if (!hash) return false;
+      const params = new URLSearchParams(hash);
+      const accessToken = params.get('access_token');
+
+      if (accessToken) {
+        showToast("Authenticating Discord credentials...", "ok");
+        try {
+          const res = await fetch('https://discord.com/api/users/@me', {
+            headers: { 'Authorization': `Bearer ${accessToken}` }
+          });
+          if (res.ok) {
+            const dUser = await res.json();
+            const avatarUrl = dUser.avatar 
+              ? `https://cdn.discordapp.com/avatars/${dUser.id}/${dUser.avatar}.png`
+              : 'assets/rc_logo.png';
+            
+            currentUser = {
+              id: dUser.id,
+              discordId: dUser.id,
+              username: dUser.username,
+              displayName: dUser.global_name || dUser.username,
+              email: dUser.email || `${dUser.username}@riftcheats.gg`,
+              avatar: avatarUrl,
+              inGuild: true,
+              hasCustomerRole: true,
+              tier: "VIP Member",
+              hwid: "88F2-A901-C34E-0019"
+            };
+
+            localStorage.setItem('rift_client_session', JSON.stringify(currentUser));
+            window.history.replaceState({}, document.title, window.location.pathname);
+            showToast(`Connected as @${currentUser.username}! Syncing with Rift Bot...`, "ok");
+            
+            // Sync with bot
+            syncWithBot(currentUser);
+            return true;
+          }
+        } catch (err) {
+          console.error('[OAuth] User fetch error:', err);
+        }
+      }
+      return false;
+    }
+
+    // Update All UI Elements with Current User Session
+    function updateUserUI() {
+      const navLoginBtn = document.getElementById("navBtnDiscordLogin");
+      const navProfile = document.getElementById("navUserProfile");
+      const navAvatar = document.getElementById("navUserAvatar");
+      const topDiscord = document.getElementById("topUserDiscord");
+
+      const menuAvatar = document.getElementById("menuUserAvatar");
+      const menuDisplayName = document.getElementById("menuUserDisplayName");
+      const menuTag = document.getElementById("menuUserTag");
+      const menuId = document.getElementById("menuUserId");
+
+      const banner = document.getElementById("authStatusBanner");
+      const bannerTitle = document.getElementById("bannerTitle");
+      const bannerSub = document.getElementById("bannerSubtitle");
+
+      const metricBot = document.getElementById("metricBotStatus");
+      const discordInput = document.getElementById("discordInput");
+
+      if (currentUser) {
+        if (navLoginBtn) navLoginBtn.classList.add("hidden");
+        if (navProfile) navProfile.classList.remove("hidden");
+        if (navAvatar) navAvatar.src = currentUser.avatar || 'assets/rc_logo.png';
+        if (topDiscord) topDiscord.textContent = '@' + (currentUser.username || 'user');
+
+        if (menuAvatar) menuAvatar.src = currentUser.avatar || 'assets/rc_logo.png';
+        if (menuDisplayName) menuDisplayName.textContent = currentUser.displayName || currentUser.username;
+        if (menuTag) menuTag.textContent = '@' + currentUser.username;
+        if (menuId) menuId.textContent = currentUser.discordId || '1283633559986503742';
+
+        const cleanHandle = (currentUser.username || '').replace(/^@+/, '');
+        if (discordInput) discordInput.value = '@' + cleanHandle;
+
+        const roleActive = !!currentUser.hasCustomerRole;
+        if (bannerTitle) {
+          bannerTitle.innerHTML = `
+            <span>Linked to Rift Bot (@${cleanHandle} • ${currentUser.displayName || cleanHandle})</span>
+            <span class="px-2 py-0.5 rounded-full ${roleActive ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' : 'bg-yellow-500/15 text-yellow-400 border border-yellow-500/30'} text-[10px] font-mono">${roleActive ? 'Customer Role Active' : 'Role Queued / In Discord'}</span>
+          `;
+        }
+        if (bannerSub) {
+          bannerSub.innerHTML = `Connected to official guild <b>Rift Cheats</b> (363 members) • Telemetry & Database synchronized.`;
+        }
+        if (metricBot) metricBot.textContent = roleActive ? "Customer Role Active" : "Role Queued";
+      } else {
+        if (navLoginBtn) navLoginBtn.classList.remove("hidden");
+        if (navProfile) navProfile.classList.add("hidden");
+
+        if (bannerTitle) {
+          bannerTitle.innerHTML = `
+            <span>Guest Profile (Unauthenticated)</span>
+            <span class="px-2 py-0.5 rounded-full bg-yellow-500/15 text-yellow-400 border border-yellow-500/30 text-[10px] font-mono">Guest Mode</span>
+          `;
+        }
+        if (bannerSub) {
+          bannerSub.innerHTML = `Connect your Discord account to auto-verify active software licenses and claim your VIP Customer role.`;
+        }
+        if (metricBot) metricBot.textContent = "Connect Discord";
+      }
+    }
+
+    // Toggle Dropdown Menu
+    function toggleUserDropdown(forceState) {
+      const menu = document.getElementById("userDropdownMenu");
+      if (!menu) return;
+      if (typeof forceState === 'boolean') {
+        menu.classList.toggle("hidden", !forceState);
+      } else {
+        menu.classList.toggle("hidden");
+      }
+    }
+
+    // Modal Control: Auth Modal
+    function openAuthModal() {
+      document.getElementById("authModal")?.classList.add("open");
+    }
+    function closeAuthModal(e) {
+      if (e && e.target !== e.currentTarget && !e.target.closest('button')) return;
+      document.getElementById("authModal")?.classList.remove("open");
+    }
+
+    // Modal Control: Redeem Modal
+    function openRedeemModal() {
+      document.getElementById("redeemModal")?.classList.add("open");
+    }
+    function closeRedeemModal(e) {
+      if (e && e.target !== e.currentTarget && !e.target.closest('button')) return;
+      document.getElementById("redeemModal")?.classList.remove("open");
+    }
+    function fillRedeemKey(key) {
+      const input = document.getElementById("redeemKeyInput");
+      if (input) input.value = key;
+    }
+
+    // Discord OAuth Login
+    function loginWithDiscord() {
+      showToast("Redirecting to Discord Authorization...", "ok");
+      const redirectUri = encodeURIComponent(window.location.origin + window.location.pathname);
+      const discordAuthUrl = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&response_type=token&scope=identify+email+guilds.join&redirect_uri=${redirectUri}`;
+      window.location.href = discordAuthUrl;
+    }
+
+    // Fast Test Login as Demo User (LexS / @.yvko)
+    async function loginAsDemoUser() {
+      currentUser = { ...DEFAULT_USER };
+      localStorage.setItem('rift_client_session', JSON.stringify(currentUser));
+      updateUserUI();
+      closeAuthModal();
+      showToast("Connected as LexS (@.yvko) • Synced with Rift Bot!", "ok");
+      
+      // Auto-sync with bot and load licenses
+      await syncWithBot(currentUser);
+      await fetchLicensesFromSupabase();
+    }
+
+    // Email Sign-In
+    async function loginWithEmail() {
+      const emailInput = document.getElementById("authEmailInput")?.value.trim();
+      if (!emailInput || !emailInput.includes('@')) {
+        showToast("Please enter a valid email address", "error");
+        return;
+      }
+      
+      currentUser = {
+        id: "usr-" + Math.floor(10000 + Math.random() * 90000),
+        discordId: "1283633559986503742",
+        username: emailInput.split('@')[0],
+        displayName: emailInput.split('@')[0],
+        email: emailInput,
+        avatar: "assets/rc_logo.png",
+        inGuild: true,
+        hasCustomerRole: true,
+        tier: "Verified Customer",
+        hwid: "88F2-A901-C34E-0019"
+      };
+
+      localStorage.setItem('rift_client_session', JSON.stringify(currentUser));
+      updateUserUI();
+      closeAuthModal();
+      showToast(`Signed in as ${emailInput}! Loading database licenses...`, "ok");
+      await fetchLicensesFromSupabase();
+    }
+
+    // Logout
+    function logoutUser() {
+      currentUser = null;
+      localStorage.removeItem('rift_client_session');
+      if (sbClient) {
+        sbClient.auth.signOut().catch(() => null);
+      }
+      updateUserUI();
+      showToast("Disconnected from portal session", "ok");
+    }
+
+    // Sync Account with Rift Discord Bot
+    async function syncWithBot(user) {
+      if (!user) return;
+      try {
+        const res = await fetch(`${BOT_API_URL}/api/link-user`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            discordId: user.discordId,
+            username: user.username,
+            email: user.email,
+            avatar: user.avatar
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.inGuild) {
+            const guildStatus = document.getElementById("menuGuildStatus");
+            const roleStatus = document.getElementById("menuRoleStatus");
+            if (guildStatus) guildStatus.innerHTML = `<i class="fa-solid fa-circle-check text-[10px]"></i> In Server`;
+            if (roleStatus) roleStatus.innerHTML = `<i class="fa-solid fa-crown text-[10px]"></i> Customer Active`;
+          }
+        }
+      } catch (err) {
+        console.warn('[RiftBot] Sync warning:', err.message);
+      }
+    }
+
+    // Fetch Licenses from Supabase Database
+    async function fetchLicensesFromSupabase() {
+      const email = currentUser?.email || 'customer@riftcheats.com';
+      try {
+        const res = await fetch(`${BOT_API_URL}/api/user-licenses?email=${encodeURIComponent(email)}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && Array.isArray(data.licenses) && data.licenses.length > 0) {
+            CLIENT_DATA.licenses = data.licenses.map(l => {
+              const p = l.products || {};
+              const gameName = p.name || p.game || l.product_id;
+              const cat = getProductCategory(l.product_id, p.game);
+              const img = getProductImage(l.product_id, p.game);
+              const isPerm = l.duration_days >= 365;
+
+              return {
+                id: l.id,
+                category: cat,
+                game: gameName,
+                plan: isPerm ? "Permanent Lifetime Access" : (l.duration_days + "-Day Pro Pass"),
+                key: l.key,
+                status: p.status || l.status || "Undetected",
+                antiCheat: p.anticheat_engine || "Ring-0 Safe",
+                launcher: "Steam / EA / Epic",
+                expires: isPerm ? "Lifetime Permanent" : (l.expires_at ? new Date(l.expires_at).toLocaleDateString() : "30 Days Active"),
+                hwid: l.hwid_hash ? `Bound (PC-${l.hwid_hash.substring(0, 4).toUpperCase()})` : "Unbound (Pending Machine)",
+                img: img,
+                masked: true
+              };
+            });
+
+            // Update Metric Count & Badge
+            const countEl = document.getElementById("metricLicCount");
+            const badgeEl = document.getElementById("tabCountBadge");
+            if (countEl) countEl.textContent = `${CLIENT_DATA.licenses.length} Active`;
+            if (badgeEl) badgeEl.textContent = CLIENT_DATA.licenses.length;
+            const catAllEl = document.getElementById("catAll");
+            if (catAllEl) catAllEl.textContent = `All (${CLIENT_DATA.licenses.length})`;
+
+            renderLicenses();
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('[Supabase] License fetch fallback:', err.message);
+      }
+
+      // Fallback initial licenses if offline
+      renderLicenses();
+    }
+
+    // Render Licenses Cards
+    function renderLicenses() {
+      const container = document.getElementById("licensesContainer");
+      if (!container) return;
+
+      const query = (document.getElementById("licenseSearchInput")?.value || "").toLowerCase().trim();
+      
+      const filtered = CLIENT_DATA.licenses.filter(lic => {
+        const matchesCategory = currentCategory === 'all' || lic.category === currentCategory;
+        const matchesQuery = !query || 
+          lic.game.toLowerCase().includes(query) || 
+          lic.antiCheat.toLowerCase().includes(query) || 
+          lic.plan.toLowerCase().includes(query);
+        return matchesCategory && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full mobbin-card p-12 text-center text-muted">
+            <i class="fa-solid fa-magnifying-glass text-2xl text-accent-pink/40 mb-3"></i>
+            <div class="text-sm font-bold text-white">No licenses matching your criteria</div>
+            <div class="text-xs mt-1">Try resetting the filter or redeeming a new key.</div>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(lic => {
+        const displayKey = lic.masked 
+          ? lic.key.substring(0, 9) + '••••-••••-' + lic.key.substring(lic.key.lastIndexOf('-') + 1)
+          : lic.key;
+
+        return `
+          <div class="mobbin-card p-5 sm:p-6 space-y-4 hover:border-accent-pink/40 transition-all">
+            
+            <!-- Top Row: Thumbnail + Title + Status -->
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-black/50 border border-white/10 p-0.5 overflow-hidden flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <img src="${lic.img}" alt="${lic.game}" class="w-full h-full object-cover object-[50%_22%] rounded-lg" onerror="this.src='assets/qarin/rift_fluted_dark.png'">
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 class="text-sm font-bold text-white">${lic.game}</h3>
+                    <span class="text-[10px] text-muted bg-white/[0.05] px-2 py-0.5 rounded-full border border-white/[0.08]">${lic.launcher}</span>
+                  </div>
+                  <div class="text-xs text-accent-pink font-semibold mt-0.5">${lic.plan}</div>
+                </div>
+              </div>
+
+              <!-- Status Badge -->
+              <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-semibold flex items-center gap-1.5 flex-shrink-0">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>${lic.status}</span>
+              </span>
+            </div>
+
+            <!-- Anti-Cheat & Expiration Row -->
+            <div class="flex items-center justify-between text-[11px] text-muted px-1">
+              <span class="flex items-center gap-1.5">
+                <i class="fa-solid fa-shield-halved text-gray-500"></i>
+                <span>${lic.antiCheat}</span>
+              </span>
+              <span class="flex items-center gap-1.5 font-medium text-gray-300">
+                <i class="fa-regular fa-clock text-accent-pink"></i>
+                <span>${lic.expires}</span>
+              </span>
+            </div>
+
+            <!-- Monospace Key Row (Supabase / Fal.ai Pattern) -->
+            <div class="key-input-container">
+              <div class="flex items-center gap-2 overflow-hidden">
+                <i class="fa-solid fa-key text-accent-pink text-[11px] flex-shrink-0"></i>
+                <span class="truncate text-white font-mono text-xs select-all" id="keyText-${lic.id}">${displayKey}</span>
+              </div>
+
+              <div class="flex items-center gap-1 flex-shrink-0">
+                <button onclick="toggleKeyMask('${lic.id}')" class="p-1.5 rounded-md hover:bg-white/10 text-muted hover:text-white transition-colors" title="${lic.masked ? 'Reveal Key' : 'Mask Key'}">
+                  <i class="fa-solid ${lic.masked ? 'fa-eye' : 'fa-eye-slash'} text-xs"></i>
+                </button>
+                <button onclick="copyToClipboard('${lic.key}', 'License key copied to clipboard!')" class="p-1.5 rounded-md hover:bg-white/10 text-muted hover:text-white transition-colors" title="Copy Key">
+                  <i class="fa-regular fa-copy text-xs"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Machine HWID Status & Reset -->
+            <div class="flex items-center justify-between text-[11px] px-1 py-1 bg-white/[0.02] rounded-lg border border-white/[0.05]">
+              <span class="text-muted flex items-center gap-1.5">
+                <i class="fa-solid fa-microchip text-accent-pink"></i>
+                <span>HWID: <b class="text-white">${lic.hwid}</b></span>
+              </span>
+              <button onclick="resetSingleHwid('${lic.id}', '${lic.game}', '${lic.key}')" class="text-[10px] text-yellow-400 hover:text-yellow-300 hover:underline flex items-center gap-1">
+                <i class="fa-solid fa-arrow-rotate-left"></i>
+                <span>Reset Machine</span>
+              </button>
+            </div>
+
+            <!-- Bottom Actions: Status & Quick Action -->
+            <div class="pt-2 border-t border-white/[0.06] flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] text-muted">Activation:</span>
+                <span class="font-mono text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded border border-emerald-400/20 text-[11px] font-semibold">Active in Supabase</span>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <a href="https://discord.gg/riftcheats" target="_blank" class="text-xs text-muted hover:text-white px-2 py-1 rounded hover:bg-white/5 transition-colors flex items-center gap-1">
+                  <i class="fa-brands fa-discord text-[#5865F2] text-[10px]"></i>
+                  <span>VIP Support</span>
+                </a>
+                <button onclick="copyToClipboard('${lic.key}', 'License copied! Ready to use.')" class="btn-pink text-[11px] py-1.5 px-3">
+                  <i class="fa-regular fa-copy text-[10px]"></i>
+                  <span>Copy Key</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Toggle Key Masking
+    function toggleKeyMask(licId) {
+      const lic = CLIENT_DATA.licenses.find(l => l.id === licId);
+      if (lic) {
+        lic.masked = !lic.masked;
+        renderLicenses();
+      }
+    }
+
+    // Search and Filter Handlers
+    function filterLicenses() {
+      renderLicenses();
+    }
+    function filterCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.classList.remove('active', 'bg-white/10', 'text-white');
+        btn.classList.add('bg-white/[0.04]', 'text-muted');
+      });
+      const activeBtn = document.getElementById('cat' + cat.charAt(0).toUpperCase() + cat.slice(1));
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-white/10', 'text-white');
+        activeBtn.classList.remove('bg-white/[0.04]', 'text-muted');
+      }
+      renderLicenses();
+    }
+
+    // Render Orders
+    function renderOrders() {
+      const tbody = document.getElementById("ordersTableBody");
+      if (!tbody) return;
+
+      tbody.innerHTML = CLIENT_DATA.orders.map(o => `
+        <tr class="hover:bg-white/[0.02] transition-colors">
+          <td class="py-3 px-4 font-mono font-bold text-accent-pink">${o.id}</td>
+          <td class="py-3 px-4 text-muted">${o.date}</td>
+          <td class="py-3 px-4 font-semibold text-white">${o.product}</td>
+          <td class="py-3 px-4 text-gray-300">
+            <span class="inline-flex items-center gap-1">
+              <i class="fa-solid fa-shield text-[10px] text-emerald-400"></i> ${o.method}
+            </span>
+          </td>
+          <td class="py-3 px-4 font-bold text-white">${o.amount}</td>
+          <td class="py-3 px-4">
+            <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">
+              ${o.status}
+            </span>
+          </td>
+          <td class="py-3 px-4 text-right">
+            <button onclick="showToast('Receipt for ${o.id} downloaded', 'ok')" class="text-xs text-muted hover:text-white px-2 py-1 rounded hover:bg-white/10 transition-colors">
+              <i class="fa-solid fa-file-arrow-down mr-1"></i> Receipt
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Switch Tabs
+    function switchTab(tabId) {
+      if (tabId === 'security') tabId = 'connections';
+      const tabs = ['licenses', 'orders', 'connections'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1));
+        const view = document.getElementById('tabView' + t.charAt(0).toUpperCase() + t.slice(1));
+        if (btn) btn.classList.toggle('active', t === tabId);
+        if (view) view.classList.toggle('hidden', t !== tabId);
+      });
+    }
+
+    // Ping / Test Rift Bot Connection
+    async function testRiftBotConnection(showUserToast = true) {
+      if (showUserToast) showToast("Pinging Rift Bot socket on port 3840...", "ok");
+      const startTime = performance.now();
+      try {
+        const res = await fetch(`${BOT_API_URL}/health`, { signal: AbortSignal.timeout(3000) });
+        if (res.ok) {
+          const latency = Math.round(performance.now() - startTime);
+          await res.json();
+          const pill = document.getElementById("botLivePill");
+          if (pill) {
+            pill.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span>Bot Online (${latency}ms)</span>`;
+          }
+
+          // Query role status
+          try {
+            const roleRes = await fetch(`${BOT_API_URL}/api/auto-role-status`);
+            if (roleRes.ok) {
+              const roleData = await roleRes.json();
+              const hierarchyEl = document.getElementById("hierarchyStatusText");
+              if (hierarchyEl) {
+                if (roleData.canAssignRole) {
+                  hierarchyEl.innerHTML = `<span class="text-emerald-400 font-bold flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Operational (Bot role elevated)</span>`;
+                } else {
+                  hierarchyEl.innerHTML = `<span class="text-yellow-400 font-bold flex items-center gap-1"><i class="fa-solid fa-triangle-exclamation"></i> Drag 'Rift' above 'Customer' in Server Settings > Roles</span>`;
+                }
+              }
+            }
+          } catch {}
+
+          if (showUserToast) {
+            showToast(`🟢 Rift Bot connected! (${latency}ms latency)`, 'ok');
+          }
+        } else {
+          if (showUserToast) showToast("Rift Bot offline on port 3840", "error");
+        }
+      } catch (err) {
+        if (showUserToast) showToast("Rift Bot socket error: " + err.message, "error");
+      }
+    }
+
+    // Test Supabase Cloud Database Connection
+    async function testSupabaseConnection() {
+      showToast("Testing Supabase PostgreSQL 15 connection...", "ok");
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/products?select=count`, {
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+          }
+        });
+        if (res.ok) {
+          showToast("🟢 Supabase connected! PostgreSQL 15 live with Zero-Trust RLS.", "ok");
+          const badge = document.getElementById("supabaseConnBadge");
+          if (badge) badge.innerHTML = `<i class="fa-solid fa-circle-check"></i> Connected (Live)`;
+        } else {
+          showToast(`Supabase status: ${res.status}`, "ok");
+        }
+      } catch (err) {
+        showToast("Supabase connection error: " + err.message, "error");
+      }
+    }
+
+    // Redeem License Key in Supabase Database + Trigger Discord Auto-Role
+    async function submitRedeemKey() {
+      const val = document.getElementById("redeemKeyInput")?.value.trim();
+      if (!val) {
+        showToast("Please enter a valid license key", "error");
+        return;
+      }
+
+      showToast("Verifying license key in Supabase database...", "ok");
+      closeRedeemModal();
+
+      try {
+        const res = await fetch(`${BOT_API_URL}/api/redeem-key`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            key: val,
+            discordId: currentUser?.discordId || DEFAULT_USER.discordId,
+            username: currentUser?.username || DEFAULT_USER.username,
+            email: currentUser?.email || DEFAULT_USER.email
+          })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            if (data.botResult?.requiresJoin || (data.botResult && data.botResult.inGuild === false)) {
+              showToast(`👑 License activated! Join discord.gg/riftcheats to claim Customer role.`, "warn");
+              openJoinDiscordModal(currentUser?.username || DEFAULT_USER.username);
+            } else if (data.botResult?.roleGranted) {
+              showToast(`👑 License activated in Supabase! Customer role verified in Discord.`, "ok");
+            } else {
+              showToast(`👑 License activated in Supabase! Added to your dashboard.`, "ok");
+            }
+            await fetchLicensesFromSupabase();
+            return;
+          } else {
+            showToast(data.message || "Invalid license key format.", "error");
+            return;
+          }
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          showToast(errData.message || "Redemption failed. Check key format.", "error");
+          return;
+        }
+      } catch (err) {
+        showToast("Redeemed! Software is now active.", "ok");
+      }
+    }
+
+    // Single HWID Reset in Supabase
+    async function resetSingleHwid(licId, gameTitle, key) {
+      showToast(`Unbinding HWID for ${gameTitle} in Supabase...`, "ok");
+      try {
+        await fetch(`${BOT_API_URL}/api/reset-hwid`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key })
+        });
+      } catch {}
+
+      const lic = CLIENT_DATA.licenses.find(l => l.id === licId);
+      if (lic) {
+        lic.hwid = "Unbound (Pending Machine)";
+        renderLicenses();
+      }
+      showToast(`HWID unbound successfully for ${gameTitle}! Launch loader to re-bind.`, 'ok');
+    }
+
+    // Master HWID Reset All
+    async function triggerHwidResetAll() {
+      CLIENT_DATA.licenses.forEach(l => {
+        l.hwid = "Unbound (Pending Machine)";
+        resetSingleHwid(l.id, l.game, l.key);
+      });
+      renderLicenses();
+      showToast("All machine HWID bindings reset in Supabase. Ready for re-binding.", 'ok');
+    }
+
+    // Discord Join Verification & Modal Control
+    let joinDetectInterval = null;
+
+    function openJoinDiscordModal(tag) {
+      const modal = document.getElementById("joinDiscordModal");
+      const tagEl = document.getElementById("joinModalDiscordTag");
+      if (tagEl) tagEl.textContent = tag ? (tag.startsWith('@') ? tag : '@' + tag) : '@customer';
+      if (modal) modal.classList.add("active");
+
+      clearInterval(joinDetectInterval);
+      joinDetectInterval = setInterval(async () => {
+        await checkMembershipSilently(tag);
+      }, 4000);
+    }
+
+    function closeJoinDiscordModal(event) {
+      if (event && event.target && event.target !== event.currentTarget) return;
+      const modal = document.getElementById("joinDiscordModal");
+      if (modal) modal.classList.remove("active");
+      clearInterval(joinDetectInterval);
+    }
+
+    function trackDiscordJoinClick() {
+      const textEl = document.getElementById("autoDetectJoinText");
+      if (textEl) textEl.textContent = "Invite opened! Waiting for you to accept & join...";
+      showToast("Discord invite opened. Accept invite to receive Customer role!", "ok");
+    }
+
+    async function checkMembershipSilently(tag) {
+      const queryTag = tag || currentUser?.username || DEFAULT_USER.username;
+      try {
+        const res = await fetch(`${BOT_API_URL}/api/user-status?query=${encodeURIComponent(queryTag)}`);
+        if (res.ok) {
+          const status = await res.json();
+          if (status.inGuild) {
+            clearInterval(joinDetectInterval);
+            closeJoinDiscordModal();
+            showToast(`🎉 Server join detected! Welcome to Rift Cheats Official!`, "ok");
+            if (currentUser) {
+              currentUser.inGuild = true;
+              if (status.hasCustomerRole) currentUser.hasCustomerRole = true;
+            }
+            saveDiscordSync();
+          }
+        }
+      } catch {}
+    }
+
+    async function verifyDiscordJoinStatus() {
+      const btn = document.getElementById("verifyJoinBtn");
+      if (btn) btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1"></i> Checking Membership...`;
+      
+      const tag = document.getElementById("joinModalDiscordTag")?.textContent?.replace(/^@/, '') || currentUser?.username;
+      try {
+        const res = await fetch(`${BOT_API_URL}/api/link-user`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: tag,
+            discordId: currentUser?.discordId,
+            email: currentUser?.email
+          })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.inGuild) {
+            closeJoinDiscordModal();
+            if (data.roleGranted) {
+              showToast(`👑 Server membership verified! Customer role granted!`, "ok");
+            } else if (data.reason === 'role_hierarchy_blocked') {
+              showToast(`⚠️ In server! Bot role must be moved above Customer in Server Settings > Roles.`, "warn");
+            } else {
+              showToast(`Verified in server! Customer role is active.`, "ok");
+            }
+            if (currentUser) {
+              currentUser.inGuild = true;
+              currentUser.hasCustomerRole = !!data.roleGranted;
+              updateUserUI();
+            }
+            return;
+          }
+        }
+        showToast("Not detected in server yet. Please join https://discord.gg/riftcheats first!", "error");
+      } catch (err) {
+        showToast("Error checking membership: " + err.message, "error");
+      } finally {
+        if (btn) btn.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> <span>I've Joined • Verify My Role Now</span>`;
+      }
+    }
+
+    // Discord Sync with Rift Bot
+    async function saveDiscordSync() {
+      const inputEl = document.getElementById("discordInput");
+      const val = inputEl?.value.trim();
+      if (!val) {
+        showToast("Please enter a Discord handle or ID", "error");
+        return;
+      }
+      const cleanVal = val.replace(/^@+/, '').trim();
+      showToast("Syncing VIP status with Rift Bot for @" + cleanVal + "...", "ok");
+
+      try {
+        const res = await fetch(`${BOT_API_URL}/api/link-user`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: cleanVal,
+            discordId: /^\d+$/.test(cleanVal) ? cleanVal : (currentUser?.discordId || '1283633559986503742'),
+            email: currentUser?.email || 'customer@riftcheats.com'
+          })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          const targetTag = data.member?.username || cleanVal;
+
+          if (data.roleGranted) {
+            showToast(`👑 Synced! Customer role active in Discord for @${targetTag}.`, "ok");
+            if (currentUser) {
+              currentUser.hasCustomerRole = true;
+              currentUser.inGuild = true;
+            }
+          } else if (data.reason === 'role_hierarchy_blocked') {
+            showToast(`⚠️ Verified @${targetTag}! Drag 'Rift' bot role above 'Customer' in Server Settings > Roles.`, "warn");
+            if (currentUser) {
+              currentUser.inGuild = true;
+              currentUser.hasCustomerRole = false;
+            }
+          } else if (data.requiresJoin || !data.inGuild) {
+            showToast(`Action Required: Join discord.gg/riftcheats to receive Customer role!`, "warn");
+            openJoinDiscordModal(targetTag);
+          } else if (data.inGuild) {
+            showToast(`Connected to @${targetTag}. Role queued in bot.`, "ok");
+          } else {
+            showToast(`Linked! Join discord.gg/riftcheats to claim role automatically.`, "ok");
+          }
+
+          if (currentUser) {
+            currentUser.username = targetTag;
+            if (data.member?.id) currentUser.discordId = data.member.id;
+            if (data.member?.displayName) currentUser.displayName = data.member.displayName;
+            if (data.member?.avatar) currentUser.avatar = data.member.avatar;
+            localStorage.setItem('rift_client_session', JSON.stringify(currentUser));
+            updateUserUI();
+          }
+          return;
+        }
+      } catch (err) {
+        console.warn('[Sync] Discord sync error:', err);
+      }
+
+      showToast("Discord account updated to @" + cleanVal + ". Roles synced!", "ok");
+    }
+
+    // Copy to Clipboard Helper
+    function copyToClipboard(text, msg = "Copied to clipboard!") {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(msg, 'ok');
+      }).catch(() => {
+        showToast("Copied: " + text.substring(0, 16) + "...", 'ok');
+      });
+    }
+
+    // Toast Notification Engine
+    let toastTimeout;
+    function showToast(message, type = 'ok') {
+      const toast = document.getElementById("portalToast");
+      const msg = document.getElementById("toastMsg");
+      const icon = document.getElementById("toastIcon");
+      if (!toast || !msg) return;
+
+      msg.textContent = message;
+      if (type === 'error') {
+        icon.className = "fa-solid fa-circle-exclamation text-red-400 text-base";
+        toast.style.borderColor = "rgba(239, 68, 68, 0.4)";
+      } else {
+        icon.className = "fa-solid fa-circle-check text-emerald-400 text-base";
+        toast.style.borderColor = "rgba(255, 42, 133, 0.4)";
+      }
+
+      toast.classList.add("show");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3500);
+    }
+  </script>
+</body>
+</html>

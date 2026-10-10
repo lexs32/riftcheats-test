@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO Primary Meta Tags -->
+  <title>Live Anti-Cheat Status Board | Rift Cheats 24/7 Telemetry</title>
+  <meta name="title" content="Live Anti-Cheat Status Board | Rift Cheats 24/7 Telemetry">
+  <meta name="description" content="Real-time detection status and operational health of all Rift Cheats products. Live telemetry across EAC, BattlEye, Ricochet, and Vanguard. Updated 24/7.">
+  <meta name="keywords" content="rift cheats status, undetected cheats status, rust cheat status, r6 cheat status, arc raiders cheat status, eac bypass status, battleye status">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="Rift Cheats">
+  <link rel="canonical" href="https://riftcheats.com/status.html">
+  <link rel="icon" type="image/png" href="assets/rc_logo.png">
+  <meta name="theme-color" content="#ff2a85">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://riftcheats.com/status.html">
+  <meta property="og:title" content="Live Anti-Cheat Status Board | Rift Cheats 24/7 Telemetry">
+  <meta property="og:description" content="Real-time detection status and operational health of all Rift Cheats products. Live telemetry across EAC, BattlEye, Ricochet, and Vanguard.">
+  <meta property="og:image" content="https://riftcheats.com/assets/real/Rust.png">
+  <meta property="og:site_name" content="Rift Cheats">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://riftcheats.com/status.html">
+  <meta name="twitter:title" content="Live Anti-Cheat Status Board | Rift Cheats 24/7 Telemetry">
+  <meta name="twitter:description" content="Real-time detection status and operational health of all Rift Cheats products. Live telemetry updated 24/7.">
+  <meta name="twitter:image" content="https://riftcheats.com/assets/real/Rust.png">
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://riftcheats.com/status.html#webpage",
+        "url": "https://riftcheats.com/status.html",
+        "name": "Live Anti-Cheat Status Board | Rift Cheats",
+        "description": "Real-time detection status and operational health of all Rift Cheats products.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://riftcheats.com/#website",
+          "name": "Rift Cheats",
+          "url": "https://riftcheats.com/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://riftcheats.com/status.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://riftcheats.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Status",
+            "item": "https://riftcheats.com/status.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Manrope & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --cl-background: 8, 8, 10;
+      --cl-t-primary: 220, 220, 227;
+      --cl-accent: 255, 42, 133;
+      --color-subtext: #A7A9AC;
+      --font-manrope: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-dmsans: var(--font-manrope);
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: rgb(var(--cl-background));
+      color: rgb(var(--cl-t-primary));
+      font-family: var(--font-dmsans);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      /* Clean, pure dark background with subtle ambient color blooms - NO GRIDLOCKS */
+      background-image: 
+        radial-gradient(circle at 50% -10%, rgba(255, 42, 133, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 10% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 90% 70%, rgba(255, 42, 133, 0.05) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    /* Floating Capsule Navbar */
+    .capsule-navbar {
+      position: sticky;
+      top: 16px;
+      z-index: 1000;
+      max-width: 1100px;
+      margin: 16px auto 0;
+      padding: 0 16px;
+    }
+    .capsule-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(12, 13, 18, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 9999px;
+      padding: 9px 18px;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7);
+    }
+    .brand-logo-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .brand-logo-img {
+      height: 30px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(255, 42, 133, 0.4));
+    }
+    .brand-name {
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .brand-name span {
+      background: linear-gradient(135deg, #ff2a85 0%, #ff758c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+    }
+    .nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: #A7A9AC;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #fff;
+    }
+    .nav-link.active {
+      color: #ff2a85;
+      font-weight: 600;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-nav-client {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 15px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.2s;
+    }
+    .btn-nav-client:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn-nav-store {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(135deg, #ff2a85 0%, #e0176d 100%);
+      box-shadow: 0 0 16px rgba(255, 42, 133, 0.35);
+      transition: all 0.2s;
+    }
+    .btn-nav-store:hover {
+      box-shadow: 0 0 22px rgba(255, 42, 133, 0.6);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .brand-name {
+        display: none;
+      }
+      .capsule-navbar {
+        top: 10px;
+        margin: 10px auto 0;
+        padding: 0 10px;
+      }
+      .capsule-inner {
+        padding: 6px 12px;
+      }
+    }
+
+    /* Main Container */
+    .status-page-wrapper {
+      max-width: 860px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+    }
+
+    /* Page Header */
+    .status-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .status-title {
+      font-family: var(--font-dmsans);
+      font-size: 46px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .status-desc {
+      font-size: 15px;
+      color: var(--color-subtext);
+      font-weight: 400;
+    }
+
+    @media (max-width: 640px) {
+      .status-title {
+        font-size: 34px;
+      }
+      .status-page-wrapper {
+        margin: 24px auto 60px;
+        padding: 0 14px;
+      }
+      ._22c {
+        flex-direction: column;
+      }
+      ._7d6 {
+        width: 100%;
+      }
+      .card-name {
+        font-size: 14px;
+      }
+      ._2tx {
+        padding: 0px 14px 14px;
+      }
+      .sc-header {
+        padding: 12px 14px;
+      }
+    }
+
+    /* =========================================================================
+       3 EXECUTIVE STAT CARDS (EXACT SOLAR SERVICES DOM)
+       ========================================================================= */
+    ._8tw {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 640px) {
+      ._8tw {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      ._8tw ._9t5:first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    ._9t5 {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 20px;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background-image: 
+        radial-gradient(120% 80% at 0px 0px, rgba(255, 255, 255, 0.035) 0px, transparent 50%),
+        radial-gradient(120% 80% at 100% 100%, rgba(255, 255, 255, 0.024) 0px, transparent 55%),
+        linear-gradient(rgba(255, 255, 255, 0.024) 0px, transparent 35%);
+      box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.35) 0px -1px 0px 0px inset;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    ._9t5:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-1px);
+    }
+    ._9t5 ._4pt {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-subtext);
+    }
+    ._9t5 ._74q {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+    ._9t5 ._7fa {
+      font-size: 12px;
+      color: rgba(220, 220, 227, 0.45);
+    }
+
+    /* =========================================================================
+       SEARCH & GROUP FILTER BAR (EXACT SOLAR SERVICES DOM)
+       ========================================================================= */
+    ._22c {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    ._6pn {
+      position: relative;
+      flex: 2 1 0%;
+    }
+    ._c71 {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      color: rgba(220, 220, 227, 0.4);
+      pointer-events: none;
+    }
+    ._262 {
+      width: 100%;
+      padding: 11px 14px 11px 40px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      color: #ffffff;
+      font-size: 13px;
+      font-family: var(--font-dmsans);
+      outline: 0;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    ._262::placeholder {
+      color: var(--color-subtext);
+      opacity: 0.65;
+    }
+    ._262:focus {
+      border-color: rgba(255, 42, 133, 0.5);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 16px rgba(255, 42, 133, 0.15);
+    }
+
+    ._7d6 {
+      position: relative;
+      flex: 1 1 0%;
+      min-width: 180px;
+      user-select: none;
+    }
+    .status-dd-trigger {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 14px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(220, 220, 227, 0.8);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .status-dd-trigger:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+    }
+    ._7d6.open .status-dd-trigger {
+      border-color: rgba(255, 42, 133, 0.5);
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+    }
+    .status-dd-label {
+      flex: 1 1 0%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 13px;
+    }
+    ._9yh {
+      color: rgba(220, 220, 227, 0.4);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    ._7d6.open ._9yh {
+      transform: rotate(180deg);
+    }
+    .status-dd-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: #11131a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 50;
+      box-shadow: rgba(0, 0, 0, 0.6) 0px 16px 40px;
+      opacity: 0;
+      transform: translateY(-6px) scale(0.98);
+      transform-origin: center top;
+      pointer-events: none;
+      transition: opacity 0.15s, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    ._7d6.open .status-dd-menu {
+      opacity: 1;
+      transform: translateY(0px) scale(1);
+      pointer-events: auto;
+    }
+    .status-dd-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(220, 220, 227, 0.7);
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s;
+    }
+    .status-dd-option:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+    .status-dd-option.selected {
+      color: #ff2a85;
+      background: rgba(255, 42, 133, 0.08);
+      font-weight: 600;
+    }
+
+    /* =========================================================================
+       GROUP SECTIONS & PRODUCT CARDS (EXACT SOLAR SERVICES DOM)
+       ========================================================================= */
+    .status-group-section {
+      margin-bottom: 28px;
+    }
+    ._3d7 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    ._6b1 {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      color: var(--color-subtext);
+    }
+    ._a0a {
+      flex: 1 1 0%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .cards-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    /* Status Card Accordion */
+    .status-card {
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background-image: 
+        radial-gradient(120% 80% at 0px 0px, rgba(255, 255, 255, 0.035) 0px, transparent 50%),
+        radial-gradient(120% 80% at 100% 100%, rgba(255, 255, 255, 0.024) 0px, transparent 55%),
+        linear-gradient(rgba(255, 255, 255, 0.024) 0px, transparent 35%);
+      box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.35) 0px -1px 0px 0px inset;
+      border-radius: 16px;
+      transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .status-card:hover {
+      background-color: rgba(255, 255, 255, 0.035);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: rgba(255, 255, 255, 0.06) 0px 0px 0px 1px, rgba(255, 255, 255, 0.08) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.35) 0px -1px 0px 0px inset;
+    }
+
+    /* Card Header */
+    .sc-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      cursor: pointer;
+      user-select: none;
+    }
+    ._2x3 {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    ._2x3 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+    }
+    .card-name {
+      flex: 1 1 0%;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: var(--font-dmsans);
+    }
+
+    /* Badges */
+    ._8e1 {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    ._c4z {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+    }
+    ._c4z::after {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      animation: 1.8s ease-out 0s infinite normal none running _kbbj;
+    }
+    @keyframes _kbbj {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+
+    /* Badge Types */
+    .sc-badge-green {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.22);
+      color: rgb(34, 197, 94);
+    }
+    .sc-badge-green ._c4z {
+      background: rgb(34, 197, 94);
+    }
+    .sc-badge-green ._c4z::after {
+      background: rgba(34, 197, 94, 0.4);
+    }
+
+    .sc-badge-yellow {
+      background: rgba(234, 179, 8, 0.1);
+      border-color: rgba(234, 179, 8, 0.22);
+      color: rgb(234, 179, 8);
+    }
+    .sc-badge-yellow ._c4z {
+      background: rgb(234, 179, 8);
+    }
+    .sc-badge-yellow ._c4z::after {
+      background: rgba(234, 179, 8, 0.4);
+    }
+
+    .sc-badge-blue {
+      background: rgba(52, 152, 219, 0.1);
+      border-color: rgba(52, 152, 219, 0.22);
+      color: rgb(52, 152, 219);
+    }
+    .sc-badge-blue ._c4z {
+      background: rgb(52, 152, 219);
+    }
+    .sc-badge-blue ._c4z::after {
+      background: rgba(52, 152, 219, 0.4);
+    }
+
+    .sc-badge-red {
+      background: rgba(231, 76, 60, 0.1);
+      border-color: rgba(231, 76, 60, 0.22);
+      color: rgb(231, 76, 60);
+    }
+    .sc-badge-red ._c4z {
+      background: rgb(231, 76, 60);
+    }
+    .sc-badge-red ._c4z::after {
+      background: rgba(231, 76, 60, 0.4);
+    }
+
+    /* Chevron */
+    ._9hb {
+      color: rgba(255, 255, 255, 0.35);
+      flex-shrink: 0;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .status-card.open ._9hb {
+      transform: rotate(180deg);
+    }
+
+    /* Collapsible Body */
+    ._4vc {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .status-card.open ._4vc {
+      grid-template-rows: 1fr;
+    }
+    ._b1c {
+      overflow: hidden;
+    }
+    ._2tx {
+      padding: 0px 18px 16px;
+    }
+    ._nf9 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    ._dhc {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    ._3ok {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      flex: 1 1 0%;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    ._3ok:hover {
+      color: #ff2a85;
+    }
+    .sc-uptime-pct {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-subtext);
+      font-family: var(--font-mono);
+    }
+
+    /* 30-Day Timeline Track (Separated Segments like SolarServices) */
+    .uptime-history {
+      display: flex;
+      gap: 2.5px;
+      align-items: stretch;
+      width: 100%;
+      height: 32px;
+      background: transparent;
+      border-radius: 4px;
+    }
+    .ubar {
+      flex: 1 1 0%;
+      height: 100%;
+      min-width: 0;
+      border-radius: 2.5px;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .ubar:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    .ubar:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+    .ubar:hover {
+      opacity: 0.75;
+      transform: scaleY(1.08);
+    }
+    .ubar-green {
+      background: #2ecc71;
+    }
+    .ubar-yellow {
+      background: #f1c40f;
+    }
+    .ubar-blue {
+      background: #3498db;
+    }
+    .ubar-red {
+      background: #e74c3c;
+    }
+    .ubar-unknown {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Time Axis Row */
+    .sc-time-axis {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--color-subtext);
+      opacity: 0.75;
+      margin-top: 6px;
+    }
+
+    /* Global Tooltip (Exact Solar Services DOM) */
+    #ubar-global-tip {
+      display: none;
+      position: fixed;
+      background: rgb(18, 20, 28);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 11px;
+      white-space: nowrap;
+      z-index: 99999;
+      pointer-events: none;
+      box-shadow: rgba(0, 0, 0, 0.75) 0px 8px 28px;
+    }
+    #ubar-global-tip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(255, 255, 255, 0.14) transparent transparent;
+    }
+    #ubar-global-tip::before {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: -1px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgb(18, 20, 28) transparent transparent;
+      z-index: 1;
+    }
+    #ubar-global-tip .tip-date {
+      color: var(--color-subtext);
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    #ubar-global-tip ._a22 {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+    #ubar-global-tip .tip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    .status-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 40px 20px 60px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--color-subtext);
+    }
+    .status-footer a {
+      color: #ff2a85;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .status-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+<body>
+
+  <!-- Ambient Pink Cursor Spotlight Follower (RiftCheats) -->
+  <div id="pink-cursor-spotlight" style="position: fixed; pointer-events: none; top: 0; left: 0; width: 550px; height: 550px; border-radius: 50%; filter: blur(30px); opacity: 0; transition: opacity 0.3s ease; z-index: 9999; background: radial-gradient(circle, rgba(255, 42, 133, 0.13) 0%, rgba(168, 85, 247, 0.05) 45%, transparent 70%); will-change: transform;"></div>
+
+  <!-- Floating Capsule Navbar -->
+  <header class="capsule-navbar">
+    <div class="capsule-inner">
+      <a href="index.html" class="brand-logo-link">
+        <img src="assets/rc_logo.png" alt="RiftCheats" class="brand-logo-img">
+        <span class="brand-name">RIFT<span>CHEATS</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link"><i class="fa-solid fa-store text-xs"></i> Store</a></li>
+          <li><a href="status.html" class="nav-link active"><i class="fa-solid fa-chart-line text-xs"></i> Live Status</a></li>
+          <li><a href="index.html#reviews" class="nav-link"><i class="fa-solid fa-comments text-xs"></i> Reviews</a></li>
+          <li><a href="index.html#faq" class="nav-link"><i class="fa-solid fa-circle-question text-xs"></i> FAQ</a></li>
+          <li><a href="https://discord.gg/riftcheats" target="_blank" class="nav-link"><i class="fa-brands fa-discord text-xs"></i> Discord</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="client-area.html" class="btn-nav-client">
+          <i class="fa-solid fa-user text-xs text-[#ff2a85]"></i>
+          <span>Client Area</span>
+        </a>
+        <a href="index.html" class="btn-nav-store">
+          <i class="fa-solid fa-arrow-left text-xs"></i>
+          <span>Back to Store</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       MAIN PRODUCT STATUS WORKSPACE (EXACT SOLAR SERVICES DOM)
+       ==================================================================== -->
+  <main class="status-page-wrapper">
+
+    <!-- Header Block -->
+    <div class="status-header">
+      <h1 class="status-title">Product Status</h1>
+      <p class="status-desc">Track the live availability status of our products.</p>
+    </div>
+
+    <!-- 3 Executive Stats Cards -->
+    <div class="_8tw">
+      <div class="_9t5">
+        <span class="_4pt">Operational</span>
+        <span class="_74q" id="status-op-count" style="color: rgb(34, 197, 94);">11</span>
+        <span class="_7fa" id="status-op-sub">of 12 products</span>
+      </div>
+      <div class="_9t5">
+        <span class="_4pt">Total Customers</span>
+        <span class="_74q">3705</span>
+        <span class="_7fa">since launch</span>
+      </div>
+      <div class="_9t5">
+        <span class="_4pt">Products Sold</span>
+        <span class="_74q">8277</span>
+        <span class="_7fa">total orders</span>
+      </div>
+    </div>
+
+    <!-- Filter & Search Bar -->
+    <div class="_22c">
+      <!-- Search Box -->
+      <div class="_6pn">
+        <svg class="_c71" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+        </svg>
+        <input type="text" id="status-search" class="_262" placeholder="Search products…" autocomplete="off">
+      </div>
+
+      <!-- Group Custom Dropdown -->
+      <div class="_7d6" id="status-group-dd">
+        <div class="status-dd-trigger" id="status-dd-trigger">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(220,220,227,0.4); flex-shrink:0;">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          <span class="status-dd-label" id="status-dd-label">All Groups</span>
+          <svg class="_9yh" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+
+        <div class="status-dd-menu" id="status-dd-menu">
+          <div class="status-dd-option selected" data-value="all">All Groups</div>
+          <div class="status-dd-option" data-value="ARC Raiders Products">ARC Raiders Products</div>
+          <div class="status-dd-option" data-value="Rust Products">Rust Products</div>
+          <div class="status-dd-option" data-value="R6 Siege Products">R6 Siege Products</div>
+          <div class="status-dd-option" data-value="Apex Products">Apex Products</div>
+          <div class="status-dd-option" data-value="Fortnite Products">Fortnite Products</div>
+          <div class="status-dd-option" data-value="Delta Force Products">Delta Force Products</div>
+          <div class="status-dd-option" data-value="Wardogs Products">Wardogs Products</div>
+          <div class="status-dd-option" data-value="Spoofer Products">Spoofer Products</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         PRODUCT GROUPS & CARDS STACK
+         ==================================================================== -->
+    <div id="status-groups-container">
+
+      <!-- GROUP 1: ARC RAIDERS -->
+      <div class="status-group-section" data-group="ARC Raiders Products">
+        <div class="_3d7">
+          <span class="_6b1">ARC Raiders Products</span>
+          <div class="_a0a"></div>
+        </div>
+        <div class="cards-stack">
+
+          <!-- Krush Arc Raiders -->
+          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="krush-arc-raiders">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/rift_arc-31eUfYH7.png" alt="Krush Arc Raiders" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Krush ARC Raiders</span>
+              <div class="_8e1 sc-badge-green" title="Live status: Undetected">
+                <span class="_c4z"></span> Undetected
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#2ecc71"></div>
+                    <a class="_3ok" href="index.html#products">Krush ARC Raiders</a>
+                    <span class="sc-uptime-pct" data-product="krush-arc-raiders">99.85% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="krush-arc-raiders"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ancient Arc Raiders -->
+          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="ancient-arc-raiders">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/ANCIENT_ARC.png" alt="Ancient Arc Raiders" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Ancient ARC Raiders</span>
+              <div class="_8e1 sc-badge-green" title="Live status: Undetected">
+                <span class="_c4z"></span> Undetected
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#2ecc71"></div>
+                    <a class="_3ok" href="index.html#products">Ancient ARC Raiders</a>
+                    <span class="sc-uptime-pct" data-product="ancient-arc-raiders">98.40% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="ancient-arc-raiders"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Krush Arc Raiders Internal -->
+          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="krush-arc-internal">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/krush_arc_internal.png" alt="Krush ARC Raiders Internal" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Krush ARC Raiders Internal</span>
+              <div class="_8e1 sc-badge-green" title="Live status: Undetected">
+                <span class="_c4z"></span> Undetected
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#2ecc71"></div>
+                    <a class="_3ok" href="index.html#products">Krush ARC Raiders Internal</a>
+                    <span class="sc-uptime-pct" data-product="krush-arc-internal">100.00% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="krush-arc-internal"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GROUP 2: RUST -->
+      <div class="status-group-section" data-group="Rust Products">
+        <div class="_3d7">
+          <span class="_6b1">Rust Products</span>
+          <div class="_a0a"></div>
+        </div>
+        <div class="cards-stack">
+
+          <!-- Krush Rust -->
+          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="krush-rust">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/rift_rust1-BON31Td0.png" alt="Krush Rust" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Krush Rust</span>
+              <div class="_8e1 sc-badge-green" title="Live status: Undetected">
+                <span class="_c4z"></span> Undetected
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#2ecc71"></div>
+                    <a class="_3ok" href="index.html#products">Krush Rust</a>
+                    <span class="sc-uptime-pct" data-product="krush-rust">99.40% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="krush-rust"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GROUP 3: RAINBOW SIX SIEGE -->
+      <div class="status-group-section" data-group="R6 Siege Products">
+        <div class="_3d7">
+          <span class="_6b1">R6 Siege Products</span>
+          <div class="_a0a"></div>
+        </div>
+        <div class="cards-stack">
+
+          <!-- Crusader R6 Siege -->
+          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="crusader-r6">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/R6_CRUS-DKDRPM83.png" alt="Crusader Rainbow Six Siege" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Crusader R6 Siege</span>
+              <div class="_8e1 sc-badge-green" title="Live status: Undetected">
+                <span class="_c4z"></span> Undetected
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#2ecc71"></div>
+                    <a class="_3ok" href="index.html#products">Crusader Rainbow Six Siege</a>
+                    <span class="sc-uptime-pct" data-product="crusader-r6">98.90% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="crusader-r6"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GROUP 4: APEX LEGENDS -->
+      <div class="status-group-section" data-group="Apex Products">
+        <div class="_3d7">
+          <span class="_6b1">Apex Products</span>
+          <div class="_a0a"></div>
+        </div>
+        <div class="cards-stack">
+
+          <!-- Krush Apex Legends (Testing Season Patch) -->
+          <div class="status-card open" data-sc data-bar-status="testing" data-operational="false" data-product="krush-apex">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/RIFT_KRUSH-D0l9rsBn.png" alt="Krush Apex Legends" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Krush Apex</span>
+              <div class="_8e1 sc-badge-blue" title="Live status: Testing">
+                <span class="_c4z"></span> Testing
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#3498db"></div>
+                    <a class="_3ok" href="index.html#products">Krush Apex Legends</a>
+                    <span class="sc-uptime-pct" data-product="krush-apex">94.50% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="krush-apex"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GROUP 5: FORTNITE -->
+      <div class="status-group-section" data-group="Fortnite Products">
+        <div class="_3d7">
+          <span class="_6b1">Fortnite Products</span>
+          <div class="_a0a"></div>
+        </div>
+        <div class="cards-stack">
+
+          <!-- Disconnect Fortnite -->
+          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="disconnect-fortnite">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/fn_disc-DOAsaoXt.png" alt="Disconnect Fortnite" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Disconnect Fortnite</span>
+              <div class="_8e1 sc-badge-green" title="Live status: Undetected">
+                <span class="_c4z"></span> Undetected
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#2ecc71"></div>
+                    <a class="_3ok" href="index.html#products">Disconnect Fortnite</a>
+                    <span class="sc-uptime-pct" data-product="disconnect-fortnite">99.10% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="disconnect-fortnite"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GROUP 6: DELTA FORCE -->
+      <div class="status-group-section" data-group="Delta Force Products">
+        <div class="_3d7">
+          <span class="_6b1">Delta Force Products</span>
+          <div class="_a0a"></div>
+        </div>
+        <div class="cards-stack">
+
+          <!-- Ancient Delta Force -->
+          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="ancient-delta-force">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/ancient_delta_transparent.png" alt="Ancient Delta Force" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Ancient Delta Force</span>
+              <div class="_8e1 sc-badge-green" title="Live status: Undetected">
+                <span class="_c4z"></span> Undetected
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#2ecc71"></div>
+                    <a class="_3ok" href="index.html#products">Ancient Delta Force</a>
+                    <span class="sc-uptime-pct" data-product="ancient-delta-force">100.00% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="ancient-delta-force"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GROUP 7: WARDOGS -->
+      <div class="status-group-section" data-group="Wardogs Products">
+        <div class="_3d7">
+          <span class="_6b1">Wardogs Products</span>
+          <div class="_a0a"></div>
+        </div>
+        <div class="cards-stack">
+
+          <!-- Ancient Wardogs -->
+          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="ancient-wardogs">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/ancient_wardogs_transparent.png" alt="Ancient Wardogs" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Ancient Wardogs</span>
+              <div class="_8e1 sc-badge-green" title="Live status: Undetected">
+                <span class="_c4z"></span> Undetected
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#2ecc71"></div>
+                    <a class="_3ok" href="index.html#products">Ancient Wardogs</a>
+                    <span class="sc-uptime-pct" data-product="ancient-wardogs">100.00% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="ancient-wardogs"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Disconnect Wardogs -->
+          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="disconnect-wardogs">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/disconnect_wardogs.png" alt="Disconnect Wardogs" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Disconnect Wardogs</span>
+              <div class="_8e1 sc-badge-green" title="Live status: Undetected">
+                <span class="_c4z"></span> Undetected
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#2ecc71"></div>
+                    <a class="_3ok" href="index.html#products">Disconnect Wardogs</a>
+                    <span class="sc-uptime-pct" data-product="disconnect-wardogs">97.80% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="disconnect-wardogs"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GROUP 8: SPOOFER -->
+      <div class="status-group-section" data-group="Spoofer Products">
+        <div class="_3d7">
+          <span class="_6b1">Spoofer Products</span>
+          <div class="_a0a"></div>
+        </div>
+        <div class="cards-stack">
+
+          <!-- Rift Hypervisor Spoofer -->
+          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="rift-spoofer">
+            <div class="sc-header">
+              <div class="_2x3">
+                <img src="assets/real/spoofer_thumb.png" alt="Rift Hypervisor Spoofer" onerror="this.src='assets/rc_logo.png'">
+              </div>
+              <span class="card-name">Rift Hypervisor Spoofer</span>
+              <div class="_8e1 sc-badge-green" title="Live status: Online">
+                <span class="_c4z"></span> Online
+              </div>
+              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="_4vc">
+              <div class="_b1c">
+                <div class="_2tx">
+                  <div class="_nf9">
+                    <div class="_dhc" style="background:#2ecc71"></div>
+                    <a class="_3ok" href="index.html#products">Rift Hypervisor Spoofer</a>
+                    <span class="sc-uptime-pct" data-product="rift-spoofer">100.00% uptime</span>
+                  </div>
+                  <div class="uptime-history" data-product="rift-spoofer"></div>
+                  <div class="sc-time-axis">
+                    <span class="sc-bl-start">Sep 10</span>
+                    <span>Today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ====================================================================
+       GLOBAL HOVER TOOLTIP (EXACT SOLAR SERVICES DOM)
+       ==================================================================== -->
+  <div id="ubar-global-tip">
+    <span class="tip-date">Thu, Sep 10 · 8:00 AM AWST</span>
+    <div class="_a22">
+      <span class="tip-dot"></span>
+      <span class="tip-label">Undetected</span>
+    </div>
+  </div>
+
+  <!-- Page Footer -->
+  <footer class="status-footer">
+    <div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <img src="assets/rc_logo.png" alt="RiftCheats" style="width: 22px; height: 22px;">
+        <span style="font-weight: 700; color: #fff; font-size: 14px;">RiftCheats</span>
+      </div>
+      <div>Experience a new level of gameplay. 100% undetected hypervisor kernel technology.</div>
+      <div style="display: flex; gap: 18px; margin-top: 6px; font-size: 12px;">
+        <a href="index.html">Store</a>
+        <a href="status.html">Live Status</a>
+        <a href="client-area.html">Client Portal</a>
+        <a href="https://discord.gg/riftcheats" target="_blank">Discord Community</a>
+      </div>
+      <div style="margin-top: 10px; font-size: 11px; opacity: 0.6;">
+        Copyright © 2026 RiftCheats. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       AUTHENTIC STATUS LOGIC & INTERACTION ENGINE
+       ==================================================================== -->
+  <script>
+    (function() {
+      // Configuration & Mappings
+      const barClassMap = {
+        undetected: "ubar-green",
+        updating: "ubar-yellow",
+        detected: "ubar-red",
+        testing: "ubar-blue",
+        unknown: "ubar-unknown"
+      };
+
+      const labelMap = {
+        undetected: "Undetected",
+        updating: "Updating",
+        detected: "Detected",
+        testing: "Testing",
+        unknown: "No Data"
+      };
+
+      const colorMap = {
+        undetected: "#2ecc71",
+        updating: "#f1c40f",
+        detected: "#e74c3c",
+        testing: "#3498db"
+      };
+
+      function getColor(type) {
+        return colorMap[type] || "rgba(255,255,255,0.3)";
+      }
+
+      // Checkpoint times matching 2 checkpoints per day (60 segments total)
+      const times = ["8:00 AM UTC", "8:00 PM UTC"];
+
+      // 1. Generate Realistic 30-Day Checkpoints for Each Cheat (60 separated bars like SolarServices)
+      const TOTAL_DAYS = 30;
+      const today = new Date();
+
+      document.querySelectorAll(".uptime-history[data-product]").forEach(track => {
+        const productId = track.dataset.product;
+        const card = document.querySelector(`.status-card[data-product="${productId}"]`);
+        const baseStatus = card?.dataset.barStatus || "undetected";
+
+        track.innerHTML = "";
+        let totalCheckpoints = 0;
+        let operationalCheckpoints = 0;
+
+        for (let d = TOTAL_DAYS - 1; d >= 0; d--) {
+          const dateObj = new Date();
+          dateObj.setDate(today.getDate() - d);
+          const dateStr = dateObj.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+
+          // 2 checkpoints per day
+          for (let c = 0; c < 2; c++) {
+            let status = baseStatus;
+
+            // Historical realism: early tracking checkpoint unknown (matches SolarServices far left tick)
+            if (d === TOTAL_DAYS - 1 && c === 0) {
+              status = "unknown";
+            } else if (baseStatus === "testing") {
+              if (d > 3) status = "undetected";
+              else status = "testing";
+            } else if (productId === "ancient-arc-raiders" && d === 12 && c === 1) {
+              status = "updating";
+            } else if (productId === "disconnect-wardogs" && d === 18 && c === 1) {
+              status = "updating";
+            }
+
+            totalCheckpoints++;
+            if (status === "undetected" || status === "online") {
+              operationalCheckpoints++;
+            }
+
+            const bar = document.createElement("div");
+            bar.className = "ubar " + (barClassMap[status] || "ubar-green");
+            bar.dataset.tipDate = `${dateStr} · ${times[c]}`;
+            bar.dataset.tipColor = getColor(status);
+            bar.dataset.tipLabel = (status === "undetected" && productId === "rift-spoofer") ? "Online" : (labelMap[status] || status);
+            track.appendChild(bar);
+          }
+        }
+
+        // Live current checkpoint bar
+        const liveBar = document.createElement("div");
+        liveBar.className = "ubar ubar-now " + (barClassMap[baseStatus] || "ubar-green");
+        liveBar.dataset.tipDate = "Now · Live Checkpoint";
+        liveBar.dataset.tipColor = getColor(baseStatus);
+        liveBar.dataset.tipLabel = (baseStatus === "undetected" && productId === "rift-spoofer") ? "Online" : (labelMap[baseStatus] || baseStatus);
+        track.appendChild(liveBar);
+
+        // Update exact uptime percentage text
+        const pctEl = document.querySelector(`.sc-uptime-pct[data-product="${productId}"]`);
+        if (pctEl && totalCheckpoints > 0) {
+          const pct = ((operationalCheckpoints / totalCheckpoints) * 100).toFixed(2);
+          pctEl.textContent = `${pct}% uptime`;
+        }
+      });
+
+      // Update start date label to 30 days ago
+      const startDate = new Date();
+      startDate.setDate(today.getDate() - 30);
+      const startStr = startDate.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      document.querySelectorAll(".sc-bl-start").forEach(el => el.textContent = startStr);
+
+      // 2. Accordion Toggle
+      document.querySelectorAll(".sc-header").forEach(header => {
+        header.addEventListener("click", () => {
+          header.closest(".status-card").classList.toggle("open");
+        });
+      });
+
+      // 3. Global Floating Tooltip Engine
+      const tip = document.getElementById("ubar-global-tip");
+      const tipDate = tip.querySelector(".tip-date");
+      const tipDot = tip.querySelector(".tip-dot");
+      const tipLabel = tip.querySelector(".tip-label");
+
+      document.addEventListener("mouseover", e => {
+        const bar = e.target.closest(".ubar[data-tip-date]");
+        if (bar && tip) {
+          tipDate.textContent = bar.dataset.tipDate;
+          tipDot.style.background = bar.dataset.tipColor;
+          tipLabel.textContent = bar.dataset.tipLabel;
+          tipLabel.style.color = bar.dataset.tipColor.startsWith("#") ? bar.dataset.tipColor : "";
+
+          const rect = bar.getBoundingClientRect();
+          tip.style.display = "block";
+          tip.style.transform = "translateY(-100%)";
+          
+          const tipWidth = tip.offsetWidth;
+          const leftTarget = rect.left + rect.width / 2 - tipWidth / 2;
+          const clampedLeft = Math.max(8, Math.min(window.innerWidth - tipWidth - 8, leftTarget));
+          
+          tip.style.left = clampedLeft + "px";
+          tip.style.top = (rect.top - 10) + "px";
+        }
+      });
+
+      document.addEventListener("mouseout", e => {
+        if (e.target.closest(".ubar[data-tip-date]") && tip) {
+          tip.style.display = "none";
+        }
+      });
+
+      // 4. Real-time Search and Group Filter
+      const searchInput = document.getElementById("status-search");
+      const groupDropdown = document.getElementById("status-group-dd");
+      const groupTrigger = document.getElementById("status-dd-trigger");
+      const groupLabel = document.getElementById("status-dd-label");
+      const groupOptions = document.querySelectorAll(".status-dd-option");
+      const groupSections = document.querySelectorAll(".status-group-section");
+      let activeGroup = "all";
+
+      function filterStatus() {
+        const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
+
+        groupSections.forEach(section => {
+          const sectionGroup = section.dataset.group;
+          const groupMatch = (activeGroup === "all" || sectionGroup === activeGroup);
+
+          if (!groupMatch && !query) {
+            section.style.display = "none";
+            return;
+          }
+
+          const cards = section.querySelectorAll("[data-sc]");
+          let visibleCards = 0;
+
+          cards.forEach(card => {
+            const nameEl = card.querySelector(".card-name");
+            const name = nameEl ? nameEl.textContent.trim().toLowerCase() : "";
+            const matchesQuery = !query || name.includes(query) || sectionGroup.toLowerCase().includes(query);
+
+            if (matchesQuery && (activeGroup === "all" || sectionGroup === activeGroup || query)) {
+              card.style.display = "block";
+              visibleCards++;
+            } else {
+              card.style.display = "none";
+            }
+          });
+
+          section.style.display = visibleCards > 0 ? "block" : "none";
+        });
+      }
+
+      // Dropdown toggle
+      groupTrigger.addEventListener("click", e => {
+        e.stopPropagation();
+        groupDropdown.classList.toggle("open");
+      });
+
+      document.addEventListener("click", () => {
+        groupDropdown.classList.remove("open");
+      });
+
+      // Dropdown select
+      groupOptions.forEach(opt => {
+        opt.addEventListener("click", e => {
+          e.stopPropagation();
+          groupOptions.forEach(o => o.classList.remove("selected"));
+          opt.classList.add("selected");
+          activeGroup = opt.dataset.value;
+          groupLabel.textContent = opt.textContent.trim();
+          groupDropdown.classList.remove("open");
+          filterStatus();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener("input", filterStatus);
+      }
+
+      // 5. Update Operational Products Counter
+      function updateOperationalStats() {
+        const cards = document.querySelectorAll(".status-card[data-operational]");
+        let opCount = 0;
+        cards.forEach(c => {
+          if (c.dataset.operational === "true") opCount++;
+        });
+        const total = cards.length;
+        const countEl = document.getElementById("status-op-count");
+        const subEl = document.getElementById("status-op-sub");
+        if (countEl) {
+          countEl.textContent = opCount;
+          countEl.style.color = (opCount === total) ? "rgb(34,197,94)" : "rgb(234,179,8)";
+        }
+        if (subEl) {
+          subEl.textContent = `of ${total} products`;
+        }
+      }
+
+      updateOperationalStats();
+
+    })();
+
+    // Ambient Pink Cursor Spotlight Follower (RiftCheats)
+    (function initCursorSpotlight() {
+      const spotlight = document.getElementById('pink-cursor-spotlight');
+      if (!spotlight) return;
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let currentX = mouseX;
+      let currentY = mouseY;
+      let isVisible = false;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!isVisible) {
+          isVisible = true;
+          spotlight.style.opacity = '1';
+        }
+      }, { passive: true });
+
+      document.addEventListener('mouseleave', () => {
+        spotlight.style.opacity = '0';
+        isVisible = false;
+      });
+
+      function render() {
+        currentX += (mouseX - currentX) * 0.12;
+        currentY += (mouseY - currentY) * 0.12;
+        spotlight.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
+    })();
+  </script>
+</body>
+</html>

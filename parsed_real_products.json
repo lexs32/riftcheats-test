@@ -1,0 +1,263 @@
+[
+  {
+    "id": "apex",
+    "title": "Krush Apex Legends",
+    "game": "Apex Legends",
+    "status": "Undetected",
+    "launcher": "Steam / EA App",
+    "image": "/assets/RIFT_KRUSH-D0l9rsBn.png",
+    "desc": "Krush Apex Legends delivers precision weapon automation, glow chams, item radar, and customizable smooth aim vectors.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "7.49"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "29.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "59.99"
+      }
+    ]
+  },
+  {
+    "id": "rust",
+    "title": "Krush Rust",
+    "game": "Rust",
+    "status": "Undetected",
+    "launcher": "Steam",
+    "image": "/assets/rift_rust1-BON31Td0.png",
+    "desc": "Krush Rust is engineered for server dominance with instant silent aim, full player ESP, construction ESP, and movement exploits.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "7.49"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "29.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "59.99"
+      }
+    ]
+  },
+  {
+    "id": "arc",
+    "title": "Krush Arc Raiders",
+    "game": "Arc Raiders",
+    "status": "Undetected",
+    "launcher": "Steam",
+    "image": "/assets/rift_arc-31eUfYH7.png",
+    "desc": "Kernel predictive aimbot, Loot Container ESP, 2D Box and custom FOV sliders built specifically for extraction raids.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "7.49"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "29.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "59.99"
+      }
+    ]
+  },
+  {
+    "id": "ancient_arc",
+    "title": "Ancient Arc Raiders",
+    "game": "Arc Raiders",
+    "status": "Undetected",
+    "launcher": "Steam",
+    "image": "/assets/ANCIENT_ARC.png",
+    "desc": "Ancient Arc Raiders delivers next-generation predictive combat assistance, full extraction loot radar, customizable bone skeleton ESP, and streamproof kernel security.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "9.99"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "34.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "64.99"
+      }
+    ]
+  },
+  {
+    "id": "r6",
+    "title": "Crusader R6",
+    "game": "Rainbow Six Siege",
+    "status": "Undetected",
+    "launcher": "Ubisoft Connect / Steam",
+    "image": "/assets/R6_CRUS-DKDRPM83.png",
+    "desc": "Operator ESP, gadget wallhacks, recoil mitigation, weapon modifier overlays, and streamproof rendering.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "7.49"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "29.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "59.99"
+      }
+    ]
+  },
+  {
+    "id": "fortnite",
+    "title": "Disconnect Fortnite",
+    "game": "Fortnite",
+    "status": "Undetected",
+    "launcher": "Epic Games Launcher",
+    "image": "/assets/fn_disc-DOAsaoXt.png",
+    "desc": "Soft Aimbot, Tournament Safe FOV, Distance Box & Skeleton ESP, chest loot highlights, and streamproof overlay.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "7.49"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "29.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "59.99"
+      },
+      {
+        "name": "Lifetime Key",
+        "price": "299.99"
+      }
+    ]
+  },
+  {
+    "id": "delta",
+    "title": "Ancient Delta Force",
+    "game": "Delta Force",
+    "status": "Undetected",
+    "launcher": "Steam / Level Infinite",
+    "image": "/assets/DELTA_ANC-DM8OteAt.png",
+    "desc": "2D Radar, Bone Skeleton ESP, Stream Proof ESP, Memory Aim, and auto loot collector.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "7.49"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "29.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "59.99"
+      }
+    ]
+  },
+  {
+    "id": "wardogs",
+    "title": "Krush Wardogs Internal",
+    "game": "Wardogs",
+    "status": "Undetected",
+    "launcher": "Steam",
+    "image": "/assets/wardogs.png",
+    "desc": "Krush Wardogs Internal provides weapon automation with smooth & silent aim, skeleton ESP, death loot body bag ESP, and custom tactical FOV controls.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "7.49"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "29.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "59.99"
+      }
+    ]
+  },
+  {
+    "id": "disconnect_wardogs",
+    "title": "Disconnect Wardogs",
+    "game": "Wardogs",
+    "status": "Undetected",
+    "launcher": "Steam",
+    "image": "/assets/disconnect_wardogs.png",
+    "desc": "Disconnect Wardogs delivers tournament-safe soft aimbot, full skeletal player ESP, death loot ESP, and clean streamproof security.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "7.49"
+      },
+      {
+        "name": "3 Day Key",
+        "price": "14.99"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "29.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "59.99"
+      }
+    ]
+  },
+  {
+    "id": "ancient_wardogs",
+    "title": "Ancient Wardogs",
+    "game": "Wardogs",
+    "status": "Undetected",
+    "launcher": "Steam",
+    "image": "/assets/ancient_wardogs.png",
+    "desc": "Ancient Wardogs offers kernel-mode predictive lead targeting, skeleton bone tracking, tactical loot radar, and complete streamproof evasion.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "9.99"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "34.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "64.99"
+      }
+    ]
+  },
+  {
+    "id": "arc_internal",
+    "title": "Krush Arc Raiders Internal",
+    "game": "Arc Raiders",
+    "status": "Undetected",
+    "launcher": "Steam",
+    "image": "/assets/krush_arc_internal.png",
+    "desc": "Krush Arc Raiders Internal delivers kernel-level predictive aimbot, full skeletal player bone ESP, high-tier loot container radar, extraction markers, and complete streamproof OBS security.",
+    "variants": [
+      {
+        "name": "1 Day Key",
+        "price": "9.99"
+      },
+      {
+        "name": "7 Day Key",
+        "price": "34.99"
+      },
+      {
+        "name": "30 Day Key",
+        "price": "69.99"
+      }
+    ]
+  }
+]
