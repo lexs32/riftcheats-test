@@ -414,7 +414,7 @@
         <div id="navUserProfile" class="hidden relative">
           <div class="flex items-center gap-2 bg-white/[0.04] border border-white/[0.08] hover:border-white/[0.18] rounded-full px-2.5 py-1 transition-all cursor-pointer shadow" onclick="toggleUserDropdown()" title="Manage Profile">
             <img id="navUserAvatar" src="assets/rc_logo.png" class="w-6 h-6 rounded-full object-cover border border-white/20" alt="Avatar">
-            <span class="text-xs font-semibold text-white hidden lg:inline" id="topUserDiscord">@.yvko</span>
+            <span class="text-xs font-semibold text-white hidden lg:inline" id="topUserDiscord">@user</span>
             <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-accent-pink/20 text-accent-pink border border-accent-pink/30 font-bold hidden sm:inline">VIP</span>
             <i class="fa-solid fa-chevron-down text-[10px] text-muted"></i>
           </div>
@@ -424,11 +424,11 @@
             <div class="flex items-center gap-3 border-b border-white/[0.08] pb-3">
               <img id="menuUserAvatar" src="assets/rc_logo.png" class="w-10 h-10 rounded-full border border-white/20 object-cover" alt="User">
               <div class="overflow-hidden">
-                <div class="text-xs font-bold text-white truncate" id="menuUserDisplayName">LexS</div>
-                <div class="text-[11px] text-muted font-mono truncate" id="menuUserTag">@.yvko</div>
+                <div class="text-xs font-bold text-white truncate" id="menuUserDisplayName">User</div>
+                <div class="text-[11px] text-muted font-mono truncate" id="menuUserTag">@user</div>
                 <div class="text-[10px] text-accent-pink font-mono flex items-center gap-1 cursor-pointer hover:underline" onclick="copyToClipboard(document.getElementById('menuUserId').textContent, 'Discord Snowflake ID copied!')" title="Click to copy Snowflake ID">
                   <i class="fa-brands fa-discord"></i>
-                  <span id="menuUserId">1283633559986503742</span>
+                  <span id="menuUserId">Unlinked</span>
                 </div>
               </div>
             </div>
@@ -489,11 +489,11 @@
         </div>
         <div>
           <div class="font-bold text-white flex items-center gap-2 flex-wrap" id="bannerTitle">
-            <span>Linked to Rift Bot (@.yvko • LexS)</span>
-            <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono">Customer Role Active</span>
+            <span>Client Area Portal</span>
+            <span class="px-2 py-0.5 rounded-full bg-white/10 text-gray-300 border border-white/20 text-[10px] font-mono">Live Telemetry</span>
           </div>
           <div class="text-[11px] text-muted mt-0.5" id="bannerSubtitle">
-            Connected to official guild <b>Rift Cheats</b> (363 members) • Database synchronized via Supabase.
+            Connect your Discord account to sync VIP roles and access software loaders.
           </div>
         </div>
       </div>
@@ -840,28 +840,6 @@
           Instantly connects your profile, verifies customer standing, and syncs VIP roles with Rift Bot.
         </p>
 
-        <!-- Fast Live Test Profile (Connected to Real Rift Bot) -->
-        <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] space-y-2">
-          <div class="text-[11px] font-bold text-gray-300 flex items-center justify-between">
-            <span>Fast Live Test Profile:</span>
-            <span class="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Bot Socket Ready
-            </span>
-          </div>
-          <button onclick="loginAsDemoUser()" class="w-full py-2.5 px-3 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] text-white flex items-center justify-between transition-all">
-            <div class="flex items-center gap-2.5">
-              <img src="https://cdn.discordapp.com/avatars/1283633559986503742/3a5b32d6c0bafe9066ca74aa3bcc8b03.webp" class="w-6 h-6 rounded-full border border-white/20" alt="LexS" onerror="this.src='assets/rc_logo.png'">
-              <div class="text-left">
-                <div class="font-bold text-white text-xs">LexS (@.yvko)</div>
-                <div class="text-[10px] text-muted font-mono">ID: 1283633559986503742</div>
-              </div>
-            </div>
-            <span class="text-xs text-accent-pink font-bold flex items-center gap-1">
-              <span>Connect</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </span>
-          </button>
-        </div>
-
         <!-- Email Sign In Option -->
         <div class="border-t border-white/[0.08] pt-3.5 space-y-2.5">
           <label class="block text-gray-400 font-semibold text-[11px]">Or sign in with Email / Customer ID</label>
@@ -979,20 +957,6 @@
       console.warn('[Supabase] Init error:', e);
     }
 
-    // Default Live Test Profile (LexS / @.yvko, connected to active Rift Bot)
-    const DEFAULT_USER = {
-      id: "1283633559986503742",
-      discordId: "1283633559986503742",
-      username: ".yvko",
-      displayName: "LexS",
-      email: "customer@riftcheats.com",
-      avatar: "https://cdn.discordapp.com/avatars/1283633559986503742/3a5b32d6c0bafe9066ca74aa3bcc8b03.webp",
-      inGuild: true,
-      hasCustomerRole: true,
-      tier: "VIP Lifetime Member",
-      hwid: "88F2-A901-C34E-0019"
-    };
-
     let currentUser = null;
     let currentCategory = 'all';
 
@@ -1069,20 +1033,26 @@
       // 1. Check for OAuth hash tokens (Discord or Supabase redirect)
       const handled = await handleOAuthRedirect();
       if (!handled) {
-        // Load saved session or initialize default live test profile
+        // Load saved session if exists
         const saved = localStorage.getItem('rift_client_session');
         if (saved) {
           try {
             currentUser = JSON.parse(saved);
           } catch {
-            currentUser = { ...DEFAULT_USER };
+            currentUser = null;
           }
         } else {
-          currentUser = { ...DEFAULT_USER };
+          currentUser = null;
         }
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('login') === 'discord') {
-          showToast(`Logged in via Discord as @${currentUser.username || 'user'}! Welcome back.`, "ok");
+          window.history.replaceState({}, document.title, window.location.pathname);
+          if (!currentUser) {
+            loginWithDiscord();
+            return;
+          } else {
+            showToast(`Connected as @${currentUser.username || 'user'}! Welcome back.`, "ok");
+          }
         }
       }
 
@@ -1251,21 +1221,8 @@
     function loginWithDiscord() {
       showToast("Redirecting to Discord Authorization...", "ok");
       const redirectUri = encodeURIComponent(window.location.origin + window.location.pathname);
-      const discordAuthUrl = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&response_type=token&scope=identify+email+guilds.join&redirect_uri=${redirectUri}`;
+      const discordAuthUrl = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&response_type=token&scope=identify+email&redirect_uri=${redirectUri}`;
       window.location.href = discordAuthUrl;
-    }
-
-    // Fast Test Login as Demo User (LexS / @.yvko)
-    async function loginAsDemoUser() {
-      currentUser = { ...DEFAULT_USER };
-      localStorage.setItem('rift_client_session', JSON.stringify(currentUser));
-      updateUserUI();
-      closeAuthModal();
-      showToast("Connected as LexS (@.yvko) • Synced with Rift Bot!", "ok");
-      
-      // Auto-sync with bot and load licenses
-      await syncWithBot(currentUser);
-      await fetchLicensesFromSupabase();
     }
 
     // Email Sign-In

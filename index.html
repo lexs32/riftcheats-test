@@ -2397,7 +2397,8 @@
     .best-seller-preview {
       position: relative;
       width: 100%;
-      height: 280px;
+      height: 220px;
+      aspect-ratio: 16 / 10;
       border-radius: 14px;
       overflow: hidden;
       background: radial-gradient(circle at center, #1e132b 0%, #0b0e17 100%);
@@ -2411,11 +2412,11 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      transform: scale(1.18);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: none;
+      transition: none;
     }
     .best-seller-card:hover .best-seller-preview img {
-      transform: scale(1.26);
+      transform: none;
     }
     .best-seller-btn,
     .product-card__btn {
@@ -3023,27 +3024,11 @@
        ARCTICCHEATS-STYLE ULTRA-CLEAN NAVBAR (Rift Cheats Parity)
        ==================================================================== -->
   <header class="site-header">
-    <!-- Left: Brand Logo & Online Counter -->
+    <!-- Left: Brand Logo -->
     <div class="header-lead">
       <a href="index.html" class="site-logo" aria-label="Rift Cheats Home">
         <img src="assets/rc_logo.png" alt="Rift Cheats" width="130" height="30">
       </a>
-
-      <!-- Online Now Badge Pill -->
-      <div class="online-now" aria-label="87 members online now" title="87 members online now">
-        <span class="online-now-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-        </span>
-        <span class="online-now-meta">
-          <span class="online-now-count" id="onlineNowCounter">87</span>
-          <span class="online-now-label">ONLINE</span>
-        </span>
-      </div>
     </div>
 
     <!-- Center: Main Navigation Links -->
@@ -3740,97 +3725,248 @@
   </section>
 
   <!-- ==========================================================================
-       6. WHY CHOOSE US (Featured Best Seller Flagship Showcase & Hypervisor Comparison)
+       6. WHY CHOOSE US (Bento Grid Architecture)
        ========================================================================== -->
-  <section id="why-choose-us" class="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8 relative z-10">
-    <div id="how-it-works" class="flex flex-col items-center framer-reveal mb-8">
-      <div class="flex flex-col items-center gap-2 px-4">
-        <h2 class="text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
-          <span class="text-accent-gradient">Why Choose Us</span>
-        </h2>
-        <p class="text-muted text-sm text-center max-w-lg mt-1">
-          Proven track record, unmatched protection, and reliable software.
-        </p>
+  <section id="why-choose-us" class="w-full relative z-20 py-20 flex flex-col items-center justify-center bg-transparent gap-8">
+    <div class="flex flex-col items-center justify-center text-center px-4 space-y-4 mb-4">
+      <div class="inline-flex items-center font-medium text-pink-400">
+        <p class="relative inline-block bg-[length:250%_100%,auto] bg-clip-text text-transparent [background-repeat:no-repeat,padding-box] [--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))] dark:[--bg:linear-gradient(90deg,#0000_calc(50%-var(--spread)),var(--base-gradient-color),#0000_calc(50%+var(--spread)))] text-lg sm:text-xl font-normal [--base-color:#ff2a85] [--base-gradient-color:#ffffff] dark:[--base-color:#ff2a85] dark:[--base-gradient-color:#ffffff]" style="--spread: 26px; background-image: var(--bg), linear-gradient(var(--base-color), var(--base-color)); background-position: 75.5% center;">Why Choose Us</p>
       </div>
+      <h2 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">Why should you choose us?</h2>
+      <p class="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed">We offer the best service in the industry. Our team is always available to help you with any issues you may have. We are here to make your life easier</p>
     </div>
 
-    <!-- Featured Best Seller Showcase (Exact Image 5 Parity) -->
-    <div class="framer-reveal mb-12">
-      <div class="rounded-3xl border border-pink-500/25 bg-gradient-to-br from-[#131124] via-[#0b0c16] to-[#07080f] shadow-[0_12px_45px_rgba(0,0,0,0.8),0_0_40px_rgba(255,42,133,0.12)] p-6 sm:p-10 relative overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          <!-- Left: Title, Description, Button -->
-          <div class="lg:col-span-5 flex flex-col items-start justify-center z-10">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold text-pink-400 bg-pink-500/15 border border-pink-500/35 tracking-wider shadow-[0_0_15px_rgba(255,42,133,0.25)] uppercase mb-4">
-              <i class="fa-solid fa-star text-[10px] text-pink-400"></i> BEST SELLER
-            </span>
-            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Krush Arc Raiders Internal
-            </h3>
-            <p class="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed">
-              Predictive Lead Aim, Full Skeleton ESP, Loot Container ESP &amp; Extraction Radar | Dominate Every Raid with Unmatched Precision.
-            </p>
-            <a href="product.html?id=arc" class="mt-6 inline-flex items-center gap-2 px-7 py-3 rounded-xl font-extrabold text-white text-sm bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-400 hover:to-pink-500 shadow-[0_0_25px_rgba(255,42,133,0.45)] hover:shadow-[0_0_35px_rgba(255,42,133,0.65)] hover:-translate-y-0.5 transition-all">
-              <span>VIEW PRODUCT</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </a>
-          </div>
-
-          <!-- Right: Visual Box Artwork with Undetected Badge -->
-          <div class="lg:col-span-7 relative rounded-2xl overflow-hidden border border-white/10 bg-radial from-[#221338] to-[#0a0c16] shadow-2xl flex items-center justify-center min-h-[280px] sm:min-h-[360px]">
-            <img src="assets/real/rift_arc-31eUfYH7.png" alt="Krush Arc Raiders Internal" class="w-full h-full object-cover object-center max-h-[380px] scale-105">
-            <!-- Undetected Badge -->
-            <div class="absolute top-4 right-4 z-10 pointer-events-none">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#10b981]/20 text-[#34d399] border border-[#10b981]/35 backdrop-blur-md shadow-lg">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span> UNDETECTED
-              </span>
+    <div class="container mx-auto px-4 sm:px-6 w-full flex justify-center">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-7xl">
+        
+        <!-- Card 1: Active Community -->
+        <div class="group relative overflow-hidden rounded-[24px] md:col-span-1 bg-[#0F0F14] border border-white/10 p-6 flex flex-col justify-end min-h-[350px]">
+          <div class="absolute inset-x-0 top-[0%] -bottom-[20%] flex items-center justify-center opacity-80 z-10 cursor-grab active:cursor-grabbing">
+            <div class="absolute inset-0 mx-auto aspect-square max-w-150 w-full h-full sm:w-[400px] sm:h-[400px]">
+              <canvas id="bento-community-canvas" class="size-full opacity-0 transition-opacity duration-500 contain-[layout_paint_size]" width="800" height="800" style="opacity: 1; cursor: grab;"></canvas>
             </div>
           </div>
-
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F14] via-[#0F0F14]/70 to-transparent z-20 pointer-events-none"></div>
+          <div class="relative z-30 pointer-events-none mt-auto">
+            <h3 class="text-xl font-semibold text-white mb-2">Active Community</h3>
+            <p class="text-neutral-400 text-sm">Join over 50k satisfied gamers and be part of our growing community</p>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="mt-8 framer-reveal">
-      <div class="mb-3 flex w-full flex-row items-center text-sm font-semibold text-muted">
-        <div class="w-1/2 text-center text-white/70">Non Cheat (Vanilla)</div>
-        <div class="w-1/2 text-center text-accent-start">With Cheat (Rift Vision)</div>
-      </div>
-
-      <div class="px-2 sm:px-4">
-        <div class="rounded-2xl border border-white/10 bg-white/5 shadow-2xl p-1 sm:p-2">
-          
-          <div id="comparisonContainer" class="overflow-hidden h-[280px] w-full md:h-[580px] rounded-xl select-none" style="position:relative;cursor:col-resize" role="slider" aria-label="Non Cheat and With Cheat comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-            
-            <!-- Draggable Comparison Handle Line & Knob -->
-            <div id="comparisonHandle" class="absolute top-0 z-40 m-auto h-full w-px bg-gradient-to-b from-transparent from-[5%] via-accent-start to-transparent to-[95%]" data-comparison-handle="" style="left: 50%; top: 0px;">
-              <div class="absolute top-1/2 left-0 z-20 h-full w-36 -translate-y-1/2 bg-gradient-to-r from-accent-start via-transparent to-transparent opacity-50 [mask-image:radial-gradient(100px_at_left,white,transparent)]"></div>
-              <div class="absolute top-1/2 left-0 z-10 h-1/2 w-10 -translate-y-1/2 bg-gradient-to-r from-accent-end via-transparent to-transparent opacity-100 [mask-image:radial-gradient(50px_at_left,white,transparent)]"></div>
-              <div class="absolute top-1/2 -right-10 h-3/4 w-10 -translate-y-1/2 [mask-image:radial-gradient(100px_at_left,white,transparent)]"><div class="h-full w-full opacity-0"></div></div>
-              
-              <!-- Circular Slider Knob with 3 dots -->
-              <div class="absolute top-1/2 -right-3 z-30 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-white text-black shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                  <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                  <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                </svg>
+        <!-- Card 2: Secure Payments -->
+        <div class="group relative overflow-hidden rounded-[24px] md:col-span-2 bg-[#0F0F14] border border-white/10 p-6 flex flex-col justify-end min-h-[350px]">
+          <div class="absolute inset-0 bg-gradient-to-br from-transparent to-[#0F0F14] z-10"></div>
+          <div class="absolute z-20 inset-x-0 top-4 bottom-16 p-6 overflow-hidden flex flex-col items-center justify-center gap-10 mask-fade-edges" style="mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);">
+            <div class="w-full flex overflow-hidden">
+              <div class="flex w-max animate-marquee hover:[animation-play-state:paused]">
+                <div class="flex shrink-0 items-center gap-16 px-8">
+                  <div class="flex items-center gap-16">
+                    <img alt="Visa" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Visa.svg">
+                    <img alt="Bitcoin" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/BitCoin.svg">
+                    <img alt="Paypal" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Paypal.svg">
+                    <img alt="MasterCard" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/MasterCard.svg">
+                  </div>
+                  <div class="flex items-center gap-16">
+                    <img alt="Visa" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Visa.svg">
+                    <img alt="Bitcoin" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/BitCoin.svg">
+                    <img alt="Paypal" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Paypal.svg">
+                    <img alt="MasterCard" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/MasterCard.svg">
+                  </div>
+                </div>
+                <div class="flex shrink-0 items-center gap-16 px-8">
+                  <div class="flex items-center gap-16">
+                    <img alt="Visa" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Visa.svg">
+                    <img alt="Bitcoin" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/BitCoin.svg">
+                    <img alt="Paypal" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Paypal.svg">
+                    <img alt="MasterCard" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/MasterCard.svg">
+                  </div>
+                  <div class="flex items-center gap-16">
+                    <img alt="Visa" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Visa.svg">
+                    <img alt="Bitcoin" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/BitCoin.svg">
+                    <img alt="Paypal" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Paypal.svg">
+                    <img alt="MasterCard" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/MasterCard.svg">
+                  </div>
+                </div>
               </div>
             </div>
-
-            <!-- Layer 1: BEFORE (Non Cheat) with dynamic clip-path -->
-            <div class="pointer-events-none relative z-20 h-full w-full overflow-hidden">
-              <div id="comparisonBeforeLayer" class="absolute inset-0 z-20 h-full w-full flex-shrink-0 overflow-hidden rounded-xl object-cover object-center select-none" data-comparison-layer="before" style="clip-path: inset(0px 50% 0px 0px);">
-                <img alt="Non cheat view" src="undetected in every way/before.webp" class="absolute inset-0 z-20 h-full w-full flex-shrink-0 rounded-xl object-cover object-center select-none" draggable="false">
+            <div class="w-full flex overflow-hidden">
+              <div class="flex w-max animate-marquee-reverse hover:[animation-play-state:paused]">
+                <div class="flex shrink-0 items-center gap-16 px-8">
+                  <div class="flex items-center gap-16">
+                    <img alt="Tron" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/tron.svg">
+                    <img alt="Ethereum" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/eth.svg">
+                    <img alt="Litecoin" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/litecoin.svg">
+                    <img alt="Monero" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Monero.svg">
+                  </div>
+                  <div class="flex items-center gap-16">
+                    <img alt="Tron" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/tron.svg">
+                    <img alt="Ethereum" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/eth.svg">
+                    <img alt="Litecoin" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/litecoin.svg">
+                    <img alt="Monero" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Monero.svg">
+                  </div>
+                </div>
+                <div class="flex shrink-0 items-center gap-16 px-8">
+                  <div class="flex items-center gap-16">
+                    <img alt="Tron" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/tron.svg">
+                    <img alt="Ethereum" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/eth.svg">
+                    <img alt="Litecoin" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/litecoin.svg">
+                    <img alt="Monero" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Monero.svg">
+                  </div>
+                  <div class="flex items-center gap-16">
+                    <img alt="Tron" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/tron.svg">
+                    <img alt="Ethereum" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/eth.svg">
+                    <img alt="Litecoin" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/litecoin.svg">
+                    <img alt="Monero" class="h-14 w-auto grayscale opacity-40 hover:!grayscale-0 hover:!opacity-100 transition-all duration-300 cursor-pointer" src="icons/Monero.svg">
+                  </div>
+                </div>
               </div>
             </div>
-
-            <!-- Layer 2: AFTER (With Cheat) -->
-            <img id="comparisonAfterLayer" class="absolute top-0 left-0 z-[19] h-full w-full rounded-xl object-cover object-center select-none" alt="With cheat view" src="undetected in every way/after.webp" data-comparison-layer="after" draggable="false">
-
           </div>
-
+          <div class="relative z-20 mt-auto">
+            <h3 class="text-xl font-semibold text-white mb-2">Secure Payments</h3>
+            <p class="text-neutral-400 text-sm">We use trusted payment gateways to ensure your transactions are safe</p>
+          </div>
         </div>
+
+        <!-- Card 3: Advanced Settings -->
+        <div class="group relative overflow-hidden rounded-[24px] md:col-span-2 bg-[#0F0F14] border border-white/10 p-6 flex flex-col min-h-[460px] sm:min-h-[380px]">
+          <div class="relative z-20 mb-auto pointer-events-none">
+            <h3 class="text-xl font-semibold text-white mb-2">Advanced Settings</h3>
+            <p class="text-neutral-400 text-sm max-w-[280px]">Customize your experience with our powerful configuration panel</p>
+          </div>
+          <div class="absolute -right-4 -bottom-4 sm:-right-8 sm:-bottom-8 w-[110%] sm:w-[500px] h-[340px] bg-[#111116] border border-white/5 rounded-tl-2xl rounded-tr-none rounded-b-none flex overflow-hidden z-20 pointer-events-auto opacity-70 group-hover:opacity-100 transition-all duration-500 hover:!opacity-100 group-hover:-translate-x-2 group-hover:-translate-y-2">
+            <div class="w-[120px] sm:w-[160px] bg-[#0F0F12] border-r border-white/5 flex flex-col gap-1 sm:gap-1.5 p-2 sm:p-3 shrink-0">
+              <button class="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg font-medium text-[12px] sm:text-[14px] transition-colors cursor-pointer text-left bg-[#1C1A24] text-pink-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye w-4 h-4 shrink-0"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <span class="truncate">Visuals</span>
+              </button>
+              <button class="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg font-medium text-[12px] sm:text-[14px] transition-colors cursor-pointer text-left text-neutral-400 hover:text-neutral-200 hover:bg-white/5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings w-4 h-4 shrink-0"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <span class="truncate">Settings</span>
+              </button>
+              <button class="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg font-medium text-[12px] sm:text-[14px] transition-colors cursor-pointer text-left text-neutral-400 hover:text-neutral-200 hover:bg-white/5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-4 h-4 shrink-0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span class="truncate">Players</span>
+              </button>
+              <button class="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg font-medium text-[12px] sm:text-[14px] transition-colors cursor-pointer text-left text-neutral-400 hover:text-neutral-200 hover:bg-white/5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target w-4 h-4 shrink-0"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                <span class="truncate">Gadgets</span>
+              </button>
+              <button class="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg font-medium text-[12px] sm:text-[14px] transition-colors cursor-pointer text-left text-neutral-400 hover:text-neutral-200 hover:bg-white/5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi w-4 h-4 shrink-0"><path d="M12 20h.01"></path><path d="M2 8.82a15 15 0 0 1 20 0"></path><path d="M5 12.859a10 10 0 0 1 14 0"></path><path d="M8.5 16.429a5 5 0 0 1 7 0"></path></svg>
+                <span class="truncate">Radar</span>
+              </button>
+            </div>
+            <div class="flex-1 flex flex-col bg-[#111116] p-5 sm:p-6 overflow-hidden">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h4 class="text-white font-semibold text-base sm:text-lg mb-0.5">Visuals</h4>
+                  <p class="text-neutral-400 text-xs sm:text-sm">Visual Effects</p>
+                </div>
+              </div>
+              <div class="h-px w-full bg-white/5 mb-5 shrink-0"></div>
+              <div class="grid grid-cols-2 gap-6 sm:gap-10 h-full overflow-hidden">
+                <div class="flex flex-col gap-4">
+                  <h5 class="text-neutral-200 font-semibold text-xs sm:text-sm mb-1">ESP Boxes</h5>
+                  <div class="flex items-center justify-between gap-2 group transition-opacity w-full cursor-pointer">
+                    <span class="text-[13px] leading-tight transition-colors flex-1 min-w-0 pr-2 break-words text-neutral-400 group-hover:text-neutral-200">2D Boxes</span>
+                    <div class="w-9 min-w-[36px] h-5 shrink-0 rounded-full border flex items-center p-[2px] relative transition-colors bg-[#ff2a85]/20 border-[#ff2a85]/40">
+                      <div class="w-3.5 h-3.5 shrink-0 rounded-full transition-all absolute left-[2px] bg-[#ff2a85] translate-x-[14px] shadow-[0_0_8px_rgba(255,42,133,0.7)]"></div>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between gap-2 group transition-opacity w-full cursor-pointer">
+                    <span class="text-[13px] leading-tight transition-colors flex-1 min-w-0 pr-2 break-words text-neutral-400 group-hover:text-neutral-200">3D Boxes</span>
+                    <div class="w-9 min-w-[36px] h-5 shrink-0 rounded-full border flex items-center p-[2px] relative transition-colors bg-[#ff2a85]/20 border-[#ff2a85]/40">
+                      <div class="w-3.5 h-3.5 shrink-0 rounded-full transition-all absolute left-[2px] bg-[#ff2a85] translate-x-[14px] shadow-[0_0_8px_rgba(255,42,133,0.7)]"></div>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between gap-2 group transition-opacity w-full cursor-pointer opacity-50 hover:opacity-100">
+                    <span class="text-[13px] leading-tight transition-colors flex-1 min-w-0 pr-2 break-words text-neutral-500">Corner Boxes</span>
+                    <div class="w-9 min-w-[36px] h-5 shrink-0 rounded-full border flex items-center p-[2px] relative transition-colors bg-white/5 border-white/10">
+                      <div class="w-3.5 h-3.5 shrink-0 rounded-full transition-all absolute left-[2px] bg-neutral-600 translate-x-0"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <h5 class="text-neutral-200 font-semibold text-xs sm:text-sm mb-1">Colors</h5>
+                  <div class="flex items-center justify-between gap-2 group transition-opacity w-full cursor-pointer opacity-75 hover:opacity-100">
+                    <span class="text-[13px] leading-tight transition-colors flex-1 min-w-0 pr-2 break-words text-neutral-400">Enemy Color</span>
+                    <div class="w-8 min-w-[32px] h-4 shrink-0 rounded md:rounded-md ring-1 ring-white/10 transition-colors bg-[#ff2a85] shadow-[0_0_8px_rgba(255,42,133,0.5)]"></div>
+                  </div>
+                  <div class="flex items-center justify-between gap-2 group transition-opacity w-full cursor-pointer opacity-75 hover:opacity-100">
+                    <span class="text-[13px] leading-tight transition-colors flex-1 min-w-0 pr-2 break-words text-neutral-400">Team Color</span>
+                    <div class="w-8 min-w-[32px] h-4 shrink-0 rounded md:rounded-md ring-1 ring-white/10 transition-colors bg-[#a855f7] shadow-[0_0_8px_rgba(168,85,247,0.5)]"></div>
+                  </div>
+                  <div class="flex items-center justify-between gap-2 group transition-opacity w-full cursor-pointer opacity-50 hover:opacity-100">
+                    <span class="text-[13px] leading-tight transition-colors flex-1 min-w-0 pr-2 break-words text-neutral-500">Skeleton Color</span>
+                    <div class="w-8 min-w-[32px] h-4 shrink-0 rounded md:rounded-md ring-1 ring-white/10 transition-colors bg-[#2A2A35] group-hover:bg-[#353542]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Notifications -->
+        <div class="group relative overflow-hidden rounded-[24px] md:col-span-1 bg-[#0F0F14] border border-white/10 p-6 flex flex-col justify-end min-h-[380px]">
+          <div class="absolute inset-x-0 top-0 h-[85%] p-6 flex flex-col justify-center gap-4 opacity-90 pointer-events-none overflow-hidden" style="mask-image: linear-gradient(white 60%, transparent 100%); -webkit-mask-image: linear-gradient(white 60%, transparent 100%);">
+            <div class="bg-[#1A1A22]/90 backdrop-blur-md border border-white/5 rounded-[16px] p-4 flex gap-3 items-center w-full shadow-2xl min-h-[70px]">
+              <div class="bg-[#ff2a85]/20 w-[42px] h-[42px] rounded-[12px] flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart w-[20px] h-[20px] text-[#ff2a85] opacity-90"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+              </div>
+              <div class="flex flex-col justify-center gap-1">
+                <p class="text-[14px] font-semibold text-white/95 leading-none">Order created <span class="text-neutral-500 text-[12px] font-medium ml-1">- 1 min ago</span></p>
+                <p class="text-[12px] text-neutral-400/90 leading-none">Your order is being processed instantly.</p>
+              </div>
+            </div>
+            <div class="bg-[#1A1A22]/90 backdrop-blur-md border border-white/5 rounded-[16px] p-4 flex gap-3 items-center w-full shadow-2xl min-h-[70px]" style="opacity: 0.7;">
+              <div class="bg-[#ff2a85]/20 w-[42px] h-[42px] rounded-[12px] flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-key w-[20px] h-[20px] text-[#ff2a85] opacity-90"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"></path><path d="m21 2-9.6 9.6"></path><circle cx="7.5" cy="15.5" r="5.5"></circle></svg>
+              </div>
+              <div class="flex flex-col justify-center gap-1">
+                <p class="text-[14px] font-semibold text-white/95 leading-none">Key delivered <span class="text-neutral-500 text-[12px] font-medium ml-1">- 1 min ago</span></p>
+                <p class="text-[12px] text-neutral-400/90 leading-none">Your key has been delivered instantly.</p>
+              </div>
+            </div>
+            <div class="bg-[#1A1A22]/90 backdrop-blur-md border border-white/5 rounded-[16px] p-4 flex gap-3 items-center w-full shadow-2xl min-h-[70px]" style="opacity: 0.35;">
+              <div class="bg-[#ff2a85]/20 w-[42px] h-[42px] rounded-[12px] flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus w-[20px] h-[20px] text-[#ff2a85] opacity-90"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" x2="19" y1="8" y2="14"></line><line x1="22" x2="16" y1="11" y2="11"></line></svg>
+              </div>
+              <div class="flex flex-col justify-center gap-1">
+                <p class="text-[14px] font-semibold text-white/95 leading-none">User registered <span class="text-neutral-500 text-[12px] font-medium ml-1">- 1 min ago</span></p>
+                <p class="text-[12px] text-neutral-400/90 leading-none">Instant access granted.</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative z-20 mt-auto bg-gradient-to-t from-[#0F0F14] via-[#0F0F14]/90 to-transparent pt-8">
+            <h3 class="text-xl font-semibold text-white mb-2">Notifications</h3>
+            <p class="text-neutral-400 text-sm">Get notified when something happens</p>
+          </div>
+        </div>
+
+        <!-- Card 5: 24/7 Support -->
+        <div class="group relative overflow-hidden rounded-[24px] md:col-span-3 bg-[#0F0F14] border border-white/10 p-6 flex flex-col items-center justify-center min-h-[260px]">
+          <div class="absolute inset-0" style="background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px); background-size: 24px 24px; mask-image: radial-gradient(100% 100%, black 30%, transparent 100%); -webkit-mask-image: radial-gradient(100% 100%, black 30%, transparent 100%);"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_#0F0F14_100%)] z-10 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#0F0F14] via-transparent to-[#0F0F14] opacity-90 z-10 pointer-events-none"></div>
+          <div class="relative z-20 text-center space-y-4 -mt-6">
+            <div class="flex flex-col items-center justify-center leading-none tracking-tighter mb-4 mt-2">
+              <span class="text-[70px] md:text-[80px] font-bold text-accent-gradient pb-3">24/7</span>
+              <span class="text-[24px] md:text-[28px] font-bold text-gray-300 -mt-2 tracking-[0.2em]">SUPPORT</span>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-4 mt-6 pb-2">
+              <a href="https://discord.gg/riftcheats" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-gradient-to-r from-[#ff2a85] to-[#c026d3] hover:from-[#ff4799] hover:to-[#d946ef] text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-[0_0_20px_rgba(255,42,133,0.35)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings w-4 h-4"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <span>Support Discord</span>
+              </a>
+              <a href="https://discord.gg/riftcheats" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 text-gray-300 px-6 py-2.5 rounded-lg text-sm font-medium transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-4 h-4"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                <span>Open Ticket</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -5589,6 +5725,104 @@
         requestAnimationFrame(render);
       }
       requestAnimationFrame(render);
+    })();
+
+    // 6. Bento Active Community Interactive 3D Particle Globe
+    (function initBentoGlobe() {
+      const canvas = document.getElementById("bento-community-canvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      const width = canvas.width = 800;
+      const height = canvas.height = 800;
+      const dots = [];
+      const DOT_COUNT = 300;
+      const RADIUS = 260;
+
+      for (let i = 0; i < DOT_COUNT; i++) {
+        const theta = Math.acos(2 * Math.random() - 1);
+        const phi = Math.random() * Math.PI * 2;
+        dots.push({
+          x: RADIUS * Math.sin(theta) * Math.cos(phi),
+          y: RADIUS * Math.sin(theta) * Math.sin(phi),
+          z: RADIUS * Math.cos(theta)
+        });
+      }
+
+      let rotX = 0.2;
+      let rotY = 0;
+      let velX = 0;
+      let velY = 0.004;
+      let isDragging = false;
+      let lastMouseX = 0;
+      let lastMouseY = 0;
+
+      const container = canvas.parentElement;
+      if (container) {
+        container.addEventListener("mousedown", (e) => {
+          isDragging = true;
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
+        });
+        window.addEventListener("mousemove", (e) => {
+          if (!isDragging) return;
+          const dx = e.clientX - lastMouseX;
+          const dy = e.clientY - lastMouseY;
+          velY = dx * 0.004;
+          velX = -dy * 0.004;
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
+        });
+        window.addEventListener("mouseup", () => {
+          isDragging = false;
+        });
+      }
+
+      function renderGlobe() {
+        ctx.clearRect(0, 0, width, height);
+        rotX += velX;
+        rotY += velY;
+        velX *= 0.95;
+        velY *= 0.95;
+        if (!isDragging) {
+          velY += 0.001;
+        }
+
+        const cx = width / 2;
+        const cy = height / 2;
+        const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+        const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+
+        const projected = dots.map(d => {
+          const x1 = d.x * cosY - d.z * sinY;
+          const z1 = d.x * sinY + d.z * cosY;
+          const y2 = d.y * cosX - z1 * sinX;
+          const z2 = d.y * sinX + z1 * cosX;
+
+          const fov = 650;
+          const scale = fov / (fov + z2 + 80);
+          const px = cx + x1 * scale;
+          const py = cy + y2 * scale;
+          const alpha = Math.max(0.15, Math.min(1, (z2 + RADIUS) / (2 * RADIUS)));
+
+          return { px, py, scale, alpha, z2 };
+        });
+
+        projected.sort((a, b) => a.z2 - b.z2);
+
+        for (let p of projected) {
+          ctx.beginPath();
+          ctx.arc(p.px, p.py, Math.max(1, p.scale * 3.4), 0, Math.PI * 2);
+          ctx.fillStyle = p.z2 > 0
+            ? `rgba(255, 42, 133, ${p.alpha * 0.9})`
+            : `rgba(168, 85, 247, ${p.alpha * 0.55})`;
+          ctx.fill();
+        }
+
+        requestAnimationFrame(renderGlobe);
+      }
+      renderGlobe();
     })();
   </script>
 
