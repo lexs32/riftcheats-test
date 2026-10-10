@@ -1048,7 +1048,6 @@
       if (p.includes('fortnite') || g.includes('fortnite')) return 'assets/real/fn_disc-DOAsaoXt.png';
       if (p.includes('delta') || g.includes('delta')) return 'assets/real/ancient_delta_transparent.png';
       if (p.includes('wardogs') || g.includes('wardogs')) return 'assets/real/ancient_wardogs_transparent.png';
-      if (p.includes('spoofer') || g.includes('spoofer') || p.includes('hwid')) return 'assets/real/spoofer_thumb.png';
       return 'assets/rc_logo.png';
     }
 
@@ -1080,6 +1079,10 @@
           }
         } else {
           currentUser = { ...DEFAULT_USER };
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('login') === 'discord') {
+          showToast(`Logged in via Discord as @${currentUser.username || 'user'}! Welcome back.`, "ok");
         }
       }
 

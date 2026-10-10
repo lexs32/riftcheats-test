@@ -2195,14 +2195,6 @@
                 <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </a>
-            <a href="store.html?game=spoofer" class="nav-mega-item" role="menuitem">
-              <span class="nav-mega-left">
-                <span class="nav-mega-name">HWID Spoofers</span>
-              </span>
-              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
-                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </a>
           </div>
         </div>
       </div>
@@ -2346,7 +2338,6 @@
           <div class="status-dd-option" data-value="Fortnite Products">Fortnite Products</div>
           <div class="status-dd-option" data-value="Delta Force Products">Delta Force Products</div>
           <div class="status-dd-option" data-value="Wardogs Products">Wardogs Products</div>
-          <div class="status-dd-option" data-value="Spoofer Products">Spoofer Products</div>
         </div>
       </div>
     </div>
@@ -2753,49 +2744,6 @@
         </div>
       </div>
 
-      <!-- GROUP 8: SPOOFER -->
-      <div class="status-group-section" data-group="Spoofer Products">
-        <div class="_3d7">
-          <span class="_6b1">Spoofer Products</span>
-          <div class="_a0a"></div>
-        </div>
-        <div class="cards-stack">
-
-          <!-- Rift Hypervisor Spoofer -->
-          <div class="status-card open" data-sc data-bar-status="undetected" data-operational="true" data-product="rift-spoofer">
-            <div class="sc-header">
-              <div class="_2x3">
-                <img src="assets/real/spoofer_thumb.png" alt="Rift Hypervisor Spoofer" onerror="this.src='assets/rc_logo.png'">
-              </div>
-              <span class="card-name">Rift Hypervisor Spoofer</span>
-              <div class="_8e1 sc-badge-green" title="Live status: Online">
-                <span class="_c4z"></span> Online
-              </div>
-              <svg class="_9hb" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </div>
-            <div class="_4vc">
-              <div class="_b1c">
-                <div class="_2tx">
-                  <div class="_nf9">
-                    <div class="_dhc" style="background:#2ecc71"></div>
-                    <a class="_3ok" href="index.html#products">Rift Hypervisor Spoofer</a>
-                    <span class="sc-uptime-pct" data-product="rift-spoofer">100.00% uptime</span>
-                  </div>
-                  <div class="uptime-history" data-product="rift-spoofer"></div>
-                  <div class="sc-time-axis">
-                    <span class="sc-bl-start">Sep 10</span>
-                    <span>Today</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
     </div>
 
   </main>
@@ -2910,7 +2858,7 @@
             bar.className = "ubar " + (barClassMap[status] || "ubar-green");
             bar.dataset.tipDate = `${dateStr} · ${times[c]}`;
             bar.dataset.tipColor = getColor(status);
-            bar.dataset.tipLabel = (status === "undetected" && productId === "rift-spoofer") ? "Online" : (labelMap[status] || status);
+            bar.dataset.tipLabel = labelMap[status] || status;
             track.appendChild(bar);
           }
         }
@@ -2920,7 +2868,7 @@
         liveBar.className = "ubar ubar-now " + (barClassMap[baseStatus] || "ubar-green");
         liveBar.dataset.tipDate = "Now · Live Checkpoint";
         liveBar.dataset.tipColor = getColor(baseStatus);
-        liveBar.dataset.tipLabel = (baseStatus === "undetected" && productId === "rift-spoofer") ? "Online" : (labelMap[baseStatus] || baseStatus);
+        liveBar.dataset.tipLabel = labelMap[baseStatus] || baseStatus;
         track.appendChild(liveBar);
 
         // Update exact uptime percentage text
@@ -3141,7 +3089,7 @@
             <div class="login-modal__separator-line"></div>
           </div>
 
-          <a class="login-modal__discord-btn" href="https://discord.gg/riftcheats" target="_blank">
+          <a class="login-modal__discord-btn" href="javascript:void(0)" onclick="loginWithDiscord()">
             <div class="login-modal__discord-icon" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
               <svg fill="#ffffff" height="18" viewBox="0 0 127.14 96.36" width="22" xmlns="http://www.w3.org/2000/svg">
                 <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.91,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.91,96.12,53,91.08,65.69,84.69,65.69Z"></path>

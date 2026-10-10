@@ -721,6 +721,12 @@ function filterGames(game, btn) {
 // 5. PRODUCT DETAIL MODAL (Image 2 Parity)
 // ==========================================================================
 function openProductDetail(productId) {
+  // If not on dedicated product.html page, redirect to the product's unique URL
+  if (!window.location.pathname.endsWith("product.html")) {
+    window.location.href = `product.html?id=${encodeURIComponent(productId)}`;
+    return;
+  }
+
   const prod = RIFT_PRODUCTS.find(p => p.id === productId) || RIFT_PRODUCTS[0];
   currentActiveProduct = prod;
   selectedVariantIndex = 0;
@@ -1026,33 +1032,11 @@ function updateCartUI() {
       </li>
     `;
 
-    const recHtml = `
-      <p class="cart-recs-title">Handpicked for you</p>
-      <div class="cart-rec">
-        <div class="cart-rec-media">
-          <img src="assets/real/Rust.png" alt="Trace 2.0 Spoofer" loading="lazy">
-        </div>
-        <div class="cart-rec-body">
-          <a href="store.html?game=spoofer" class="cart-rec-name">Trace 2.0 Spoofer</a>
-          <div class="cart-rec-meta">
-            <span>HWID Spoofer</span>
-            <span class="cart-rec-tag">Recommended</span>
-          </div>
-          <p class="cart-rec-desc">Hardware-level serial cloaking for permanent EAC &amp; BE bypass.</p>
-        </div>
-        <div class="cart-rec-action">
-          <span class="cart-rec-price">$4.99</span>
-          <button type="button" class="cart-rec-add" onclick="addRecommendedSpooferToCart()">+ Add</button>
-        </div>
-      </div>
-    `;
-
     container.innerHTML = `
       <ul class="cart-lines">
         ${linesHtml}
         ${freebieHtml}
       </ul>
-      ${recHtml}
     `;
   }
 
@@ -1106,32 +1090,6 @@ function closeCartDrawer() {
   if (!drawer) return;
   drawer.classList.remove("is-open");
   document.body.style.overflow = "";
-}
-
-function addRecommendedSpooferToCart() {
-  const existing = cart.find(i => i.id === "rift-spoofer" || (i.title && i.title.includes("Trace 2.0")));
-  if (existing) {
-    existing.quantity = (Number(existing.quantity) || 1) + 1;
-  } else {
-    cart.push({
-      sellAuthId: 740833,
-      sellAuthVariantId: 1210815,
-      productId: 740833,
-      variantId: 1210815,
-      id: "rift-spoofer",
-      prodId: "spoofer",
-      title: "Trace 2.0 Spoofer",
-      name: "Trace 2.0 Spoofer (HWID Bypass)",
-      tierName: "1-Day Cleanse",
-      price: 4.99,
-      quantity: 1,
-      img: "assets/real/Rust.png",
-      image: "assets/real/Rust.png"
-    });
-  }
-  localStorage.setItem('rift_cart', JSON.stringify(cart));
-  updateCartUI();
-  showToast("Added Trace 2.0 Spoofer to your cart!");
 }
 
 function proceedToSellAuthCheckout() {
@@ -1407,7 +1365,6 @@ function generateChatbotReply(prompt) {
     • <strong>Disconnect Fortnite:</strong> $7.49 (1-Day) · $29.99 (7-Day) · $59.99 (30-Day)<br>
     • <strong>Ancient Delta Force:</strong> $7.49 (1-Day) · $29.99 (7-Day) · $59.99 (30-Day)<br>
     • <strong>Wardogs Cheats:</strong> from $7.49<br>
-    • <strong>Trace 2.0 HWID Spoofer:</strong> $4.99<br>
     <button onclick="closeCartDrawer(); window.location.href='store.html'" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
       Browse All Cheats in Store &rarr;
     </button>`;
@@ -1423,8 +1380,7 @@ function generateChatbotReply(prompt) {
     4. <strong>Apex Legends</strong> (Krush Apex)<br>
     5. <strong>Fortnite</strong> (Disconnect Fortnite)<br>
     6. <strong>Delta Force</strong> (Ancient Delta)<br>
-    7. <strong>Wardogs</strong> (Internal, Disconnect, Ancient)<br>
-    Plus our <strong>Trace 2.0 Spoofer</strong> for permanent ban evasion.`;
+    7. <strong>Wardogs</strong> (Internal, Disconnect, Ancient)`;
   }
 
   // Rust
@@ -1503,13 +1459,12 @@ function generateChatbotReply(prompt) {
   }
 
   // Spoofer / HWID
-  if (q.includes("spoofer") || q.includes("hwid") || q.includes("ban") && q.includes("pc")) {
-    return `<strong>Trace 2.0 HWID Spoofer ($4.99):</strong><br>
-    • Cloaks BIOS serials, Disk GUIDs, NIC MAC addresses, and motherboard identifiers.<br>
-    • Cleanse takes 30 seconds before launching any game.<br>
-    • 100% compatible with EAC, BattlEye, and Ricochet anticheats.<br>
-    <button onclick="addRecommendedSpooferToCart()" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
-      + Add Trace 2.0 Spoofer to Cart ($4.99)
+  if (q.includes("spoofer") || q.includes("hwid")) {
+    return `<strong>Built-In Ring-0 Hypervisor Protection:</strong><br>
+    All Rift Cheats builds run directly with internal kernel cloaking, so you don't need a separate HWID spoofer.<br>
+    Our private loaders cloak hardware identifiers automatically at the hypervisor level.<br>
+    <button onclick="closeCartDrawer(); window.location.href='store.html'" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
+      Browse Undetected Cheats &rarr;
     </button>`;
   }
 
@@ -2003,4 +1958,18 @@ function handleQuickLogin(e) {
   setTimeout(() => {
     window.location.href = `client-area.html?email=${encodeURIComponent(email)}`;
   }, 800);
+}
+
+function loginWithDiscord() {
+  const btn = document.querySelector(".login-modal__discord-btn");
+  if (btn) {
+    btn.disabled = true;
+    btn.style.opacity = "0.75";
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Connecting Discord...';
+  }
+  showToast("Connecting with Discord to Client Area...", "ok");
+  sessionStorage.setItem('rift_auth_intent', 'discord');
+  setTimeout(() => {
+    window.location.href = `client-area.html?login=discord`;
+  }, 600);
 }
