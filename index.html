@@ -385,117 +385,1066 @@
       color: #fff;
     }
 
+    
     /* ==========================================================================
-       QARIN-STYLE FLOATING CAPSULE NAVBAR (No online pill)
-    /* ==========================================================================
-       FLOATING CAPSULE NAVBAR (Identical across Index, Status, Client Area)
+       ARCTICCHEATS-STYLE ULTRA-CLEAN NAVBAR
        ========================================================================== */
-    .capsule-navbar {
+    .site-header {
       position: sticky;
-      top: 16px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 68px;
+      background: rgba(9, 11, 16, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       z-index: 1000;
-      max-width: 1200px;
-      margin: 16px auto 0;
-      padding: 0 16px;
-    }
-    .capsule-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(10, 13, 22, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      padding: 0 24px;
+      transition: all 0.25s ease;
+    }
+    .header-lead {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .site-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .site-logo img {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(255, 42, 133, 0.3));
+    }
+    .online-now {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 10px;
       border-radius: 9999px;
-      padding: 8px 18px;
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      background: rgba(30, 232, 195, 0.06);
+      border: 1px solid rgba(30, 232, 195, 0.18);
+      user-select: none;
     }
-    .capsule-inner:hover {
-      border-color: rgba(255, 255, 255, 0.18);
+    .online-now-icon svg {
+      color: #1ee8c3;
+      display: block;
     }
-    .brand-logo-link {
+    .online-now-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      line-height: 1;
+    }
+    .online-now-count {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #1ee8c3;
+      font-family: var(--font-mono, monospace);
+    }
+    .online-now-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #8492a6;
+      text-transform: uppercase;
+    }
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+    .site-nav .nav-link {
+      color: #94a3b8;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .site-nav .nav-link:hover {
+      color: #ffffff;
+    }
+    .nav-dropdown {
+      position: relative;
+    }
+    .nav-dropdown-trigger {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+    .nav-dropdown-trigger:hover {
+      color: #ffffff;
+    }
+    .nav-dropdown-trigger .nav-caret {
+      transition: transform 0.2s ease;
+    }
+    .nav-dropdown:hover .nav-caret,
+    .nav-dropdown.is-open .nav-caret {
+      transform: rotate(180deg);
+    }
+    .nav-mega {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 580px;
+      background: #0d0f17;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 40px rgba(30, 232, 195, 0.05);
+      display: none;
+      z-index: 1050;
+      backdrop-filter: blur(20px);
+    }
+    .nav-dropdown:hover .nav-mega,
+    .nav-dropdown.is-open .nav-mega {
+      display: block;
+    }
+    .nav-mega-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 12px;
+    }
+    .nav-mega-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .nav-mega-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .nav-mega-left {
       display: flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
-      color: #fff;
     }
-    .brand-logo-img {
-      height: 32px;
-      width: auto;
-      filter: drop-shadow(0 0 10px rgba(255, 42, 133, 0.5));
+    .nav-mega-logo {
+      height: 18px;
+      max-width: 85px;
+      object-fit: contain;
     }
-    .nav-links {
+    .nav-mega-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+    .nav-mega-arrow {
+      color: #64748b;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    .nav-mega-item:hover .nav-mega-arrow {
+      color: #1ee8c3;
+      transform: translateX(3px);
+    }
+    .header-actions {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 12px;
     }
-    .nav-pill {
+    .header-action-btn {
+      background: none;
+      border: none;
       color: #94a3b8;
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 7px 14px;
-      border-radius: 9999px;
-      transition: all 0.2s ease;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+    .header-action-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .prefs-menu {
+      position: relative;
+    }
+    .prefs-button {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      border: 1px solid transparent;
-    }
-    .nav-pill:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.05);
-    }
-    .nav-pill.active {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: none;
-    }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .nav-btn-store {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      padding: 6px 12px;
+      color: #cbd5e1;
       font-size: 0.8rem;
       font-weight: 700;
-      padding: 7px 14px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .prefs-button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+    .prefs-panel {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      width: 250px;
+      background: #0d0f17;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+      display: none;
+      z-index: 1050;
+      backdrop-filter: blur(16px);
+    }
+    .prefs-panel.is-open {
+      display: flex;
+      gap: 10px;
+    }
+    .prefs-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .prefs-colhead {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #64748b;
+      padding: 4px 6px;
+    }
+    .prefs-sep {
+      width: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .lang-opt, .cur-opt {
+      width: 100%;
+      text-align: left;
+      padding: 6px 8px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: #94a3b8;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.15s ease;
+    }
+    .lang-opt:hover, .cur-opt:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+    .lang-opt.is-active, .cur-opt.is-active {
+      color: #1ee8c3;
+      background: rgba(30, 232, 195, 0.08);
+    }
+    .cart-button {
+      position: relative;
+    }
+    .cart-badge {
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      min-width: 17px;
+      height: 17px;
+      padding: 0 4px;
       border-radius: 9999px;
-      text-decoration: none;
-      transition: all 0.2s ease;
+      background: #1ee8c3;
+      color: #051a15;
+      font-size: 0.65rem;
+      font-weight: 900;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      border: 2px solid #090b10;
+      line-height: 1;
     }
-    .nav-btn-store:hover {
-      background: rgba(255, 255, 255, 0.12);
+    .btn-ghost {
+      background: transparent;
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 7px 16px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s ease;
     }
-    .nav-btn-portal {
-      background: linear-gradient(135deg, #ff2a85 0%, #db2777 100%);
-      color: #fff;
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    /* ==========================================================================
+       ARCTICCHEATS-STYLE CLEAN CART DRAWER
+       ========================================================================== */
+    .cart-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .cart-drawer-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .cart-backdrop-click {
+      position: absolute;
+      inset: 0;
+    }
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 440px;
+      background: #0d0f17;
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: -25px 0 60px rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 2001;
+    }
+    .cart-drawer-backdrop.is-open .cart-panel {
+      transform: translateX(0);
+    }
+    .cart-header {
+      padding: 22px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-header h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .cart-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .cart-close:hover {
+      background: rgba(255, 255, 255, 0.09);
+      color: #ffffff;
+    }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cart-empty {
+      padding: 50px 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cart-empty-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .cart-empty-desc {
+      font-size: 0.88rem;
+      color: #8492a6;
+      max-width: 290px;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .cart-empty .btn-primary {
+      background: #1ee8c3;
+      color: #051a15;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 12px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(30, 232, 195, 0.35);
+      transition: all 0.2s ease;
+      display: inline-block;
+    }
+    .cart-empty .btn-primary:hover {
+      background: #19d6b4;
+      transform: translateY(-1px);
+    }
+    .cart-lines {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cart-line {
+      background: #121520;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      gap: 14px;
+      position: relative;
+      align-items: flex-start;
+    }
+    .cart-line-media {
+      width: 58px;
+      height: 58px;
+      border-radius: 10px;
+      background: #181c2b;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cart-line-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cart-line-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-line-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+      padding-right: 20px;
+    }
+    .cart-line-variant {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #8492a6;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 3px;
+    }
+    .cart-line-price {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ffffff;
+      font-family: var(--font-mono, monospace);
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+    .cart-qty {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      width: fit-content;
+    }
+    .cart-qty-button {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      padding: 4px 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .cart-qty-button:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+    .cart-qty-button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .cart-qty-value {
+      padding: 0 8px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #ffffff;
+      font-family: var(--font-mono, monospace);
+    }
+    .cart-line-remove {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #64748b;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 6px;
+      transition: color 0.15s ease;
+    }
+    .cart-line-remove:hover {
+      color: #ef4444;
+    }
+    .cart-line.is-free {
+      background: #121520;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      align-items: center;
+    }
+    .cart-line-media-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+    .cart-line-desc {
+      font-size: 0.74rem;
+      color: #8492a6;
+      margin-top: 2px;
+    }
+    .cart-line-price-free {
       font-size: 0.8rem;
       font-weight: 800;
-      padding: 7px 16px;
-      border-radius: 9999px;
+      color: #1ee8c3;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0;
+    }
+    .cart-recs-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    .cart-rec {
+      background: #121520;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .cart-rec-media {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: #181c2b;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .cart-rec-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cart-rec-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .cart-rec-name {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #ffffff;
       text-decoration: none;
-      transition: all 0.2s ease;
-      display: inline-flex;
+    }
+    .cart-rec-meta {
+      display: flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #8492a6;
+      margin-top: 2px;
+    }
+    .cart-rec-tag {
+      background: rgba(30, 232, 195, 0.12);
+      color: #1ee8c3;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.64rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .cart-rec-desc {
+      font-size: 0.72rem;
+      color: #8492a6;
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+    .cart-rec-action {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .cart-rec-price {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #ffffff;
+      font-family: var(--font-mono, monospace);
+    }
+    .cart-rec-add {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .cart-rec-add:hover {
+      background: #1ee8c3;
+      color: #051a15;
+      border-color: #1ee8c3;
+    }
+    .cart-footer {
+      padding: 20px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      background: #0a0c13;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cart-subtotal-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-subtotal-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #8492a6;
+      margin: 0;
+    }
+    .cart-subtotal {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #ffffff;
+      font-family: var(--font-mono, monospace);
+      margin: 0;
+    }
+    .cart-delivery-note {
+      font-size: 0.8rem;
+      color: #8492a6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 0;
+    }
+    .cart-delivery-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      display: inline-block;
+    }
+    .cart-checkout-btn {
+      width: 100%;
+      background: #1ee8c3;
+      color: #051a15;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      padding: 14px 20px;
+      border-radius: 14px;
       border: none;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 25px rgba(30, 232, 195, 0.35);
+      transition: all 0.2s ease;
     }
-    .nav-btn-portal:hover {
+    .cart-checkout-btn:hover {
+      background: #19d6b4;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 6px 30px rgba(30, 232, 195, 0.45);
     }
+    .cart-card-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0.75;
+    }
+
+    /* ==========================================================================
+       RIFT CHEATS AI BOT WIDGET (LiveChat-Inspired with Cool Animation)
+       ========================================================================== */
+    .rift-ai-widget {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 1500;
+      font-family: var(--font-manrope, sans-serif);
+    }
+    .rift-chat-launcher {
+      background: rgba(13, 15, 23, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 42, 133, 0.25);
+      border-radius: 9999px;
+      padding: 8px 16px 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .rift-chat-launcher:hover {
+      border-color: rgba(255, 42, 133, 0.45);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 42, 133, 0.4);
+    }
+    .launcher-avatar {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 42, 133, 0.12);
+      border: 1px solid rgba(255, 42, 133, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .launcher-logo-img {
+      height: 18px;
+      width: auto;
+      object-fit: contain;
+    }
+    .launcher-pulse-dot {
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #1ee8c3;
+      border: 2px solid #0d0f17;
+      box-shadow: 0 0 8px #1ee8c3;
+      animation: pulseLive 2s infinite;
+    }
+    @keyframes pulseLive {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.9); }
+    }
+    .launcher-label {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    /* Expanded Chat Window */
+    .rift-chat-window {
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+      width: 360px;
+      max-width: calc(100vw - 32px);
+      height: 520px;
+      max-height: calc(100vh - 100px);
+      background: #0d0f17;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 42, 133, 0.15);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      animation: chatPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .rift-chat-window.is-open {
+      display: flex;
+    }
+    @keyframes chatPop {
+      from { opacity: 0; transform: translateY(16px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .rift-chat-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .rift-chat-head-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .rift-chat-logo-wrap {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(255, 42, 133, 0.12);
+      border: 1px solid rgba(255, 42, 133, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rift-chat-logo-wrap img {
+      height: 18px;
+      width: auto;
+    }
+    .online-indicator {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1ee8c3;
+      border: 1.5px solid #0d0f17;
+    }
+    .rift-chat-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+    .rift-chat-status {
+      font-size: 0.7rem;
+      color: #8492a6;
+      font-weight: 600;
+    }
+    .rift-chat-close-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .rift-chat-close-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+    .rift-chat-stream {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .rift-msg {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 88%;
+      animation: msgFade 0.2s ease;
+    }
+    @keyframes msgFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .rift-msg.bot {
+      align-self: flex-start;
+    }
+    .rift-msg.user {
+      align-self: flex-end;
+    }
+    .msg-bubble {
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+    .rift-msg.bot .msg-bubble {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      border-bottom-left-radius: 4px;
+    }
+    .rift-msg.user .msg-bubble {
+      background: linear-gradient(135deg, #ff2a85 0%, #ec4899 100%);
+      color: #ffffff;
+      font-weight: 600;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 4px 15px rgba(255, 42, 133, 0.3);
+    }
+    .quick-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 4px;
+    }
+    .quick-chip {
+      background: rgba(30, 232, 195, 0.08);
+      border: 1px solid rgba(30, 232, 195, 0.22);
+      color: #1ee8c3;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .quick-chip:hover {
+      background: #1ee8c3;
+      color: #051a15;
+    }
+
+    /* Neural Wave Loading Animation */
+    .rift-neural-anim {
+      padding: 10px 16px;
+      background: rgba(255, 42, 133, 0.06);
+      border-top: 1px solid rgba(255, 42, 133, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .neural-pulse-bars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 14px;
+    }
+    .neural-pulse-bars span {
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to top, #ff2a85, #1ee8c3);
+      border-radius: 2px;
+      animation: barJump 0.8s ease-in-out infinite;
+    }
+    .neural-pulse-bars span:nth-child(1) { animation-delay: 0.1s; }
+    .neural-pulse-bars span:nth-child(2) { animation-delay: 0.25s; }
+    .neural-pulse-bars span:nth-child(3) { animation-delay: 0.4s; }
+    .neural-pulse-bars span:nth-child(4) { animation-delay: 0.55s; }
+    .neural-pulse-bars span:nth-child(5) { animation-delay: 0.7s; }
+    @keyframes barJump {
+      0%, 100% { transform: scaleY(0.25); }
+      50% { transform: scaleY(1); }
+    }
+    .neural-text {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #ff529a;
+      letter-spacing: 0.02em;
+    }
+
+    /* LiveChat-Style Input Bar */
+    .rift-chat-input-bar {
+      padding: 10px 14px;
+      background: #0a0c13;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .rift-input-form {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 4px 6px 4px 14px;
+      transition: all 0.2s ease;
+    }
+    .rift-input-form:focus-within {
+      border-color: #ff2a85;
+      box-shadow: 0 0 15px rgba(255, 42, 133, 0.2);
+    }
+    .rift-input-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 0.82rem;
+      padding: 6px 0;
+    }
+    .rift-input-form input::placeholder {
+      color: #64748b;
+    }
+    .rift-send-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: #ff2a85;
+      border: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+    .rift-send-btn:hover {
+      background: #ff4799;
+      transform: scale(1.05);
+    }
+    .rift-send-btn:active {
+      transform: scale(0.95);
+    }
+
     .qarin-search-pill {
       display: flex;
       align-items: center;
@@ -1812,42 +2761,245 @@
   <div id="pink-cursor-spotlight" class="pointer-events-none fixed top-0 left-0 w-[550px] h-[550px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[30px] opacity-0 transition-opacity duration-300 z-[9999]" style="background: radial-gradient(circle, rgba(255, 42, 133, 0.13) 0%, rgba(168, 85, 247, 0.05) 45%, transparent 70%); will-change: transform;"></div>
 
   <!-- FLOATING CAPSULE NAVBAR (Identical across Index, Status, Client Area) -->
-  <header class="capsule-navbar">
-    <div class="capsule-inner">
-      
-      <!-- Authentic RiftCheats Brand Logo -->
-      <a href="index.html" class="brand-logo-link" style="display:flex; align-items:center;" title="RiftCheats">
-        <img src="assets/rc_logo.png" alt="RiftCheats" class="brand-logo-img">
+    <!-- ====================================================================
+       ARCTICCHEATS-STYLE ULTRA-CLEAN NAVBAR (Rift Cheats Parity)
+       ==================================================================== -->
+  <header class="site-header">
+    <!-- Left: Brand Logo & Online Counter -->
+    <div class="header-lead">
+      <a href="index.html" class="site-logo" aria-label="Rift Cheats Home">
+        <img src="assets/rc_logo.png" alt="Rift Cheats" width="130" height="30">
       </a>
 
-      <!-- Center Menu Links with FontAwesome Icons -->
-      <nav class="nav-links hidden md:flex">
-        <a href="#products" class="nav-pill active"><i class="fa-solid fa-store"></i> Store</a>
-        <a href="status.html" class="nav-pill"><i class="fa-solid fa-signal"></i> Live Status</a>
-        <a href="#reviews" class="nav-pill"><i class="fa-solid fa-comments"></i> Reviews</a>
-        <a href="#faq" class="nav-pill"><i class="fa-solid fa-circle-question"></i> FAQ</a>
-        <a href="https://discord.gg/riftcheats" target="_blank" class="nav-pill"><i class="fa-brands fa-discord"></i> Discord</a>
-      </nav>
+      <!-- Online Now Badge Pill -->
+      <div class="online-now" aria-label="87 members online now" title="87 members online now">
+        <span class="online-now-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </span>
+        <span class="online-now-meta">
+          <span class="online-now-count" id="onlineNowCounter">87</span>
+          <span class="online-now-label">ONLINE</span>
+        </span>
+      </div>
+    </div>
 
-      <!-- Right Action Controls -->
-      <div class="nav-actions">
-        <button class="qarin-search-pill hidden sm:flex" onclick="openSearch()">
-          <i class="fa-solid fa-magnifying-glass text-muted text-xs"></i>
-          <span>Search...</span>
-          <span class="search-kbd">Ctrl+K</span>
+    <!-- Center: Main Navigation Links -->
+    <nav class="site-nav hidden lg:flex" aria-label="Primary">
+      <a href="#undetected" class="nav-link">Undetectability</a>
+
+      <!-- Cheats Dropdown with Mega Menu -->
+      <div class="nav-dropdown" id="navCheatsDropdown">
+        <button type="button" class="nav-link nav-dropdown-trigger" onclick="toggleCheatsDropdown(event)" aria-haspopup="true" aria-expanded="false">
+          <span>Cheats</span>
+          <svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
         </button>
 
-        <button class="qarin-icon-btn" onclick="toggleCartDrawer()" title="View Cart">
-          <i class="fa-solid fa-cart-shopping text-sm"></i>
-          <span class="cart-badge" id="cartCountBadge">0</span>
-        </button>
+        <!-- Mega Menu Dropdown -->
+        <div class="nav-mega" id="navMegaMenu" role="menu" aria-label="Games we sell">
+          <div class="nav-mega-grid">
+            <!-- Column 1 -->
+            <a href="store.html?game=arc-raiders" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <img class="nav-mega-logo" src="GLogos/ARC Raiders.svg" alt="Arc Raiders" height="20">
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=siege" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <img class="nav-mega-logo" src="GLogos/Rainbow Six Siege.svg" alt="Rainbow Six Siege" height="20">
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=wardogs" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <span class="nav-mega-name">Wardogs</span>
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=cod" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <span class="nav-mega-name">BO7 &amp; Warzone</span>
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=mw3" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <span class="nav-mega-name">Modern Warfare 3/4</span>
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=apex" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <img class="nav-mega-logo" src="GLogos/Apex Legends.svg" alt="Apex Legends" height="20">
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=fortnite" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <img class="nav-mega-logo" src="GLogos/Fortnite.svg" alt="Fortnite" height="20">
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=delta" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <img class="nav-mega-logo" src="GLogos/Delta Force.svg" alt="Delta Force" height="20">
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
 
-        <a href="client-area.html" class="nav-btn-portal">
-          <i class="fa-solid fa-user-shield"></i>
-          <span>Client Area</span>
-        </a>
+            <!-- Column 2 -->
+            <a href="store.html?game=rust" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <img class="nav-mega-logo" src="GLogos/Rust.svg" alt="Rust" height="20">
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=spoofer" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <span class="nav-mega-name">HWID Spoofers</span>
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=rivals" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <span class="nav-mega-name">Marvel Rivals</span>
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=pubg" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <img class="nav-mega-logo" src="GLogos/PUBG.svg" alt="PUBG" height="20">
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=cs2" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <img class="nav-mega-logo" src="GLogos/Counter Strike.svg" alt="Counter Strike 2" height="20">
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=valorant" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <span class="nav-mega-name">Valorant</span>
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="store.html?game=tarkov" class="nav-mega-item" role="menuitem">
+              <span class="nav-mega-left">
+                <span class="nav-mega-name">Escape From Tarkov</span>
+              </span>
+              <svg class="nav-mega-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                <path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
 
+      <a href="#reviews" class="nav-link">Reviews</a>
+      <a href="status.html" class="nav-link">Status</a>
+      <a href="javascript:void(0)" onclick="toggleRiftAiChat()" class="nav-link">Support</a>
+    </nav>
+
+    <!-- Right: Search, Language/Currency, Cart, Login, Mobile Toggle -->
+    <div class="header-actions">
+      <!-- Search Button -->
+      <button type="button" class="header-action-btn" onclick="openSearch()" aria-label="Search" title="Search (Ctrl+K)">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path>
+        </svg>
+      </button>
+
+      <!-- Language & Currency Selector -->
+      <div class="prefs-menu" id="prefsMenu">
+        <button type="button" class="prefs-button" onclick="togglePrefsMenu(event)" aria-expanded="false" aria-haspopup="true" aria-label="Change language or currency">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18"></path>
+            <path d="M12 3a13.5 13.5 0 0 1 0 18a13.5 13.5 0 0 1 0-18"></path>
+          </svg>
+          <span class="prefs-lang" id="prefsLangLabel">EN</span>
+          <span class="prefs-dot" aria-hidden="true">·</span>
+          <span class="prefs-cur" id="prefsCurLabel">$</span>
+          <span class="prefs-caret" aria-hidden="true">
+            <svg viewBox="0 0 12 8" width="8" height="6" fill="none"><path d="M1 1.75 6 6.25l5-4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span>
+        </button>
+
+        <!-- Dropdown panel -->
+        <div id="prefsPanel" class="prefs-panel" role="menu">
+          <div class="prefs-col">
+            <div class="prefs-colhead">Language</div>
+            <button type="button" class="lang-opt is-active" onclick="setLanguage('EN')"><span>English</span> <span class="chk">✓</span></button>
+            <button type="button" class="lang-opt" onclick="setLanguage('DE')"><span>Deutsch</span></button>
+            <button type="button" class="lang-opt" onclick="setLanguage('RU')"><span>Русский</span></button>
+            <button type="button" class="lang-opt" onclick="setLanguage('ES')"><span>Español</span></button>
+            <button type="button" class="lang-opt" onclick="setLanguage('FR')"><span>Français</span></button>
+          </div>
+          <div class="prefs-sep"></div>
+          <div class="prefs-col">
+            <div class="prefs-colhead">Currency</div>
+            <button type="button" class="cur-opt is-active" onclick="setCurrency('USD', '$')"><span>USD ($)</span> <span class="chk">✓</span></button>
+            <button type="button" class="cur-opt" onclick="setCurrency('EUR', '€')"><span>EUR (€)</span></button>
+            <button type="button" class="cur-opt" onclick="setCurrency('GBP', '£')"><span>GBP (£)</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart Button -->
+      <button type="button" class="cart-button header-action-btn" onclick="openCartDrawer()" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-badge" id="cartBadgeCount" style="display: none;">0</span>
+      </button>
+
+      <!-- Login Ghost Button -->
+      <a href="client-area.html" class="btn-ghost">Login</a>
+
+      <!-- Mobile Hamburger Button -->
+      <button type="button" class="lg:hidden header-action-btn" onclick="toggleMobileNav()" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
     </div>
   </header>
 
@@ -2365,9 +3517,7 @@
           <span>Best Sellers</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/40 ml-0.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </div>
-        <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
-          <span class="text-accent-gradient">Best Seller</span> Cheats
-        </h2>
+        <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl text-white"><span class="text-accent-gradient">Best</span> Sellers</h2>
         <p class="mt-2 text-muted text-sm max-w-lg">
           Our top 3 flagship private tournament builds with 100% undetected records and instant automated key delivery.
         </p>
@@ -2840,72 +3990,55 @@
   <!-- ====================================================================
        AUTHENTIC SELLAUTH SHOPPING CART DRAWER (D:\ef\riftcheats Parity)
        ==================================================================== -->
-  <div id="cart-drawer" class="fixed inset-0 z-[100] hidden">
-    <!-- Backdrop with smooth fade -->
-    <div onclick="closeCartDrawer()" class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity"></div>
+    <!-- ====================================================================
+       ARCTICCHEATS-STYLE ULTRA-CLEAN CART DRAWER
+       ==================================================================== -->
+  <div id="cart-drawer" class="cart-drawer-backdrop" aria-hidden="true">
+    <!-- Click backdrop to close -->
+    <div class="cart-backdrop-click" onclick="closeCartDrawer()"></div>
 
-    <div class="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
-      <div id="cart-drawer-panel" class="cart-panel-inner w-screen max-w-md bg-[#090d18]/95 backdrop-blur-2xl border-l border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.9)] flex flex-col justify-between relative transform transition-transform duration-300 ease-in-out translate-x-full">
-        
-        <!-- Drawer Top Header -->
-        <div class="p-5 sm:p-6 border-b border-white/10 flex items-center justify-between bg-gradient-to-r from-[#121624] via-[#0f1322] to-[#161a2c]">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-pink-500/15 border border-pink-500/30 flex items-center justify-center text-pink-400 shadow-[0_0_12px_rgba(236,72,153,0.3)]">
-              <i class="fa-solid fa-bag-shopping text-base"></i>
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <h2 class="text-base font-extrabold text-white tracking-tight">Shopping Cart</h2>
-                <span id="cartDrawerCountBadge" class="px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-400 text-[10px] font-bold border border-pink-500/30">0 items</span>
-              </div>
-              <p class="text-xs text-slate-400">Instant Automated Key Delivery</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <button onclick="clearCart()" id="cart-clear-btn" class="text-[11px] text-slate-400 hover:text-red-400 px-2 py-1 rounded-lg hover:bg-white/5 transition-all cursor-pointer" title="Clear Cart">
-              <i class="fa-solid fa-trash-can mr-1"></i> Clear
-            </button>
-            <button onclick="closeCartDrawer()" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 hover:text-white transition-all cursor-pointer" title="Close Cart">
-              <i class="fa-solid fa-xmark text-sm"></i>
-            </button>
-          </div>
+    <div class="cart-panel" id="cart-drawer-panel">
+      <!-- Cart Header -->
+      <div class="cart-header">
+        <h2>Your cart</h2>
+        <button type="button" class="cart-close" onclick="closeCartDrawer()" aria-label="Close cart">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Cart Body: Items list or Empty State -->
+      <div class="cart-items custom-scrollbar" id="cart-items-container">
+        <!-- Rendered dynamically by updateCartUI() in rift.js -->
+      </div>
+
+      <!-- Cart Footer -->
+      <div class="cart-footer" id="cart-footer-container">
+        <div class="cart-subtotal-row">
+          <p class="cart-subtotal-label">Subtotal</p>
+          <p class="cart-subtotal"><span id="cart-total-price">$0.00</span></p>
         </div>
 
-        <!-- Items Container -->
-        <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-3 custom-scrollbar">
-          <!-- Populated dynamically via updateCartUI() -->
+        <p class="cart-delivery-note">
+          <span class="cart-delivery-dot" aria-hidden="true"></span>
+          Instant delivery
+        </p>
+
+        <button type="button" id="drawer-checkout-btn" onclick="proceedToSellAuthCheckout()" class="cart-checkout-btn">
+          <svg class="cart-lock" id="checkoutLockIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span id="checkoutBtnText">Start Secure Checkout</span>
+        </button>
+
+        <div class="cart-card-logos" aria-label="Accepted cards">
+          <img src="home/payments/pay-01.svg" alt="Visa" width="34" height="22" loading="lazy">
+          <img src="home/payments/pay-02.svg" alt="Mastercard" width="34" height="22" loading="lazy">
+          <img src="home/payments/pay-03.svg" alt="American Express" width="34" height="22" loading="lazy">
+          <img src="home/payments/pay-04.svg" alt="Discover" width="34" height="22" loading="lazy">
         </div>
-
-        <!-- Drawer Footer Checkout Area -->
-        <div class="p-5 sm:p-6 border-t border-white/10 bg-[#06080e]/95 space-y-4">
-          <div class="space-y-2">
-            <div class="flex items-center justify-between text-xs text-slate-400">
-              <span>Delivery Status</span>
-              <span class="text-emerald-400 font-medium font-mono flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Instant Automated
-              </span>
-            </div>
-            <div class="flex items-center justify-between text-xs text-slate-400">
-              <span>Payment Gateway</span>
-              <span class="text-pink-400 font-medium flex items-center gap-1">
-                <i class="fa-solid fa-shield-halved text-pink-400"></i> SellAuth Modal
-              </span>
-            </div>
-            <div class="pt-2 border-t border-white/10 flex items-center justify-between text-base font-extrabold text-white">
-              <span>Total Due:</span>
-              <span id="cart-total-price" class="text-pink-400 font-mono text-xl font-bold">$0.00</span>
-            </div>
-          </div>
-
-          <button id="drawer-checkout-btn" onclick="proceedToSellAuthCheckout()" class="w-full py-3.5 px-6 rounded-xl bg-pink-500 hover:bg-pink-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(236,72,153,0.4)] flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99]">
-            <i class="fa-solid fa-bolt text-xs"></i> Checkout with SellAuth &rarr;
-          </button>
-
-          <p class="text-[11px] text-center text-slate-500">
-            Cards, Crypto (BTC, LTC, ETH, USDT) & CashApp supported.
-          </p>
-        </div>
-
       </div>
     </div>
   </div>
@@ -3156,64 +4289,77 @@
   </div>
 
   <!-- 24/7 AI Support Chatbot Widget -->
-  <div id="riftChatbotWidget">
-    
-    <!-- Floating Launcher Pill -->
-    <div class="chatbot-launcher" onclick="toggleChatbot()" title="Open 24/7 AI Support">
-      <div class="w-2.5 h-2.5 rounded-full bg-ok animate-pulse"></div>
-      <img src="assets/rc_logo.png" alt="Rift AI" style="height:18px; width:auto;">
-      <span class="text-xs font-bold">24/7 Rift AI</span>
-    </div>
+    <!-- ====================================================================
+       RIFT CHEATS AI BOT WIDGET (LiveChat-Inspired with Cool Neural Animation)
+       ==================================================================== -->
+  <div id="riftAiChatWidget" class="rift-ai-widget">
+    <!-- Floating Launcher Bubble -->
+    <button type="button" class="rift-chat-launcher" onclick="toggleRiftAiChat()" aria-label="Open Rift AI Support" id="riftChatLauncherBtn">
+      <div class="launcher-avatar">
+        <img src="assets/rc_logo.png" alt="Rift AI" class="launcher-logo-img">
+        <span class="launcher-pulse-dot" aria-hidden="true"></span>
+      </div>
+      <span class="launcher-label hidden sm:inline">24/7 Rift AI</span>
+    </button>
 
-    <!-- Expanding Chatbot Window -->
-    <div class="chatbot-window" id="chatbotWindow">
-      
+    <!-- Expanded Chat Window -->
+    <div class="rift-chat-window" id="riftChatWindow">
       <!-- Header -->
-      <div class="chatbot-header">
-        <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-full bg-accent-start/20 border border-accent-start/40 flex items-center justify-center text-accent-start text-sm">
-            <i class="fa-solid fa-robot"></i>
+      <div class="rift-chat-header">
+        <div class="rift-chat-head-info">
+          <div class="rift-chat-logo-wrap">
+            <img src="assets/rc_logo.png" alt="Rift AI">
+            <span class="online-indicator"></span>
           </div>
           <div>
-            <div class="text-xs font-black text-white flex items-center gap-1.5">
-              <span>Rift AI Support</span>
-              <span class="w-2 h-2 rounded-full bg-ok inline-block"></span>
-            </div>
-            <div class="text-[10px] text-muted">Instant anticheat & license diagnostics</div>
+            <div class="rift-chat-title">Rift AI Assistant</div>
+            <div class="rift-chat-status">Live Support · Online Now</div>
           </div>
         </div>
-        <button onclick="toggleChatbot()" class="text-muted hover:text-white transition-colors text-sm">
-          <i class="fa-solid fa-xmark"></i>
+        <button type="button" class="rift-chat-close-btn" onclick="toggleRiftAiChat()" aria-label="Close message window">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M18 6 6 18M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
-      <!-- Messages Stream -->
-      <div class="chatbot-messages" id="chatbotMessages">
-        <div class="chatbot-bubble bot">
-          Hey! I'm <strong>Rift AI Support</strong>. ⚡<br>
-          How can I help you today? Ask me about anticheat statuses, how to inject the loader, license keys, or HWID resets!
-          <div class="chatbot-chips">
-            <span class="chatbot-chip" onclick="sendPresetChip('Anticheat Status')">⚡ Status</span>
-            <span class="chatbot-chip" onclick="sendPresetChip('Where is my key?')">🔑 My Key</span>
-            <span class="chatbot-chip" onclick="sendPresetChip('How to inject loader?')">🛡️ Inject Guide</span>
-            <span class="chatbot-chip" onclick="sendPresetChip('HWID Reset Help')">🔄 HWID Reset</span>
-            <span class="chatbot-chip" onclick="sendPresetChip('Discord Support')">💬 Discord Staff</span>
+      <!-- Messages Thread -->
+      <div class="rift-chat-stream custom-scrollbar" id="riftChatStream">
+        <div class="rift-msg bot">
+          <div class="msg-bubble">
+            👋 Welcome to <strong>Rift Cheats</strong>! I'm your 24/7 AI technical assistant.<br>
+            Ask me about our undetected cheats, game statuses, key delivery, or loader setup!
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="quick-chip" onclick="sendQuickPrompt('Are your cheats undetected right now?')">⚡ Undetected Status</button>
+            <button type="button" class="quick-chip" onclick="sendQuickPrompt('How does instant key delivery work?')">🔑 Instant Delivery</button>
+            <button type="button" class="quick-chip" onclick="sendQuickPrompt('Tell me about Krush - Rust cheat')">🔥 Krush - Rust</button>
+            <button type="button" class="quick-chip" onclick="sendQuickPrompt('Do I need a HWID Spoofer?')">🛡️ HWID Spoofer</button>
           </div>
         </div>
       </div>
 
-      <!-- Input Bar -->
-      <div class="chatbot-input-bar">
-        <input type="text" id="chatbotInput" placeholder="Ask about keys, status, injection..." class="flex-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs text-white placeholder-muted focus:outline-none focus:border-accent-start">
-        <button onclick="sendChatbotUserMessage()" class="qarin-btn-primary px-3 py-2 text-xs rounded-xl">
-          <i class="fa-solid fa-paper-plane"></i>
-        </button>
+      <!-- Scanning / Computing Neural Animation Overlay -->
+      <div class="rift-neural-anim hidden" id="riftNeuralAnim">
+        <div class="neural-pulse-bars">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span class="neural-text">Rift AI is analyzing telemetry...</span>
       </div>
 
+      <!-- Input Bar with Exact LiveChat Button Styling -->
+      <div class="rift-chat-input-bar">
+        <form onsubmit="handleRiftChatSubmit(event)" class="rift-input-form">
+          <input type="text" id="riftChatInput" placeholder="Write a message…" autocomplete="off" aria-label="Write a message">
+          <button type="submit" id="riftChatSendBtn" class="rift-send-btn" aria-label="Send a message">
+            <svg color="inherit" viewBox="0 0 32 32" aria-hidden="true" width="16" height="16">
+              <path fill="currentColor" d="M16.7071068,8.29289322 L22.7071068,14.2928932 C23.0976311,14.6834175 23.0976311,15.3165825 22.7071068,15.7071068 C22.3466228,16.0675907 21.7793918,16.0953203 21.3871006,15.7902954 L21.2928932,15.7071068 L17,11.414 L17,24 C17,24.5128358 16.6139598,24.9355072 16.1166211,24.9932723 L16,25 C15.4871642,25 15.0644928,24.6139598 15.0067277,24.1166211 L15,24 L15,11.414 L10.7071068,15.7071068 C10.3466228,16.0675907 9.77939176,16.0953203 9.38710056,15.7902954 L9.29289322,15.7071068 C8.93240926,15.3466228 8.90467972,14.7793918 9.20970461,14.3871006 L9.29289322,14.2928932 L15.2928932,8.29289322 C15.6533772,7.93240926 16.2206082,7.90467972 16.6128994,8.20970461 L16.7071068,8.29289322 Z"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
     </div>
-
   </div>
-  
 
   <!-- Toast Notification Container -->
   <div class="rift-toast" id="riftToast">

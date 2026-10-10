@@ -940,7 +940,7 @@ function closeProductConfig() {
 function updateCartUI() {
   const badge1 = document.getElementById("cartCountBadge");
   const badge2 = document.getElementById("cart-count");
-  const drawerCount = document.getElementById("cartDrawerCountBadge") || document.getElementById("cartDrawerCount");
+  const badgeArctic = document.getElementById("cartBadgeCount");
   const container = document.getElementById("cart-items-container") || document.getElementById("cartItemsContainer") || document.getElementById("cartItemsList");
   const totalEl = document.getElementById("cart-total-price") || document.getElementById("cartTotal");
   const checkoutBtn = document.getElementById("drawer-checkout-btn");
@@ -956,8 +956,9 @@ function updateCartUI() {
   if (badge2) {
     badge2.textContent = totalCount;
   }
-  if (drawerCount) {
-    drawerCount.textContent = `${totalCount} item${totalCount === 1 ? '' : 's'}`;
+  if (badgeArctic) {
+    badgeArctic.textContent = totalCount;
+    badgeArctic.style.display = totalCount > 0 ? "inline-flex" : "none";
   }
   if (totalEl) {
     totalEl.textContent = '$' + totalPrice.toFixed(2);
@@ -979,52 +980,87 @@ function updateCartUI() {
 
   if (cart.length === 0) {
     container.innerHTML = `
-      <div class="py-14 px-4 text-center flex flex-col items-center justify-center">
-        <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 mb-3.5 shadow-inner">
-          <i class="fa-solid fa-cart-shopping text-xl text-slate-400"></i>
-        </div>
-        <h3 class="text-base font-bold text-white mb-1">Your cart is empty</h3>
-        <p class="text-xs text-slate-400 max-w-[220px] mb-5">Select one of our undetected private cheats to add keys to your cart.</p>
-        <button type="button" onclick="closeCartDrawer(); const p = document.getElementById('products'); if(p) p.scrollIntoView({behavior:'smooth'});" class="px-5 py-2.5 rounded-xl bg-pink-500/20 hover:bg-pink-500/30 border border-pink-500/30 text-pink-300 text-xs font-bold transition-all cursor-pointer">
-          Explore Best Sellers &rarr;
-        </button>
+      <div class="cart-empty">
+        <p class="cart-empty-title">Your cart is empty.</p>
+        <p class="cart-empty-desc">Pick your cheat. The key lands in your inbox the moment payment clears.</p>
+        <a href="store.html" class="btn btn-primary" onclick="closeCartDrawer()">
+          Browse the store
+        </a>
       </div>
     `;
   } else {
-    container.innerHTML = cart.map((item, idx) => `
-      <div class="flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all gap-3">
-        <div class="flex items-center gap-3 min-w-0 flex-1">
-          <div class="w-12 h-12 rounded-lg bg-black/40 border border-white/10 overflow-hidden flex-shrink-0 flex items-center justify-center p-0.5">
-            <img src="${item.img || item.image || 'assets/real/Rust.png'}" class="w-full h-full object-cover rounded-md" alt="${item.title || item.name}">
+    const linesHtml = cart.map((item, idx) => `
+      <li class="cart-line">
+        <a href="store.html?game=${item.prodId || 'rust'}" class="cart-line-media" tabindex="-1" aria-hidden="true">
+          <img src="${item.img || item.image || 'assets/real/Rust.png'}" alt="${item.title || item.name}" loading="lazy">
+        </a>
+        <div class="cart-line-body">
+          <a href="store.html?game=${item.prodId || 'rust'}" class="cart-line-title">
+            <span>${item.title || item.name}</span>
+            <span class="cart-line-variant">
+              <span>${item.tierName || 'Access Key'} · Instant Dispatch</span>
+            </span>
+          </a>
+          <p class="cart-line-price"><span>$${(Number(item.price) || 0).toFixed(2)}</span></p>
+          <div class="cart-qty" role="group" aria-label="Quantity">
+            <button type="button" class="cart-qty-button" onclick="changeCartItemQty(${idx}, -1)" ${item.quantity <= 1 ? 'disabled' : ''} aria-label="Decrease quantity">−</button>
+            <span class="cart-qty-value">${item.quantity || 1}</span>
+            <button type="button" class="cart-qty-button" onclick="changeCartItemQty(${idx}, 1)" aria-label="Increase quantity">+</button>
           </div>
-          <div class="min-w-0 flex-1">
-            <h4 class="text-sm font-bold text-white truncate">${item.title || item.name}</h4>
-            <div class="flex items-center gap-2 mt-0.5">
-              <span class="text-[11px] text-slate-400 font-medium">${item.tierName || 'License Key'}</span>
-              <span class="text-xs text-pink-400 font-mono font-bold">$${(Number(item.price) || 0).toFixed(2)}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-2.5 flex-shrink-0">
-          <!-- Stepper -->
-          <div class="flex items-center bg-white/5 border border-white/10 rounded-lg overflow-hidden">
-            <button type="button" onclick="changeCartItemQty(${idx}, -1)" class="w-7 h-7 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors text-xs cursor-pointer" title="Decrease">
-              <i class="fa-solid fa-minus"></i>
-            </button>
-            <span class="w-6 text-center text-xs font-mono font-bold text-white">${item.quantity || 1}</span>
-            <button type="button" onclick="changeCartItemQty(${idx}, 1)" class="w-7 h-7 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors text-xs cursor-pointer" title="Increase">
-              <i class="fa-solid fa-plus"></i>
-            </button>
-          </div>
-
-          <!-- Remove -->
-          <button type="button" onclick="removeFromCart(${idx})" class="p-1.5 text-slate-400 hover:text-red-400 transition-colors cursor-pointer" title="Remove Item">
-            <i class="fa-solid fa-trash-can text-xs"></i>
+          <button type="button" class="cart-line-remove" onclick="removeFromCart(${idx})" aria-label="Remove item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
           </button>
         </div>
-      </div>
+      </li>
     `).join("");
+
+    const freebieHtml = `
+      <li class="cart-line is-free">
+        <div class="cart-line-media-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </div>
+        <div class="cart-line-body">
+          <div class="cart-line-title">
+            <span>Live Installation Support</span>
+          </div>
+          <p class="cart-line-desc">1-on-1 Discord technician screen share if you need setup help.</p>
+          <p class="cart-line-price-free">Free with order</p>
+        </div>
+      </li>
+    `;
+
+    const recHtml = `
+      <p class="cart-recs-title">Handpicked for you</p>
+      <div class="cart-rec">
+        <div class="cart-rec-media">
+          <img src="assets/real/Rust.png" alt="Trace 2.0 Spoofer" loading="lazy">
+        </div>
+        <div class="cart-rec-body">
+          <a href="store.html?game=spoofer" class="cart-rec-name">Trace 2.0 Spoofer</a>
+          <div class="cart-rec-meta">
+            <span>HWID Spoofer</span>
+            <span class="cart-rec-tag">Recommended</span>
+          </div>
+          <p class="cart-rec-desc">Hardware-level serial cloaking for permanent EAC &amp; BE bypass.</p>
+        </div>
+        <div class="cart-rec-action">
+          <span class="cart-rec-price">$4.99</span>
+          <button type="button" class="cart-rec-add" onclick="addRecommendedSpooferToCart()">+ Add</button>
+        </div>
+      </div>
+    `;
+
+    container.innerHTML = `
+      <ul class="cart-lines">
+        ${linesHtml}
+        ${freebieHtml}
+      </ul>
+      ${recHtml}
+    `;
   }
 
   localStorage.setItem('rift_cart', JSON.stringify(cart));
@@ -1057,43 +1093,52 @@ function removeFromCart(index) {
 function toggleCartDrawer() {
   const drawer = document.getElementById("cart-drawer");
   if (!drawer) return;
-  if (drawer.classList.contains("hidden")) {
-    openCartDrawer();
-  } else {
+  if (drawer.classList.contains("is-open")) {
     closeCartDrawer();
+  } else {
+    openCartDrawer();
   }
 }
 
 function openCartDrawer() {
   const drawer = document.getElementById("cart-drawer");
   if (!drawer) return;
-  drawer.classList.remove("hidden");
+  drawer.classList.add("is-open");
   updateCartUI();
-  const panel = document.getElementById("cart-drawer-panel") || drawer.querySelector(".cart-panel-inner");
-  if (panel) {
-    requestAnimationFrame(() => {
-      panel.classList.remove("translate-x-full");
-      panel.classList.add("translate-x-0");
-    });
-  }
   document.body.style.overflow = "hidden";
 }
 
 function closeCartDrawer() {
   const drawer = document.getElementById("cart-drawer");
   if (!drawer) return;
-  const panel = document.getElementById("cart-drawer-panel") || drawer.querySelector(".cart-panel-inner");
-  if (panel) {
-    panel.classList.remove("translate-x-0");
-    panel.classList.add("translate-x-full");
-    setTimeout(() => {
-      drawer.classList.add("hidden");
-      document.body.style.overflow = "";
-    }, 250);
+  drawer.classList.remove("is-open");
+  document.body.style.overflow = "";
+}
+
+function addRecommendedSpooferToCart() {
+  const existing = cart.find(i => i.id === "rift-spoofer" || (i.title && i.title.includes("Trace 2.0")));
+  if (existing) {
+    existing.quantity = (Number(existing.quantity) || 1) + 1;
   } else {
-    drawer.classList.add("hidden");
-    document.body.style.overflow = "";
+    cart.push({
+      sellAuthId: 740833,
+      sellAuthVariantId: 1210815,
+      productId: 740833,
+      variantId: 1210815,
+      id: "rift-spoofer",
+      prodId: "spoofer",
+      title: "Trace 2.0 Spoofer",
+      name: "Trace 2.0 Spoofer (HWID Bypass)",
+      tierName: "1-Day Cleanse",
+      price: 4.99,
+      quantity: 1,
+      img: "assets/real/Rust.png",
+      image: "assets/real/Rust.png"
+    });
   }
+  localStorage.setItem('rift_cart', JSON.stringify(cart));
+  updateCartUI();
+  showToast("Added Trace 2.0 Spoofer to your cart!");
 }
 
 function proceedToSellAuthCheckout() {
@@ -1731,3 +1776,132 @@ function initRiftBotTelemetry() {
   setInterval(syncRiftBotStatus, RIFT_BOT_CONFIG.pollIntervalMs);
 }
 
+
+// ==========================================================================
+// 11. ARCTICCHEATS NAVBAR & RIFT AI BOT HANDLERS
+// ==========================================================================
+function toggleCheatsDropdown(event) {
+  if (event) event.stopPropagation();
+  const dropdown = document.getElementById("navCheatsDropdown");
+  if (dropdown) dropdown.classList.toggle("is-open");
+}
+
+function togglePrefsMenu(event) {
+  if (event) event.stopPropagation();
+  const panel = document.getElementById("prefsPanel");
+  if (panel) panel.classList.toggle("is-open");
+}
+
+function setLanguage(lang) {
+  const label = document.getElementById("prefsLangLabel");
+  if (label) label.textContent = lang;
+  document.querySelectorAll(".lang-opt").forEach(btn => {
+    if (btn.textContent.includes(lang) || (lang === 'EN' && btn.textContent.includes('English'))) {
+      btn.classList.add("is-active");
+    } else {
+      btn.classList.remove("is-active");
+    }
+  });
+  const panel = document.getElementById("prefsPanel");
+  if (panel) panel.classList.remove("is-open");
+}
+
+function setCurrency(cur, symbol) {
+  const label = document.getElementById("prefsCurLabel");
+  if (label) label.textContent = symbol;
+  document.querySelectorAll(".cur-opt").forEach(btn => {
+    if (btn.textContent.includes(cur)) {
+      btn.classList.add("is-active");
+    } else {
+      btn.classList.remove("is-active");
+    }
+  });
+  const panel = document.getElementById("prefsPanel");
+  if (panel) panel.classList.remove("is-open");
+}
+
+function toggleMobileNav() {
+  const nav = document.querySelector(".site-nav");
+  if (nav) {
+    if (nav.classList.contains("hidden")) {
+      nav.classList.remove("hidden");
+      nav.classList.add("flex", "flex-col", "absolute", "top-full", "left-0", "w-full", "bg-[#0d0f17]", "p-6", "border-b", "border-white/10", "z-50");
+    } else {
+      nav.classList.add("hidden");
+      nav.classList.remove("flex", "flex-col", "absolute", "top-full", "left-0", "w-full", "bg-[#0d0f17]", "p-6", "border-b", "border-white/10", "z-50");
+    }
+  }
+}
+
+// Global click outside listener to close dropdowns
+document.addEventListener("click", (e) => {
+  const cheatsDropdown = document.getElementById("navCheatsDropdown");
+  if (cheatsDropdown && !cheatsDropdown.contains(e.target)) {
+    cheatsDropdown.classList.remove("is-open");
+  }
+  const prefsMenu = document.getElementById("prefsMenu");
+  if (prefsMenu && !prefsMenu.contains(e.target)) {
+    const prefsPanel = document.getElementById("prefsPanel");
+    if (prefsPanel) prefsPanel.classList.remove("is-open");
+  }
+});
+
+// 24/7 Rift AI Support Chat Handlers
+function toggleRiftAiChat() {
+  const win = document.getElementById("riftChatWindow");
+  if (!win) return;
+  win.classList.toggle("is-open");
+  if (win.classList.contains("is-open")) {
+    setTimeout(() => {
+      const input = document.getElementById("riftChatInput");
+      if (input) input.focus();
+    }, 150);
+  }
+}
+
+// Aliases for compatibility
+window.toggleChatbot = toggleRiftAiChat;
+window.openChatbot = toggleRiftAiChat;
+
+function sendQuickPrompt(promptText) {
+  appendRiftChatMessage("user", promptText);
+  processRiftAiResponse(promptText);
+}
+
+function handleRiftChatSubmit(event) {
+  if (event) event.preventDefault();
+  const input = document.getElementById("riftChatInput");
+  if (!input) return;
+  const val = input.value.trim();
+  if (!val) return;
+  input.value = "";
+  appendRiftChatMessage("user", val);
+  processRiftAiResponse(val);
+}
+
+function appendRiftChatMessage(sender, htmlContent) {
+  const stream = document.getElementById("riftChatStream");
+  if (!stream) return;
+  const msgEl = document.createElement("div");
+  msgEl.className = `rift-msg ${sender}`;
+  msgEl.innerHTML = `<div class="msg-bubble">${htmlContent}</div>`;
+  stream.appendChild(msgEl);
+  stream.scrollTop = stream.scrollHeight;
+}
+
+function processRiftAiResponse(userText) {
+  const anim = document.getElementById("riftNeuralAnim");
+  const sendBtn = document.getElementById("riftChatSendBtn");
+  if (anim) anim.classList.remove("hidden");
+  if (sendBtn) sendBtn.disabled = true;
+
+  const stream = document.getElementById("riftChatStream");
+  if (stream) stream.scrollTop = stream.scrollHeight;
+
+  setTimeout(() => {
+    if (anim) anim.classList.add("hidden");
+    if (sendBtn) sendBtn.disabled = false;
+    const reply = generateChatbotReply(userText);
+    appendRiftChatMessage("bot", reply);
+  }, 650);
+}
