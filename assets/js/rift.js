@@ -448,6 +448,26 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================================================================
 const BEST_SELLER_PRODUCTS = [
   {
+    id: "arc_internal",
+    sellAuthId: 890888,
+    title: "Krush - ARC Raiders Internal",
+    game: "Arc Raiders",
+    priceRange: "$9.99 - $69.99",
+    originalPrice: null,
+    status: "Undetected",
+    image: "assets/real/krush_arc_internal.png"
+  },
+  {
+    id: "wardogs",
+    sellAuthId: 877277,
+    title: "Krush - Wardogs Internal",
+    game: "Wardogs",
+    priceRange: "$7.49 - $59.99",
+    originalPrice: null,
+    status: "Undetected",
+    image: "assets/real/wardogs.png"
+  },
+  {
     id: "rust",
     sellAuthId: 740833,
     title: "Krush - Rust",
@@ -456,26 +476,6 @@ const BEST_SELLER_PRODUCTS = [
     originalPrice: null,
     status: "Undetected",
     image: "assets/real/Rust.png"
-  },
-  {
-    id: "ancient_arc",
-    sellAuthId: 863447,
-    title: "Ancient - ARC Raiders",
-    game: "Arc Raiders",
-    priceRange: "$9.99 - $64.99",
-    originalPrice: "$14.99",
-    status: "Undetected",
-    image: "assets/real/ANCIENT_ARC.png"
-  },
-  {
-    id: "arc",
-    sellAuthId: 651348,
-    title: "Krush - ARC Raiders",
-    game: "Arc Raiders",
-    priceRange: "$7.49 - $59.99",
-    originalPrice: null,
-    status: "Undetected",
-    image: "assets/real/rift_arc-31eUfYH7.png"
   }
 ];
 
@@ -1965,11 +1965,13 @@ function loginWithDiscord() {
   if (btn) {
     btn.disabled = true;
     btn.style.opacity = "0.75";
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Connecting Discord...';
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Redirecting to Discord...';
   }
-  showToast("Connecting with Discord to Client Area...", "ok");
-  sessionStorage.setItem('rift_auth_intent', 'discord');
+  showToast("Redirecting to Discord Authorization...", "ok");
+  const DISCORD_CLIENT_ID = '1549414658505703494';
+  const redirectUri = encodeURIComponent(window.location.origin + '/client-area.html');
+  const discordAuthUrl = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&response_type=token&scope=identify+email&redirect_uri=${redirectUri}`;
   setTimeout(() => {
-    window.location.href = `client-area.html?login=discord`;
-  }, 600);
+    window.location.href = discordAuthUrl;
+  }, 350);
 }
