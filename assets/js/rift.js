@@ -22,7 +22,7 @@ const RIFT_PRODUCTS = [
     launcher: "Steam",
     status: "Undetected",
     priceFrom: "$7.49",
-    prices: { "1day": 7.49, "7days": 29.99, "30days": 59.99, "lifetime": 149.99 },
+    prices: { "1day": 7.49, "7days": 29.99, "30days": 59.99, "lifetime": 59.99 },
     imgPrimary: "assets/rift_rust1-BON31Td0.png",
     imgSecondary: "assets/real/Rust.png",
     productsCount: 18,
@@ -452,7 +452,7 @@ const BEST_SELLER_PRODUCTS = [
     sellAuthId: 740833,
     title: "Krush - Rust",
     game: "Rust",
-    priceRange: "$7.49 - $149.99",
+    priceRange: "$7.49 - $59.99",
     originalPrice: null,
     status: "Undetected",
     image: "assets/real/Rust.png"
@@ -1383,16 +1383,65 @@ function sendPresetChip(chipText) {
 }
 
 // Exact knowledge base from D:\ef\riftcheats\api\chat.js
+// ==========================================================================
+// 8. 24/7 AI SUPPORT CHATBOT ENGINE (Fully Responsive & Contextual)
+// ==========================================================================
+let botChatHistory = [];
+
 function generateChatbotReply(prompt) {
-  const q = prompt.toLowerCase();
+  const q = (prompt || "").toLowerCase().trim();
+  botChatHistory.push(q);
+
+  // Greetings & Casual
+  if (/^(hi|hey|hello|yo|sup|howdy|whats up|good morning|good evening)/i.test(q)) {
+    const greetings = [
+      `Hey there! Welcome to <strong>Rift Cheats</strong>. How can I help you dominate today? Looking for Rust, Arc Raiders, or one of our other undetected cheats?`,
+      `Hello! I'm your 24/7 technical assistant. Ready to help with live status checks, pricing, key delivery, or loader setup. What game are you playing?`,
+      `Hey! Great to have you here. All our cheats are currently <strong>100% undetected</strong>. Which game do you need access for?`
+    ];
+    return greetings[botChatHistory.length % greetings.length];
+  }
+
+  // Pricing / Cost / How much
+  if (q.includes("price") || q.includes("cost") || q.includes("how much") || q.includes("cheap") || q.includes("rates")) {
+    return `<strong>Transparent Pricing Across Our Catalog:</strong><br>
+    • <strong>Krush - Rust:</strong> $7.49 (1-Day) · $29.99 (7-Day) · $59.99 (30-Day)<br>
+    • <strong>Krush Arc Raiders:</strong> $7.49 (1-Day) · $29.99 (7-Day) · $59.99 (30-Day)<br>
+    • <strong>Ancient Arc Raiders:</strong> $9.99 (1-Day) · $34.99 (7-Day) · $64.99 (30-Day)<br>
+    • <strong>Krush Arc Raiders Internal:</strong> $9.99 (1-Day) · $34.99 (7-Day) · $69.99 (30-Day)<br>
+    • <strong>Crusader R6:</strong> $7.49 (1-Day) · $29.99 (7-Day) · $59.99 (30-Day)<br>
+    • <strong>Krush Apex Legends:</strong> $7.49 (1-Day) · $29.99 (7-Day) · $59.99 (30-Day)<br>
+    • <strong>Disconnect Fortnite:</strong> $7.49 (1-Day) · $29.99 (7-Day) · $59.99 (30-Day)<br>
+    • <strong>Ancient Delta Force:</strong> $7.49 (1-Day) · $29.99 (7-Day) · $59.99 (30-Day)<br>
+    • <strong>Wardogs Cheats:</strong> from $7.49<br>
+    • <strong>Trace 2.0 HWID Spoofer:</strong> $4.99<br>
+    <button onclick="closeCartDrawer(); window.location.href='store.html'" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
+      Browse All Cheats in Store &rarr;
+    </button>`;
+  }
+
+  // Games available / list
+  if (q.includes("what games") || q.includes("which game") || q.includes("list") || q.includes("catalog") || q.includes("menu")) {
+    return `<strong>Our Current Game Lineup:</strong><br>
+    We focus strictly on high-security private builds for 7 top games:<br>
+    1. <strong>Rust</strong> (Krush Rust)<br>
+    2. <strong>Arc Raiders</strong> (Krush, Ancient, & Internal)<br>
+    3. <strong>Rainbow Six Siege</strong> (Crusader R6)<br>
+    4. <strong>Apex Legends</strong> (Krush Apex)<br>
+    5. <strong>Fortnite</strong> (Disconnect Fortnite)<br>
+    6. <strong>Delta Force</strong> (Ancient Delta)<br>
+    7. <strong>Wardogs</strong> (Internal, Disconnect, Ancient)<br>
+    Plus our <strong>Trace 2.0 Spoofer</strong> for permanent ban evasion.`;
+  }
 
   // Rust
   if (q.includes("rust")) {
-    return `<strong>Krush Rust — 100% Undetected:</strong><br>
+    return `<strong>Krush Rust — 100% Undetected & Streamproof:</strong><br>
     • <strong>Pricing:</strong> $7.49 (1 Day) | $29.99 (7 Days) | $59.99 (30 Days)<br>
-    • <strong>Features:</strong> Silent Aim, Instant Eoka/Bow/Compound, Full Player & Sleeper ESP, Raid Distance & Raid Timer Alerts, Cupboard/Turret Radar, Ore & Crate ESP, Spider Climb, Debug Camera.<br>
-    • <strong>Compatibility:</strong> Steam, Windows 10 & 11, Intel & AMD CPUs.<br>
-    <button onclick="openProductDetail('rust')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:5px 12px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
+    • <strong>Combat:</strong> Silent Aim, Instant Eoka, Instant Bow, Instant Compound, Hitbox Override, No Spread.<br>
+    • <strong>Visuals:</strong> Player ESP, Sleepers, Wounded State, Raid Distance Alerts, Raid Timer, Cupboard & Turret ESP, Sulfur/Metal Ore Radar.<br>
+    • <strong>Movement:</strong> Spider Climb, Infinite Jump, Debug Camera, Battle Mode.<br>
+    <button onclick="openProductDetail('rust')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
       Configure Krush Rust &rarr;
     </button>`;
   }
@@ -1400,22 +1449,11 @@ function generateChatbotReply(prompt) {
   // Arc Raiders
   if (q.includes("arc") || q.includes("raider")) {
     return `<strong>Arc Raiders Cheat Lineup — 100% Undetected:</strong><br>
-    1. <strong>Krush Arc Raiders</strong> ($7.49) — Kernel predictive aimbot, Loot Container ESP, 2D Box, Proximity Radar.<br>
-    2. <strong>Ancient Arc Raiders</strong> ($9.99) — Next-gen predictive lead targeting, Bone Skeleton ESP, Extraction Point Radar, Config Manager.<br>
-    3. <strong>Krush Arc Raiders Internal</strong> ($9.99) — Ring-0 internal memory bypass, OBS streamproof, custom FOV.<br>
-    <button onclick="openProductDetail('arc')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:5px 12px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
-      View Arc Raiders Options &rarr;
-    </button>`;
-  }
-
-  // Apex Legends
-  if (q.includes("apex")) {
-    return `<strong>Krush Apex Legends — 100% Undetected:</strong><br>
-    • <strong>Pricing:</strong> $7.49 (1 Day) | $29.99 (7 Days) | $59.99 (30 Days)<br>
-    • <strong>Features:</strong> Vector Smooth Aim with FOV & Hitbox Selection, Full Glow & Chams, 2D Box ESP, Health/Shield Bars, Loot Radar, Spectator Warning.<br>
-    • <strong>Platforms:</strong> Steam & EA App, Windows 10 & 11.<br>
-    <button onclick="openProductDetail('apex')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:5px 12px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
-      Configure Krush Apex &rarr;
+    • <strong>Krush Arc Raiders ($7.49):</strong> Kernel predictive aimbot, Loot Container ESP, 2D Box, Proximity Alert.<br>
+    • <strong>Ancient Arc Raiders ($9.99):</strong> Next-gen velocity prediction, Bone Skeleton ESP, Extraction Point Radar.<br>
+    • <strong>Krush Arc Raiders Internal ($9.99):</strong> Ring-0 internal memory bypass, OBS streamproof, custom FOV slider.<br>
+    <button onclick="openProductDetail('arc')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
+      Configure Arc Raiders &rarr;
     </button>`;
   }
 
@@ -1423,20 +1461,30 @@ function generateChatbotReply(prompt) {
   if (q.includes("r6") || q.includes("rainbow") || q.includes("siege")) {
     return `<strong>Crusader R6 — 100% Undetected:</strong><br>
     • <strong>Pricing:</strong> $7.49 (1 Day) | $29.99 (7 Days) | $59.99 (30 Days)<br>
-    • <strong>Features:</strong> Operator ESP & Head Dot, RCS Recoil Control System, Gadget ESP (Traps, C4, Claymores, Cameras), Streamproof.<br>
-    • <strong>Platforms:</strong> Ubisoft Connect & Steam, Windows 10 & 11.<br>
-    <button onclick="openProductDetail('r6')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:5px 12px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
+    • <strong>Aimbot:</strong> Smooth Memory Aim, Recoil Control System (RCS), Spread Compensation.<br>
+    • <strong>ESP:</strong> Operator Icons & Names, Head Dot, Traps (Kapkan/Frost/Ela), C4, Claymores, Drones, Cameras.<br>
+    <button onclick="openProductDetail('r6')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
       Configure Crusader R6 &rarr;
+    </button>`;
+  }
+
+  // Apex Legends
+  if (q.includes("apex")) {
+    return `<strong>Krush Apex Legends — 100% Undetected:</strong><br>
+    • <strong>Pricing:</strong> $7.49 (1 Day) | $29.99 (7 Days) | $59.99 (30 Days)<br>
+    • <strong>Features:</strong> Vector Smooth Aim, Full Glow Chams, 2D Box ESP, Health & Shield Bars, Loot Item Radar, Spectator Warning.<br>
+    <button onclick="openProductDetail('apex')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
+      Configure Krush Apex &rarr;
     </button>`;
   }
 
   // Fortnite
   if (q.includes("fortnite") || q.includes("fn")) {
     return `<strong>Disconnect Fortnite — 100% Undetected:</strong><br>
-    • <strong>Pricing:</strong> $7.49 (1 Day) | $29.99 (7 Days) | $59.99 (30 Days) | $129.99 (Lifetime)<br>
-    • <strong>Features:</strong> Soft Memory Aim, Tournament Safe FOV presets, Distance Box & Skeleton ESP, Chest/Ammo Box ESP, Vehicle ESP, Streamproof.<br>
-    <button onclick="openProductDetail('fortnite')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:5px 12px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
-      Configure Fortnite &rarr;
+    • <strong>Pricing:</strong> $7.49 (1 Day) | $29.99 (7 Days) | $59.99 (30 Days)<br>
+    • <strong>Features:</strong> Tournament Safe Soft Aim, 2D/3D Boxes, Skeleton Wireframe, Chest & Ammo Box ESP, Vehicle ESP, Streamproof.<br>
+    <button onclick="openProductDetail('fortnite')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
+      Configure Disconnect Fortnite &rarr;
     </button>`;
   }
 
@@ -1444,68 +1492,84 @@ function generateChatbotReply(prompt) {
   if (q.includes("delta")) {
     return `<strong>Ancient Delta Force — 100% Undetected:</strong><br>
     • <strong>Pricing:</strong> $7.49 (1 Day) | $29.99 (7 Days) | $59.99 (30 Days)<br>
-    • <strong>Features:</strong> 2D Radar, Bone Skeleton ESP, Stream Proof ESP, Memory Aim, Custom Colors & Config System.<br>
-    <button onclick="openProductDetail('delta')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:5px 12px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
-      Configure Delta Force &rarr;
+    • <strong>Features:</strong> 2D Radar, Bone Skeleton ESP, Bounding Boxes, Memory Aim, Recoil Reduction, Custom Config System.<br>
+    <button onclick="openProductDetail('delta')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
+      Configure Ancient Delta &rarr;
     </button>`;
   }
 
   // Wardogs
   if (q.includes("wardog")) {
-    return `<strong>Wardogs Cheats — 100% Undetected:</strong><br>
-    • <strong>Krush Wardogs Internal:</strong> Smooth & Silent Aim, Death Loot Body Bags ESP, FOV Circle ($7.49).<br>
-    • <strong>Disconnect Wardogs:</strong> Tournament Safe Soft Aim, 2D/3D Boxes ($7.49).<br>
-    • <strong>Ancient Wardogs:</strong> Kernel Predictive Lead Targeting, Skeleton Bones ($9.99).<br>
-    <button onclick="openProductDetail('wardogs')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:5px 12px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
-      View Wardogs Options &rarr;
+    return `<strong>Wardogs Private Cheats — 100% Undetected:</strong><br>
+    • <strong>Krush Wardogs Internal ($7.49):</strong> Smooth & Silent Aim, Death Loot Body Bags ESP.<br>
+    • <strong>Disconnect Wardogs ($7.49):</strong> Soft Memory Aim, 2D/3D Boxes.<br>
+    • <strong>Ancient Wardogs ($9.99):</strong> Kernel Predictive Targeting, Skeleton Tracking.<br>
+    <button onclick="openProductDetail('wardogs')" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
+      Configure Wardogs &rarr;
     </button>`;
   }
 
-  // Status & Safety
+  // Spoofer / HWID
+  if (q.includes("spoofer") || q.includes("hwid") || q.includes("ban") && q.includes("pc")) {
+    return `<strong>Trace 2.0 HWID Spoofer ($4.99):</strong><br>
+    • Cloaks BIOS serials, Disk GUIDs, NIC MAC addresses, and motherboard identifiers.<br>
+    • Cleanse takes 30 seconds before launching any game.<br>
+    • 100% compatible with EAC, BattlEye, and Ricochet anticheats.<br>
+    <button onclick="addRecommendedSpooferToCart()" style="margin-top:8px; background:#ff2a85; color:#fff; border:none; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.75rem; cursor:pointer;">
+      + Add Trace 2.0 Spoofer to Cart ($4.99)
+    </button>`;
+  }
+
+  // Status / Undetected / Safe
   if (q.includes("status") || q.includes("undetected") || q.includes("safe") || q.includes("ban")) {
-    return `<strong>Anticheat Status: 100% Undetected across all 11 builds!</strong><br>
-    Our automated honeypots monitor Easy Anti-Cheat (EAC), BattlEye, ACE, and Kernel AC engines 24/7. When any game patches, listings lock automatically to prevent bans.<br>
-    <a href="status.html" style="color:#ff2a85; text-decoration:underline; font-weight:bold;">Check Live Status Page &rarr;</a>`;
+    return `<strong>Anticheat Status: 100% Operational & Undetected!</strong><br>
+    Our automated honeypots continuously monitor Easy Anti-Cheat (EAC), BattlEye, ACE, and Vanguard. If a game updates, the store automatically freezes the listing to ensure you never get banned.<br>
+    <a href="status.html" style="color:#ff2a85; text-decoration:underline; font-weight:bold;">Check Live Status Dashboard &rarr;</a>`;
   }
 
-  // Keys & License Retrieval
-  if (q.includes("key") || q.includes("license") || q.includes("where") || q.includes("order")) {
-    return `<strong>Instant Key Retrieval:</strong><br>
-    Licenses are dispatched automatically upon payment. You can retrieve, unmask, or copy all your active product keys directly in the <a href="client-area.html" style="color:#ff2a85; text-decoration:underline; font-weight:bold;">Client Area Portal</a> with instant order lookup.`;
+  // Delivery / Keys / License retrieval
+  if (q.includes("key") || q.includes("delivery") || q.includes("instant") || q.includes("where") || q.includes("order")) {
+    return `<strong>Instant 5-Second Key Delivery:</strong><br>
+    The moment your payment clears via SellAuth:<br>
+    1. Your key appears instantly on your order completion screen.<br>
+    2. A copy is dispatched to your email address.<br>
+    3. You can retrieve, unmask, or copy all active licenses directly inside the <a href="client-area.html" style="color:#ff2a85; text-decoration:underline; font-weight:bold;">Client Area</a>!`;
   }
 
-  // Loader & Setup Guide
-  if (q.includes("inject") || q.includes("loader") || q.includes("how to") || q.includes("setup")) {
-    return `<strong>Loader Setup Walkthrough:</strong><br>
+  // Setup / How to inject / Loader
+  if (q.includes("setup") || q.includes("loader") || q.includes("how to") || q.includes("inject") || q.includes("guide")) {
+    return `<strong>Simple Loader Setup in 4 Steps:</strong><br>
     1. Add an exclusion for the loader folder in Windows Defender.<br>
-    2. Right-click <code>RiftLoader.exe</code> and Run as Administrator.<br>
-    3. Paste your license key from the Client Area.<br>
-    4. Launch your game once prompted. Press <strong>INSERT</strong> to open the in-game menu!`;
+    2. Right-click <code>RiftLoader.exe</code> and click <strong>Run as Administrator</strong>.<br>
+    3. Paste your license key from your order confirmation or Client Area.<br>
+    4. Launch your game when prompted. Press <strong>INSERT</strong> to open your in-game menu!`;
   }
 
-  // HWID Reset
-  if (q.includes("hwid") || q.includes("reset") || q.includes("hardware") || q.includes("pc")) {
-    return `<strong>Self-Service HWID Resets:</strong><br>
-    Each customer gets 1 free automatic hardware signature reset every 24 hours. Simply visit your <a href="client-area.html" style="color:#ff2a85; text-decoration:underline; font-weight:bold;">Client Area</a> and click <strong>Reset HWID</strong> next to your active subscription.`;
-  }
-
-  // Payment Methods
-  if (q.includes("pay") || q.includes("crypto") || q.includes("card") || q.includes("bitcoin") || q.includes("buy")) {
+  // Payment methods
+  if (q.includes("pay") || q.includes("crypto") || q.includes("card") || q.includes("btc") || q.includes("paypal")) {
     return `<strong>Accepted Payment Methods:</strong><br>
-    We support instant automated checkout via SellAuth:<br>
-    • <strong>Cryptocurrency:</strong> Bitcoin (BTC), Ethereum (ETH), Solana (SOL), Litecoin (LTC)<br>
-    • <strong>Cards:</strong> Visa, MasterCard, Apple Pay, Google Pay.<br>
-    Keys are issued in under 5 seconds!`;
+    • <strong>Cards:</strong> Visa, MasterCard, American Express, Apple Pay, Google Pay.<br>
+    • <strong>Crypto:</strong> Bitcoin (BTC), Ethereum (ETH), Solana (SOL), Litecoin (LTC), USDT.<br>
+    All checkouts are encrypted and keys are delivered in under 5 seconds!`;
   }
 
-  // Default fallback
-  return `I can help you with anything regarding RiftCheats! You can ask about:<br>
-  • Features for any game (<strong>Rust, Arc Raiders, Apex, R6, Fortnite, Delta Force, Wardogs</strong>)<br>
-  • <a href="status.html" style="color:#ff2a85; font-weight:bold;">Live Anticheat Status</a><br>
-  • <a href="client-area.html" style="color:#ff2a85; font-weight:bold;">Client Area & Key Lookup</a><br>
-  • Loader setup & Windows Defender exclusions<br>
-  • Self-service HWID resets`;
+  // Discord / Support
+  if (q.includes("discord") || q.includes("ticket") || q.includes("admin") || q.includes("human")) {
+    return `<strong>Join the Rift Cheats Discord:</strong><br>
+    Our staff and verified technicians are available 24/7 for 1-on-1 screenshares and setup help.<br>
+    <a href="https://discord.gg/riftcheats" target="_blank" style="color:#5865F2; font-weight:bold; text-decoration:underline;">Click here to join our Discord Community &rarr;</a>`;
+  }
+
+  // Contextual Dynamic Fallback (Never repeats robotic message)
+  const dynamicAnswers = [
+    `Regarding "<em>${prompt}</em>": our team has verified all our cheats for this wipe. You can check individual feature lists, instant delivery guarantees, or jump straight into the <a href="store.html" style="color:#ff2a85; font-weight:bold;">Store</a> to grab a key.`,
+    `Got it! For questions about "<em>${prompt}</em>", our 24/7 technical staff in Discord can also assist. Alternatively, check out our <a href="status.html" style="color:#ff2a85; font-weight:bold;">Live Anticheat Status</a> or <a href="client-area.html" style="color:#ff2a85; font-weight:bold;">Client Area</a>.`,
+    `I understand you're asking about "<em>${prompt}</em>". All our private builds include streamproof overlays, kernel ring-0 drivers, and 24-hour HWID reset options. Which game are you planning to run?`
+  ];
+
+  return dynamicAnswers[Math.abs(prompt.length) % dynamicAnswers.length];
 }
+
 
 // ==========================================================================
 // 9. UTILITIES (ONLINE COUNTER, TOAST, SEARCH)
@@ -1904,4 +1968,46 @@ function processRiftAiResponse(userText) {
     const reply = generateChatbotReply(userText);
     appendRiftChatMessage("bot", reply);
   }, 650);
+}
+
+
+// ==========================================================================
+// LOGIN MODAL CONTROLLERS
+// ==========================================================================
+function openLoginModal() {
+  const modal = document.getElementById("loginModalOverlay");
+  if (!modal) return;
+  modal.classList.add("is-open");
+  document.body.style.overflow = "hidden";
+  setTimeout(() => {
+    const input = document.getElementById("login-email");
+    if (input) input.focus();
+  }, 100);
+}
+
+function closeLoginModal() {
+  const modal = document.getElementById("loginModalOverlay");
+  if (!modal) return;
+  modal.classList.remove("is-open");
+  document.body.style.overflow = "";
+}
+
+function handleQuickLogin(e) {
+  if (e) e.preventDefault();
+  const input = document.getElementById("login-email");
+  const email = input ? input.value.trim() : "";
+  if (!email || !email.includes("@")) {
+    showToast("Please enter a valid email address.");
+    if (input) input.focus();
+    return;
+  }
+  const btn = document.querySelector(".login-modal__send-btn");
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Logging in...';
+  }
+  showToast(`Authenticating ${email}...`);
+  setTimeout(() => {
+    window.location.href = `client-area.html?email=${encodeURIComponent(email)}`;
+  }, 800);
 }
