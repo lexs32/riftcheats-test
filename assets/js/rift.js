@@ -488,13 +488,10 @@ function renderProductsGrid(filter = "all") {
       
       <!-- Top Visual Preview Box (3D Floating Box with Atmospheric Purple Dusk) -->
       <div class="best-seller-preview">
-        <!-- Top Status & Best Seller Badges -->
-        <div class="absolute top-3 left-3 right-3 z-10 flex items-center justify-between pointer-events-none">
+        <!-- Top Status Badge -->
+        <div class="absolute top-3 left-3 z-10 pointer-events-none">
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#10b981]/20 text-[#34d399] border border-[#10b981]/30 backdrop-blur-md shadow-sm">
             <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span> ${prod.status || 'Undetected'}
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-gradient-to-r from-pink-500/25 to-purple-500/25 text-pink-300 border border-pink-500/40 backdrop-blur-md shadow-[0_0_12px_rgba(255,42,133,0.35)]">
-            <i class="fa-solid fa-crown text-amber-400 text-[10px]"></i> Best Seller
           </span>
         </div>
 
@@ -624,15 +621,11 @@ function renderStoreCatalog(filter = "all", searchQuery = "") {
         
         <!-- Top Visual Preview Box -->
         <div class="best-seller-preview">
-          <!-- Top Status & Best Seller Badges -->
-          <div class="absolute top-3 left-3 right-3 z-10 flex items-center justify-between pointer-events-none">
+          <!-- Top Status Badge -->
+          <div class="absolute top-3 left-3 z-10 pointer-events-none">
             <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#10b981]/20 text-[#34d399] border border-[#10b981]/30 backdrop-blur-md shadow-sm">
               <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span> ${prod.status || 'Undetected'}
             </span>
-            ${(prod.id === 'rust' || prod.id === 'ancient_arc' || prod.id === 'arc') ? `
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-gradient-to-r from-pink-500/25 to-purple-500/25 text-pink-300 border border-pink-500/40 backdrop-blur-md shadow-[0_0_12px_rgba(255,42,133,0.35)]">
-              <i class="fa-solid fa-crown text-amber-400 text-[10px]"></i> Best Seller
-            </span>` : ''}
           </div>
 
           <!-- Standing Box Artwork -->
